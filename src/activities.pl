@@ -2,22 +2,20 @@ show_seed:- write('You have:'), nl,
             write('seed yang ada di inventory').
 
 /* Farming */
-dig :- digged(current_loc), write('You digged the tile').
+dig :- playerloc(X,Y), asserta(digged(X,Y)), write('You digged the tile').
 
 plant :- show_seed, nl, 
          write('What do you want to plant?'), nl,
-         read(Crop), drop(Crop),
+         read(Crop), drop(Crop), playerloc(X,Y), asserta(crop(X,Y)),
          write('you planted a '), write(Crop), write('seed.').
 
 harvest :- crop(Crop), isTilePlanted(Crop), get(Crop), write('you harvested '),write(Crop), write('.'), nl,
            write('you gained 2 farming exp').
 
 /* Fishing */
-fishing(X) :- /* random get fish */
 fish :- fishing(Fish), isFish(Fish), get(Fish),
         write('You got '), write(Fish), write('!'), nl,
         write('You gained 10 fishing exp'), !.
-
 fish :- write('You didn’t get anything!'), nl,
         write('You gained 5 fishing exp').
 

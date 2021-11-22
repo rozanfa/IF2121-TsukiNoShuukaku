@@ -40,8 +40,8 @@ price(potato,80).
 price(cucumber,60).
 price(cabbage,250).
 price(tomato,60).
-price(corn.100.
-price(onion.80.
+price(corn,100).
+price(onion,80).
 price(pineapple,500).
 price(carrot,120).
 price(eggplant,80).
@@ -54,7 +54,7 @@ price(wool,500).
 
 price(small_fish, 50).
 price(medium_fish, 120).
-price(large_fish. 200).
+price(large_fish, 200).
 
 /* crop section */
 seasonCrop(turnip,spring).
@@ -71,8 +71,12 @@ seasonCrop(sweet_potato,fall).
 seasonCrop(green_paper,fall).
 
 /* Animal product section */
+dynamic(woolProduct/1).
+dynamic(eggProduct/1).
+dynamic(milkProduct/1).
+
 isAnimal(chicken).
-isanimal(sheep).
+isAnimal(sheep).
 isAnimal(cow).
 product(chicken,egg).
 product(cow,milk).
