@@ -96,28 +96,28 @@ dummy(X, Y):- asserta(playerloc(X,Y)).
 
 /* Move player */
 :- dynamic(playerloc/2).
-w :-    write('Bergerak ke atas..'),
+w :-    write('Bergerak ke atas..'), nl,
         retract(playerloc(PrevX, PrevY)), NewY is PrevY + 1,
         asserta(playerloc(PrevX, NewY)),
-        isMoveValid(PrevX, PrevY, PrevX, NewY).
+        isMoveValid(PrevX, PrevY, PrevX, NewY), !.
         
-a :-    write('Bergerak ke kiri..'),
+a :-    write('Bergerak ke kiri..'), nl,
         retract(playerloc(PrevX, PrevY)), NewX is PrevX - 1,
         asserta(playerloc(NewX, PrevY)),
-        isMoveValid(PrevX, PrevY, NewX, PrevY).
+        isMoveValid(PrevX, PrevY, NewX, PrevY), !.
 
-s :-    write('Bergerak ke bawah..'),
+s :-    write('Bergerak ke bawah..'), nl,
         retract(playerloc(PrevX, PrevY)), NewY is PrevY - 1,
         asserta(playerloc(PrevX, NewY)),
-        isMoveValid(PrevX, PrevY, PrevX, NewY).
+        isMoveValid(PrevX, PrevY, PrevX, NewY), !.
 
-d :-    write('Bergerak ke kanan..'),
+d :-    write('Bergerak ke kanan..'), nl,
         retract(playerloc(PrevX, PrevY)), NewX is PrevX + 1,
         asserta(playerloc(NewX, PrevY)),
-        isMoveValid(PrevX, PrevY, NewX, PrevY).
+        isMoveValid(PrevX, PrevY, NewX, PrevY), !.
 
 
 isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write('Welcome to Marketplace'), openMarketplace;
                                             questloc(NewX, NewY) -> write('Welcome to Quest Tile!'), nl, nl, getQuest;
-                                            isBorder(NewX, NewY) -> retract(player(NewX,NewY)), asserta(player(PrevX, PrevY)), 
-                                            write('Batas map tidak bisa dilewati!'), nl, !, fail).
+                                            isBorder(NewX, NewY) -> retract(playerloc(NewX,NewY)), asserta(playerloc(PrevX, PrevY)), 
+                                            write('Batas map tidak bisa dilewati!'), nl, !).
