@@ -1,21 +1,26 @@
+/* Include necessary modules */
 :- include(quest).
+:- include(house).
+:- include(items).
 
+/* declare dynamic predicates */
 :- dynamic(marketState/2).
 :- dynamic(marketContent/3).
 :- dynamic(money/1).
 :- dynamic(exp/1).
 :- dynamic(currentseason/1).
 
+/* init season */
 season(spring).
 season(summer).
 season(autumn).
 season(winter).
 
-currentseason(autumn).
+currentseason(spring).
 
-springMarketContent([cabbage, lettuce]).
-summmerMarketContent([tomato, lettuce]).
-autumnMarketContent([potato, lettuce]).
+springMarketContent([turnip, potato, cucumber, cabbage]).
+summmerMarketContent([tomato, corn, onion, pineapple]).
+autumnMarketContent([carrot, eggplant, sweet_potato, green_paper]).
 winterMarketContent([carrot, lettuce]). 
 
 showMarketContent(_,[]):- !.
@@ -47,4 +52,8 @@ sell:-
     write(X), write('\n').
 
 market:-
+    playerloc(Xp,Yp),
+    marketplaceloc(Xm,Ym),
+    (Xp =:= Xq, Yp =:= Yq) -> initMarket;
+    write('You are not on the Marketplace tile. \n').
     write('What do you want to do?\n1. Buy\n2. Sell').
