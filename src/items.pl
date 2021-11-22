@@ -25,9 +25,9 @@ tool(fishing_rod).
 	/*no crop */
 
 /* Animal product */
-product(egg).
-product(milk).
-product(wool).
+isProduct(egg).
+isProduct(milk).
+isProduct(wool).
 
 /* fish */
 isFish(small_fish).
