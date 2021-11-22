@@ -77,7 +77,7 @@ map(SX, SY)     :- (playerloc(SX, SY) -> write('P');
                     write('-')), NewX is SX + 1,
                     (SX = 15, SY = 0 -> nl;
                     SX = 15 -> nl, X = 0, NewY is SY - 1, map(X, NewY);
-                    map(NewY, SY)).
+                    map(NewX, SY)).
                     
 
 /* Move player */
@@ -106,5 +106,4 @@ d :-    write("Bergerak ke kanan.."),
 isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write('Welcome to Marketplace'), openMarketplace;
                                             quest(NewX, NewY) -> write('Welcome to Quest Tile!'), nl, nl, getQuest;
                                             isBorder(NewX, NewY) -> retract(player(NewX,NewY)), asserta(player(PrevX, PrevY)), 
-                                            write('Batas map tidak bisa dilewati!'), nl, !, fail;
-                                            retract(player(NewX,NewY)), asserta(player(PrevX, PrevY)).
+                                            write('Batas map tidak bisa dilewati!'), nl, !, fail).
