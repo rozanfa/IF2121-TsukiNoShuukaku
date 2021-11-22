@@ -14,8 +14,8 @@ generate(X,Y) :-    (X = 0, Y = 0 -> asserta(coordinate(0, 0));
 /* Posisi tile bangunan */
 
 questloc(2,5).
-ranchloc(8,10).
-houseloc(8,8).
+ranchloc(2,12).
+houseloc(2,10).
 marketplaceloc(12,3).
 
 
@@ -52,20 +52,26 @@ water(10,14).
 water(10,13).
 water(10,12).
 water(10,11).
-water(10,10).
+water(9,15).
+water(9,14).
+water(9,13).
+water(9,12).
+water(8,15).
+water(8,14).
+water(8,13).
 
 
 /* Batas map */
 
-isBorder(X, Y) :- X =:= 0, coordinate(X, Y).
-isBorder(X, Y) :- Y =:= 0, coordinate(X, Y).
-isBorder(X, Y) :- X =:= 16, coordinate(X, Y).
-isBorder(X, Y) :- Y =:= 16, coordinate(X, Y).
+isBorder(X, _) :- X == 0.
+isBorder(_, Y) :- Y == 0.
+isBorder(X, _) :- X == 15.
+isBorder(_, Y) :- Y == 15.
 
 
 /* Print map */
 
-map(SX, SY)     :- (playerloc(SX, SY) -> write('P');
+printMap(SX, SY)     :- (playerloc(SX, SY) -> write('P');
                     isBorder(SX, SY) -> write('#');
                     water(SX, SY) -> write('o');
                     questloc(SX, SY) -> write('Q');
@@ -76,34 +82,42 @@ map(SX, SY)     :- (playerloc(SX, SY) -> write('P');
                     digged(SX, SY) -> write('=');
                     write('-')), NewX is SX + 1,
                     (SX = 15, SY = 0 -> nl;
-                    SX = 15 -> nl, X = 0, NewY is SY - 1, map(X, NewY);
-                    map(NewX, SY)).
+                    SX = 15 -> nl, X = 0, NewY is SY - 1, printMap(X, NewY);
+                    printMap(NewX, SY)).
                     
+
+
+/* DUMMY */ 
+crop(1,3).
+digged(1,4).
+getQuest.
+openMarketplace.
+dummy(X, Y):- asserta(playerloc(X,Y)).
 
 /* Move player */
 :- dynamic(playerloc/2).
-w :-    write("Bergerak ke atas.."),
+w :-    write('Bergerak ke atas..'),
         retract(playerloc(PrevX, PrevY)), NewY is PrevY + 1,
-        aserta(playerloc(PrevX, NewY)),
+        asserta(playerloc(PrevX, NewY)),
         isMoveValid(PrevX, PrevY, PrevX, NewY).
         
-a :-    write("Bergerak ke kiri.."),
+a :-    write('Bergerak ke kiri..'),
         retract(playerloc(PrevX, PrevY)), NewX is PrevX - 1,
-        aserta(playerloc(NewX, PrevY)),
+        asserta(playerloc(NewX, PrevY)),
         isMoveValid(PrevX, PrevY, NewX, PrevY).
 
-s :-    write("Bergerak ke bawah.."),
+s :-    write('Bergerak ke bawah..'),
         retract(playerloc(PrevX, PrevY)), NewY is PrevY - 1,
-        aserta(playerloc(PrevX, NewY)),
+        asserta(playerloc(PrevX, NewY)),
         isMoveValid(PrevX, PrevY, PrevX, NewY).
 
-d :-    write("Bergerak ke kanan.."),
+d :-    write('Bergerak ke kanan..'),
         retract(playerloc(PrevX, PrevY)), NewX is PrevX + 1,
-        aserta(playerloc(NewX, PrevY)),
+        asserta(playerloc(NewX, PrevY)),
         isMoveValid(PrevX, PrevY, NewX, PrevY).
 
 
 isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write('Welcome to Marketplace'), openMarketplace;
-                                            quest(NewX, NewY) -> write('Welcome to Quest Tile!'), nl, nl, getQuest;
+                                            questloc(NewX, NewY) -> write('Welcome to Quest Tile!'), nl, nl, getQuest;
                                             isBorder(NewX, NewY) -> retract(player(NewX,NewY)), asserta(player(PrevX, PrevY)), 
                                             write('Batas map tidak bisa dilewati!'), nl, !, fail).
