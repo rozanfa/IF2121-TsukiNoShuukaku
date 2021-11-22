@@ -11,44 +11,44 @@ levelUp(X,NewExp):-
              retract(level(X,Level)), retract(exp(X,_)),
              (Level < 1, NewExp >= 100 -> NewLevel is 1, ResetExp is 0,
              addStat(X,NewLevel),
-             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp))),
-             write('Congratulation!!! you just growed up to level'), write(NewLevel);
+             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
+             write("Congratulation!!! you just growed up to level"), write(NewLevel));
 
              retract(level(X,Level)), retract(exp(X,_)),
              (Level < 2, NewExp >= 200 -> NewLevel is 2, ResetExp is 0,
              addStat(X,NewLevel),
-             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp))),
-             write('Congratulation!!! you just growed up to level'), write(NewLevel);
+             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
+             write("Congratulation!!! you just growed up to level"), write(NewLevel));
 
              retract(level(X,Level)), retract(exp(X,_)),
              (Level < 3, NewExp >= 400 -> NewLevel is 3, ResetExp is 0,
              addStat(X,NewLevel),
-             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp))),
-             write('Congratulation!!! you just growed up to level'), write(NewLevel);
+             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
+             write("Congratulation!!! you just growed up to level"), write(NewLevel));
 
              retract(level(X,Level)), retract(exp(X,_)),
              (Level < 4, NewExp >= 800 -> NewLevel is 4, ResetExp is 0,
              addStat(X,NewLevel),
-             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp))),
-             write('Congratulation!!! you just growed up to level'), write(NewLevel);
+             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
+             write("Congratulation!!! you just growed up to level"), write(NewLevel));
 
              retract(level(X,Level)), retract(exp(X,_)),
              (Level < 5, NewExp >= 1600 -> NewLevel is 5, ResetExp is 0,
              addStat(X,NewLevel),
-             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp))),
-             write('Congratulation!!! you just growed up to level'), write(NewLevel);
+             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
+             write("Congratulation!!! you just growed up to level"), write(NewLevel));
 
              retract(level(X,Level)), retract(exp(X,_)),
              (Level < 6, NewExp >= 3200 -> NewLevel is 6, ResetExp is 0,
              addStat(X,NewLevel),
-             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp))),
-             write('You just hit to the max level');           
+             asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
+             write("You just hit to the max level"));           
 
              retract(level(X,Level)),
              (Level =:= 6, NewExp >= 20000 -> NewLevel is 99,
              addStat(X,NewLevel),
-             asserta(level(X,NewLevel))),
-             write('Opss you reach this level, you will the first who became a legendary farmer');
+             asserta(level(X,NewLevel)),
+             write("Opss you reach this level, you will the first who became a legendary farmer"));
 
              write('Don\'t stop grow up, there is a present for the diligent people').
 
