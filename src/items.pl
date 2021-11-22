@@ -71,7 +71,7 @@ seasonCrop(sweet_potato,fall).
 seasonCrop(green_paper,fall).
 
 /* Animal product section */
-isAnimal(chicken)
+isAnimal(chicken).
 isanimal(sheep).
 isAnimal(cow).
 product(chicken,egg).
