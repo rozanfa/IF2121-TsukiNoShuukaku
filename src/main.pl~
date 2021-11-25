@@ -1,12 +1,11 @@
-/* :- include('house.pl').
-:- include('inventory.pl').
-:- include('items.pl').
-:- include('level.pl').
-:- include('marketplace.pl').
-:- include('map.pl').
-:- include('quest.pl').*/
+# :- include('house.pl').
+# :- include('inventory.pl').
+# :- include('items.pl').
+# :- include('level.pl').
+# :- include('marketplace.pl').
+# :- include('map.pl').
+# :- include('quest.pl').
 
-:- dynamic(isStarted/1).
 
 bannerTsukiNoShukaku:-
 write('::::::::::::::::::\'########::\'######::\'##::::\'##:\'##:::\'##:\'####:::::::::::::::::::::'),nl,
@@ -34,17 +33,11 @@ write('\'##::: ##: ##:::: ##: ##:::: ##: ##:::: ##: ##:. ##:: ##.... ##: ##:. ##
 write('. ######:: ##:::: ##:. #######::. #######:: ##::. ##: ##:::: ##: ##::. ##:. #######::'),nl,
 write(':......:::..:::::..:::.......::::.......:::..::::..::..:::::..::..::::..:::.......:::'),nl.
 
-startGame:- bannerTsukiNoShukaku, nl,
-        write('Selamat Datang di Tsuki No Shukaku.'), nl,
-        write('Silakan pilih role anda.'),nl,
-        asserta(isStarted(1))
+startGame:- bannerTsukiNoShukaku,
+        write('Selamat Datang Par')
 .
-/*
-start.
-quit.
-main.
-map.
-*/
-quit :- \+isStarted(_), write('\033[91mCOMAND TIDAK VALID!!!!\033[0m Permain belum dimulai masa sudah keluar, mabok gan??!'), !.
-
-quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan \033[94m~~lolimu~~\033[0m ladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
+# start.
+# quit.
+# main.
+# map.
+# quit.

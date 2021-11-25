@@ -6,7 +6,7 @@
 
 :- dynamic(isiInventory/1).
 inventory:- /*used(Used),*/
-            write("Your inventory "),/* write(Used),*/ write("/100 : "), nl/*,
+            write("Your inventory"),/* write(Used),*/ write("/100 : "), nl/*,
             isiInventory(Isi), printInventoery(Isi)*/.
 
 printInventory([]).
