@@ -28,5 +28,5 @@ sleep:-
     currentDay(X),
     Y is X+1,
     retract(currentDay(X)),asserta(currentDay(Y)),
-    checkDay(Y).
+    checkDay(Y),
     retract(houseOpCode(1)),asserta(houseOpCode(0)).
