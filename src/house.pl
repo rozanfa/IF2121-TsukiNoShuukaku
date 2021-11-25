@@ -1,7 +1,8 @@
+/* Include necessary modules */
+:- include(time).
+
 /* declare dynamic predicates */
 :- dynamic(houseOpCode/1).
-:- dynamic(currentDay/1).
-:- dynamic(currentSeason/1).
 :- dynamic(diaries/1).
 :- dynamic(emptyDiary/1).
 
@@ -75,8 +76,4 @@ bacaDiary:-
 
 bobo:-
     write('Kamu memilih untuk bobo, mimpi indah ^_^.\n'),
-    currentDay(X),
-    Y is X+1,
-    retract(currentDay(X)),asserta(currentDay(Y)),
-    checkDay(Y),
-    retract(houseOpCode(1)),asserta(houseOpCode(0)).
+    addTime.
