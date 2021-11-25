@@ -58,7 +58,7 @@ checkStatus(Username) :-    write('Your status : '), nl,
                             write('--------------------------------------------------'),nl,
                             write('Job              : '), job(Username, Job), write(Job), nl,
                             write('Level            : '), 
-                            (level(Username, 5), write('MAX LEVEL!'), nl;
+                            (level(Username, 6), write('MAX LEVEL!'), nl;
                             level(Username, Level), Level < 5, write(Level), nl),
                             write('Level farming    : '), 
                             (level(Username, 3), write('MAX LEVEL!'), nl;
