@@ -1,1 +1,0 @@
-main:- read(X), write(X).
