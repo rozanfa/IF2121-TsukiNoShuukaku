@@ -25,38 +25,62 @@ tool(fishing_rod).
 	/*no crop */
 
 /* Animal product */
-isProduct(egg).
-isProduct(milk).
-isProduct(wool).
+/* Animal */
+animal(chicken).
+animal(sheep).
+animal(cow).
+product(egg).
+product(milk).
+product(wool).
 
 /* fish */
-isFish(small_fish).
-isFish(medium_fish).
-isFish(large_fish).
+fish(carp).
+fish(eel).
+fish(salmon).
+fish(catfish).
+fish(tuna).
 
-/* price */
-price(turnip,60).
-price(potato,80).
-price(cucumber,60).
-price(cabbage,250).
-price(tomato,60).
-price(corn,100).
-price(onion,80).
-price(pineapple,500).
-price(carrot,120).
-price(eggplant,80).
-price(sweet_potato,120).
-price(green_paper,40).
-
-price(egg,50).
-price(milk,200).
-price(wool,500).
-
-price(small_fish, 50).
-price(medium_fish, 120).
-price(large_fish, 200).
 
 /* crop section */
+/* harga beli*/
+/* spring */
+cropPurchasePrice(turnip,200). /* 3 hari */
+cropPurchasePrice(potato,160). /* 2 hari */
+cropPurchasePrice(cucumber,120). /* 2 hari */
+cropPurchasePrice(cabbage,500). /* 6 hari */
+
+/* spring */
+cropPurchasePrice(tomato,120). /* 2 hari */
+cropPurchasePrice(corn,200). /* 3 hari */
+cropPurchasePrice(onion,160). /* 2 hari */
+cropPurchasePrice(pineapple,500). /* 6 hari */
+
+/* spring */
+cropPurchasePrice(carrot,200). /* 3 hari */
+cropPurchasePrice(eggplant,160). /* 2 hari */
+cropPurchasePrice(sweet_potato,240). /* 3 hari */
+cropPurchasePrice(green_paper,80). /* 1 hari */
+
+/*harga jual */
+/* spring */
+cropSellPrice(turnip,600).
+cropSellPrice(potato,800).
+cropSellPrice(cucumber,600).
+cropSellPrice(cabbage,2500).
+
+/* spring */
+cropSellPrice(tomato,600).
+cropSellPrice(corn,1000).
+cropSellPrice(onion,800).
+cropSellPrice(pineapple,2500).
+
+/* spring */
+cropSellPrice(carrot,1200).
+cropSellPrice(eggplant,800).
+cropSellPrice(sweet_potato,1200).
+cropSellPrice(green_paper,400).
+
+/* season */
 seasonCrop(turnip,spring).
 seasonCrop(potato,spring).
 seasonCrop(cucumber,spring).
@@ -75,12 +99,22 @@ seasonCrop(green_paper,fall).
 :- dynamic(eggProduct/1).
 :- dynamic(milkProduct/1).
 
-isAnimal(chicken).
-isAnimal(sheep).
-isAnimal(cow).
-product(chicken,egg).
-product(cow,milk).
-product(sheep,wool).
+productYield(chicken,egg).
+productYield(cow,milk).
+productYield(sheep,wool).
+
+price(egg,150). /* tiap hari */
+price(milk,500).  /* tiap hari */
+price(wool,1000). /*3 hari sekali */
 
 /* Fish section */
+fishPrice(carp, 100).
+fishPrice(eel, 180).
+fishPrice(salmon, 240).
+fishPrice(catfish, 400).
+fishPrice(tuna, 550).
 
+/* tool section */
+/* harga beli */
+toolPurchasePrice(shovel, 300). /* sekali beli nyesuain level sekunder */
+toolPurchasePrice(fishing_rod,500). /* sekali beli nyesuain level sekunder */
