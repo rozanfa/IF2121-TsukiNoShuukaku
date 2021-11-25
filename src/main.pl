@@ -47,4 +47,4 @@ map.
 */
 quit :- \+isStarted(_), write('\033[91mCOMAND TIDAK VALID!!!!\033[0m Permain belum dimulai masa sudah keluar, mabok gan??!'), !.
 
-quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan \033[94m~~lolimu~~\033[0m ladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
+quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan \033[92m~~lolimu~~\033[0mladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
