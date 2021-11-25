@@ -4,7 +4,7 @@
 :- include(house).
 
 /* declare dynamic predicates */
-:- dynamic(takenQuestItems/5).
+:- dynamic(currentQuest/4).
 :- dynamic(questStatus/1).
 :- dynamic(inQuest/1).
 :- dynamic(questCounter/1).

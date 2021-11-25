@@ -1,7 +1,6 @@
 /* map.pl */
 
 /* Generate koordinat map */
-
 :- dynamic(coordinate/2).
 :- dynamic(width/1).
 :- dynamic(height/1).
