@@ -3,6 +3,7 @@
 :- include(house).
 :- include(items).
 :- include(player).
+:- include(time).
 
 /* declare dynamic predicates */
 :- dynamic(marketState/2).
@@ -13,9 +14,10 @@
 
 inMarketState(0).
 
-springMarketCrop([turnip, potato, cucumber, cabbage]).
-summmerMarketCrop([tomato, corn, onion, pineapple]).
-autumnMarketCrop([carrot, eggplant, sweet_potato, green_paper]).
+springMarketCrop([turnip_seed, potato_seed, cucumber_seed, cabbage_seed]).
+summmerMarketCrop([tomato_seed, corn_seed, onion_seed, pineapple_seed]).
+autumnMarketCrop([carrot_seed, eggplant_seed, sweet_potato_seed, green_paper_seed]).
+
 
 showMarketCrop(_,[]):- !.
 showMarketCrop(X,[Head|Tail]):-
@@ -25,28 +27,28 @@ showMarketCrop(X,[Head|Tail]):-
     showMarketCrop(Y,Tail).
 
 showRanch:-
-    write('5. Chicken (golds'), write('\n'),
-    write('6. Sheep (golds'), write('\n'),
-    write('7. Cow (golds'), write('\n'),
+    write('3. Chicken ('), animalPrice(chicken, X), write(X),  write(' golds'), write('\n'),
+    write('4. Cow ('), animalPrice(cow, X), write(X), write(' golds'), write('\n'),
+    write('5. Sheep ('), animalPrice(sheep, X), write(X), write(' golds'), write('\n'),
 
 showTool:-
     toolPurchasePrice(shovel,X).
     toolPurchasePrice(fishing_rod,Y).
-    write('8. Shovel ('), write(X), write(' golds'), write('\n'),
-    write('9. fishing rod ('), write(Y), write(' golds'), write('\n'),
+    write('1. Shovel ('), write(X), write(' golds'), write('\n'),
+    write('2. Fishing Rod ('), write(Y), write(' golds'), write('\n'),
 
 pickItem:-
     write('not implemented.')
 
 buy:-
     write('Barang yang ingin dibeli?\n'),
-    currentseason(X),
-    write('Musim: '),
-    write(X), write('\n'),
-    X == spring -> springMarketContent(Y), showMarketCrop(1,Y), showRanch, showTool, pickItem;
-    X == summer -> summmerMarketContent(Y), showMarketCrop(1,Y), showRanch, showTool, pickItem;
-    X == autumn -> autumnMarketContent(Y), showMarketCrop(1,Y), showRanch, showTool, pickItem;
-    X == winter -> winterMarketContent(Y), showMarketCrop(1,Y), showRanch, showTool, pickItem.
+    season(X),
+    write('Musim: '), isSeason(NamaMusim,X)
+    write(NamaMusim), write('\n'),
+    X =:= 1 -> showTool, showRanch, springMarketContent(Y), showMarketCrop(6,Y), pickItem;
+    X =:= 2 -> showTool, showRanch, summmerMarketContent(Y), showMarketCrop(6,Y), pickItem;
+    X =:= 3 -> showTool, showRanch, autumnMarketContent(Y), showMarketCrop(6,Y), pickItem;
+    X =:= 4 -> showTool, showRanch, write('\n(Tidak ada crop yang sedang dijual.)\n'), pickItem.
     
 
 sell:-

@@ -22,12 +22,12 @@ questItems(5,4,5,4,50).
 
 progQuest(X):-
     crop(X) -> currentQuest(Z,Y,_,_,_), Ym is Y+1, retract(currentQuest(_,Y,_,_,_)), asserta(currentQuest(_,Ym,_,_,_)), questCheck(Z);
-    isFish(X) -> currentQuest(Z,_,Y,_,_), Ym is Y+1, retract(currentQuest(_,_,Y,_,_)), asserta(currentQuest(_,_,Ym,_,_)), questCheck(Z);
-    isProduct(X) -> currentQuest(Z,_,_,Y,_), Ym is Y+1, retract(currentQuest(_,_,_,Y,_)), asserta(currentQuest(_,_,_,Ym,_)), questCheck(Z).
+    fish(X) -> currentQuest(Z,_,Y,_,_), Ym is Y+1, retract(currentQuest(_,_,Y,_,_)), asserta(currentQuest(_,_,Ym,_,_)), questCheck(Z);
+    product(X) -> currentQuest(Z,_,_,Y,_), Ym is Y+1, retract(currentQuest(_,_,_,Y,_)), asserta(currentQuest(_,_,_,Ym,_)), questCheck(Z).
 
 questCheck(X):-
     questItems(X,A,B,C,G),
-    currentQuest(X,D,E,F),
+    currentQuest(X,D,E,F,_),
     (A =:= D, B =:= E, C =:= F) -> write('Quest Selesai!'), retract(currentQuest(_,_,_,_,_)), asserta(currentQuest(0,0,0,0,0)),
     retract(inQuest(1)), asserta(inQuest(0)).
     questCounter(P), Pm is P+1,

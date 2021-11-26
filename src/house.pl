@@ -6,27 +6,9 @@
 :- dynamic(diaries/1).
 :- dynamic(emptyDiary/1).
 
-/* Central Time Control */
-currentSeason(semi).
-currentDay(1).
-
-/* init season */
-season(semi).
-season(panas).
-season(gugur).
-season(dingin).
-
 houseOpCode(0).
 emptyDiary(0).
 diaries([[0,'']]).
-
-checkDay(D):-
-    D == 0, D < 7 -> currentSeason(X), write('musim: '), write(X);
-    D == 7 -> retract(currentSeason(_)), asserta(currentSeason(panas)), write('musim: panas');
-    D == 13 -> retract(currentSeason(_)), asserta(currentSeason(gugur)), write('musim: gugur');
-    D == 19 -> retract(currentSeason(_)), asserta(currentSeason(dingin)), write('musim: dingin');
-    D == 25 -> write('Kamu telah berusaha, namun sayang sekali kamu masih jauh dari kesuksesan. Silakan coba lagi dan tetap semangat!');
-    currentSeason(X), write('musim: '), write(X).
 
 house:- houseOpCode(1), write('Kamu sudah berada di dalam rumah.\n'), !.
 house:-
@@ -36,7 +18,7 @@ house:-
     write('- bobo\n- tulisDiary\n- bacaDiary\n- keluar').
 
 writeD:-
-    currentDay(D),
+    day(D),
     diaries(C),
     write('Tulis diary untuk hari ke-'), write(D), write('\n'),
     read(X),
@@ -64,7 +46,6 @@ showDiaryList([[Day,_]|_]):-
     read(X),
     diaries(Ds),
     showDiary(X,Ds), !.
-
 showDiaryList([[Day,_]|Tail]):- 
     write('- Day '), write(Day), write('\n'),
     showDiaryList(Tail).
@@ -75,5 +56,8 @@ bacaDiary:-
     showDiaryList(Ds).
 
 bobo:-
-    write('Kamu memilih untuk bobo, mimpi indah ^_^.\n'),
-    addTime.
+    write('Kamu memilih untuk bobo, mimpi indah ^_^.\n\n'),
+    addTime,
+    day(X), season(Y), isSeason(NamaMusim,Y),
+    write('Day '), write(X), write(', Musim: '), write(NamaMusim),
+    retract(houseOpCode(1)),asserta(houseOpCode(0)).
