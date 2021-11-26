@@ -103,21 +103,21 @@ cropPurchasePrice(green_paper_seed,80).
 
 /* spring */
 cropSellPrice(turnip,600).
-cropSellPrice(potato,800).
-cropSellPrice(cucumber,600).
-cropSellPrice(cabbage,2500).
+cropSellPrice(potato,480).
+cropSellPrice(cucumber,360).
+cropSellPrice(cabbage,1500).
 
 /* summer */
-cropSellPrice(tomato,600).
-cropSellPrice(corn,1000).
-cropSellPrice(onion,800).
-cropSellPrice(pineapple,2500).
+cropSellPrice(tomato,360).
+cropSellPrice(corn,600).
+cropSellPrice(onion,480).
+cropSellPrice(pineapple,1500).
 
 /* fall */
-cropSellPrice(carrot,1200).
-cropSellPrice(eggplant,800).
-cropSellPrice(sweet_potato),1200).
-cropSellPrice(green_paper,400).
+cropSellPrice(carrot,600).
+cropSellPrice(eggplant,480).
+cropSellPrice(sweet_potato),720).
+cropSellPrice(green_paper,240).
 /*product crop*/
 /* Spring */
 productCrop(turnip_seed,turnip).
