@@ -7,36 +7,30 @@ tool(fishing_rod).
 
 /* crop */
 /*hasil*/
-/* Spring */
-crop(turnip).
+crop(turnip). /* Spring */
 crop(potato).
 crop(cucumber).
 crop(cabbage).
-/*Summer*/
-crop(tomato).
+crop(tomato). /*Summer*/
 crop(corn).
 crop(onion).
 crop(pineapple).
-/* Fall */
-crop(carrot).
+crop(carrot). /* Fall */
 crop(eggplant).
 crop(sweet_potato).
 crop(green_pepper).
 /* winter */
 /*no crop */
 /* seed */
-/* Spring */
-cropSeed(turnip_seed).
+cropSeed(turnip_seed). /* Spring */
 cropSeed(potato_seed).
 cropSeed(cucumber_seed).
 cropSeed(cabbage_seed).
-/*Summer*/
-cropSeed(tomato_seed).
+cropSeed(tomato_seed). /*Summer*/
 cropSeed(corn_seed).
 cropSeed(onion_seed).
 cropSeed(pineapple_seed).
-/* Fall */
-cropSeed(carrot_seed).
+cropSeed(carrot_seed). /* Fall */
 cropSeed(eggplant_seed).
 cropSeed(sweet_potato_seed).
 cropSeed(green_pepper_seed).
@@ -62,20 +56,15 @@ fish(tuna).
 
 /* crop section */
 /*waktu tanam */
-/* spring */
-cropTime(turnip,3).
+cropTime(turnip,3). /* spring */
 cropTime(potato,2).
 cropTime(cucumber,2).
 cropTime(cabbage,6).
-
-/* summer */
-cropTime(tomato,2).
+cropTime(tomato,2). /* summer */
 cropTime(corn,3).
 cropTime(onion,2).
 cropTime(pineapple,6).
-
-/*fall*/
-cropTime(carrot,3).
+cropTime(carrot,3). /*fall*/
 cropTime(eggplant,2).
 cropTime(sweet_potato,3).
 cropTime(green_pepper,1).
@@ -117,7 +106,7 @@ cropSellPrice(pineapple,1500).
 /* fall */
 cropSellPrice(carrot,600).
 cropSellPrice(eggplant,480).
-cropSellPrice(sweet_potato),720).
+cropSellPrice(sweet_potato,720).
 cropSellPrice(green_pepper,240).
 /*product crop*/
 /* Spring */
@@ -165,8 +154,8 @@ animalPrice(sheep,1000).
 animalPrice(cow,1500). 
 
 setProductPrice :-
-                    asserta(productPrice(egg,150)). 
-                    asserta(productPrice(milk,500)).  
+                    asserta(productPrice(egg,150)),
+                    asserta(productPrice(milk,500)),  
                     asserta(productPrice(wool,1000)). 
 
 setAnimal :-
@@ -177,10 +166,10 @@ setAnimal :-
 changeProductPrice(M) :- productPrice(X,Y), Z is Y*M, asserta(productPrice(X,Z)), retract(productPrice(X,Y)).
 /* Fish section */
 /* harga ikan */
-fishPrice(carp, 100),
-fishPrice(eel, 180),
-fishPrice(salmon, 240),
-fishPrice(catfish, 400),
+fishPrice(carp, 100).
+fishPrice(eel, 180).
+fishPrice(salmon, 240).
+fishPrice(catfish, 400).
 fishPrice(tuna, 550).
 
 /* random mancing */
@@ -198,6 +187,3 @@ getFishing(4,fish).
 /* harga beli */
 toolPurchasePrice(shovel, 300). /* sekali beli nyesuain level sekunder */
 toolPurchasePrice(fishing_rod,500). /* sekali beli nyesuain level sekunder */
-
-setTool :- asserta(shovellevel(1)),
-           asserta(fishing_rodlevel(1)).
