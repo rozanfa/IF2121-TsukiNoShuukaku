@@ -21,7 +21,7 @@ crop(pineapple).
 crop(carrot).
 crop(eggplant).
 crop(sweet_potato).
-crop(green_paper).
+crop(green_pepper).
 /* winter */
 /*no crop */
 /* seed */
@@ -39,7 +39,7 @@ cropSeed(pineapple_seed).
 cropSeed(carrot_seed).
 cropSeed(eggplant_seed).
 cropSeed(sweet_potato_seed).
-cropSeed(green_paper_seed).
+cropSeed(green_pepper_seed).
 /* winter */
 /*no crop seed*/
 
@@ -78,7 +78,7 @@ cropTime(pineapple,6).
 cropTime(carrot,3).
 cropTime(eggplant,2).
 cropTime(sweet_potato,3).
-cropTime(green_paper,1).
+cropTime(green_pepper,1).
 
 /* harga beli*/
 
@@ -98,7 +98,7 @@ cropPurchasePrice(pineapple_seed,500).
 cropPurchasePrice(carrot_seed,200). 
 cropPurchasePrice(eggplant_seed,160). 
 cropPurchasePrice(sweet_potato_seed,240). 
-cropPurchasePrice(green_paper_seed,80). 
+cropPurchasePrice(green_pepper_seed,80). 
 
 /*harga jual */
 
@@ -118,7 +118,7 @@ cropSellPrice(pineapple,1500).
 cropSellPrice(carrot,600).
 cropSellPrice(eggplant,480).
 cropSellPrice(sweet_potato),720).
-cropSellPrice(green_paper,240).
+cropSellPrice(green_pepper,240).
 /*product crop*/
 /* Spring */
 productCrop(turnip_seed,turnip).
@@ -134,7 +134,7 @@ productCrop(pineapple_seed,pinapple).
 productCrop(carrot_seed,carrot).
 productCrop(eggplant_seed,eggplant).
 productCrop(sweet_potato_seed,sweet_potato).
-productCrop(green_paper_seed,green_paper).
+productCrop(green_pepper_seed,green_pepper).
 
 /* season */
 seasonCrop(turnip,spring).
@@ -148,7 +148,7 @@ seasonCrop(pineapple,summer).
 seasonCrop(carrot,fall).
 seasonCrop(eggplant,fall).
 seasonCrop(sweet_potato,fall).
-seasonCrop(green_paper,fall).
+seasonCrop(green_pepper,fall).
 
 
 /* Animal product section */
