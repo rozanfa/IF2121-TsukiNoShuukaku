@@ -51,14 +51,14 @@ ranchChicken :- eggProduct(X), X\==0, , addItem(egg,X), write('Your chicken lays
                 eggProduct(X), X==0, write('Your chicken hasn’t produced any egg.'), nl,
                 write('Please check again later.').
 
-ranchSheep :- woolProduct(X,_), X\==0, get(woolProduct), write('Your sheep product '), nl,
+ranchSheep :- woolProduct(X,_), X\==0, addItem(wool,X), write('Your sheep product '), nl,
               write(X), write('wools.'), nl,
               print.('You gained 12 ranching exp!'), ranchingexp(Farmer, Z), Z1 is Z+12, asserta(ranchingexp(Farmer, Z1)), retract(ranchingexp(Farmer, Z));
               woolProduct(X,_), X==0, write('Your sheep hasn’t produced any wool.'), nl,
               write('Please check again later.').
 
 
-ranchCow :- milkProduct(X), X\==0, get(milkProduct), write('Your cow product '), nl,
+ranchCow :- milkProduct(X), X\==0, addItem(milk,X), write('Your cow product '), nl,
             write(X), write('milks.'), nl,
             write('You gained 18 ranching exp!'), ranchingexp(Farmer, Z), Z1 is Z+18, asserta(ranchingexp(Farmer, Z1)), retract(ranchingexp(Farmer, Z));
             milkProduct(X), X==0, write('Your cow hasn’t produced any milk.'), nl,
