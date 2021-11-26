@@ -16,7 +16,7 @@ inMarketState(0).
 
 springMarketCrop([turnip_seed, potato_seed, cucumber_seed, cabbage_seed]).
 summmerMarketCrop([tomato_seed, corn_seed, onion_seed, pineapple_seed]).
-autumnMarketCrop([carrot_seed, eggplant_seed, sweet_potato_seed, green_paper_seed]).
+autumnMarketCrop([carrot_seed, eggplant_seed, sweet_potato_seed, green_pepper_seed]).
 
 
 showMarketCrop(_,[]):- !.
