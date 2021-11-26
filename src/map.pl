@@ -67,6 +67,7 @@ isBorder(_, Y) :- Y == 0.
 isBorder(X, _) :- X == 15.
 isBorder(_, Y) :- Y == 15.
 
+isWater(X,Y) :- water(X,Y).
 
 /* Print map */
 
@@ -119,4 +120,6 @@ d :-    write('Bergerak ke kanan..'), nl,
 isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write('Welcome to Marketplace'), openMarketplace;
                                             questloc(NewX, NewY) -> write('Welcome to Quest Tile!'), nl, nl, getQuest;
                                             isBorder(NewX, NewY) -> retract(playerloc(NewX,NewY)), asserta(playerloc(PrevX, PrevY)), 
-                                            write('Batas map tidak bisa dilewati!'), nl, !).
+                                            write('Batas map tidak bisa dilewati!'), nl, !;
+                                            isWater(NewX, NewY) -> retract(playerloc(NewX, NewY)), asserta(playerloc(PrevX, PrevY)),
+                                            write('Kamu tidak bisa berjalan di atas air!'), nl, !).
