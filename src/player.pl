@@ -6,6 +6,7 @@ isJob(farmer).
 isJob(fisher).
 isJob(rancher).
 
+:-dynamic(stamina/2).
 :- dynamic(createFarmer/1).
 createFarmer(X) :-  asserta(job(X, farmer)),
                     asserta(farmingexp(X, 20)),
@@ -17,6 +18,7 @@ createFarmer(X) :-  asserta(job(X, farmer)),
                     asserta(fishinglevel(X, 1)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
+                    asserta(maxStamina(X, 8)),
                     initInventoryFarmer.
 
 :- dynamic(createFisher/1).
@@ -30,6 +32,7 @@ createFisher(X) :-  asserta(job(X, farmer)),
                     asserta(fishinglevel(X, 1)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
+                    asserta(maxStamina(X, 8)),
                     initInventoryFisher.
 
 :- dynamic(createRancher/1).
@@ -43,10 +46,12 @@ createRancher(X) :- asserta(job(X, rancher)),
                     asserta(fishinglevel(X, 1)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
+                    asserta(maxStamina(X, 8)),
                     initInventoryRancher.
 
 /* DUMMY */
 expRequired(a,200).
+stamina(a, 5).
 initInventoryFarmer.
 initInventoryFisher.
 initInventoryRancher.
@@ -74,6 +79,24 @@ checkStatus(Username) :-    write('Your status : '), nl,
                             write('Exp ranching     : '), ranchingexp(Username, ExpRanching), write(ExpRanching), nl,
                             write('--------------------------------------------------'),nl,
                             write('Exp              : '), exp(Username, Exp), write(Exp),  write('/'), expRequired(Username, Expr), write(Expr), nl,
-                            write('Gold             : '), gold(Username, Gold), write(Gold), nl, !.
+                            write('Gold             : '), gold(Username, Gold), write(Gold), nl,
+                            write('Stamina          : '), stamina(Username, Stamina), write(Stamina), write('/'), maxStamina(Username, MaxStamina), write(MaxStamina), nl, !.
 
+
+decreaseStamina:-  ( retract(stamina(Username, CurrStamina)),
+                    NewStamina is CurrStamina - 1),
+                    (NewStamina > 0 -> asserta(stamina(Username, NewStamina));
+                    NewStamina =< 0 -> goToHome).
+
+goToHome    :- retract(playerloc(_,_)),
+                houseloc(X,Y),
+                asserta(playerloc(X,Y)),
+                maxStamina(Username, MaxStamina),
+                retract(stamina(Username, _)),
+                asserta(maxStamina(Username, MaxStamina)),
+                addDay,
+                write("Kamu tiba-tiba pingsan!"), nl,
+                write("Sekarang kamu berada di rumah."), nl,
+                write("Satu hari sudah berlalu."), nl,
+                write("Perhatikan stamina kamu. Jangan sampai terlalu lelah ya!"), nl, !.
 
