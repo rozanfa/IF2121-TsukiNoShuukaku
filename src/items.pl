@@ -161,8 +161,6 @@ animalPrice(chicken,500).
 animalPrice(sheep,1000).  
 animalPrice(cow,1500). 
 
-
-=======
 setProductPricelvl1 :-
                     asserta(productPrice(egg,150)),
                     asserta(productPrice(milk,500)),  
@@ -199,10 +197,10 @@ getFish(2,eel).
 getFish(3,salmon).
 getFish(4,catfish).
 getFish(5,tuna).
-getFishing(1,none).
+getFishing(1,fish).
 getFishing(2,none).
 getFishing(3,none).
-getFishing(4,fish).
+getFishing(4,none).
 
 /* tool section */
 /* harga beli */
@@ -211,8 +209,9 @@ toolPurchasePrice(shovel, 300). /*  bisa dibeli sampe max nyesuain max lvlfarmin
 toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfishing*/
 
 setTool :- asserta(shovellevel(1)),
-           asserta(fishing_rodlevel(1)).
-
+           asserta(fishing_rodlevel(1)),
+           asserta(digTime(0)).
+        
 toolPurchasePrice(shovel, 300). /* bisa dibeli sampe max kali nyesuain max level farming */
 toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max kali nyesuain max level fishing */
 
