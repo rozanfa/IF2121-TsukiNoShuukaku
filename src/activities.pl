@@ -4,33 +4,32 @@
 :- include('map.pl').
 :- include('items.pl').
 
-/* fungsi tambahan */
-show_seed:- write('You have:'), nl,
-            crop(X), printInventory([[X,Count]|Other]). 
-fishing(X) :- random(1,5,_Z), getFishing(_Z,X).
 
 /* Farming */
-dig :- playerloc(X,Y), asserta(digged(X,Y)), write('You digged the tile').
+dig :- playerloc(X,Y), asserta(digloc(X,Y)), write('You digged the tile').
 
-plant :- show_seed, nl, 
+plant :- playerloc(X,Y), digloc(X,Y),write('You have:'), nl,
+         crop_Seed(Seed), printInventory([[Seed,Count]|Other]), nl,
          write('What do you want to plant?'), nl,
-         read(Crop), dropItem(Crop,1), playerloc(X,Y), asserta(crop(X,Y)),
-         write('you planted a '), write(Crop), write(' seed.').
+         read(Crop), atom_concat(X,'_seed',Z), dropItem(Z,1), playerloc(X,Y), asserta(croploc(X,Y)),
+         write('you planted a '), write(Crop), write(' seed.'), retract(digloc(X,Y)).
 
-harvest :- playerloc(X,Y), crop(Crop), addItem(Crop,1),, write('you harvested '),write(Crop), write('.'), nl,
-           write('you gained 2 farming exp').
+harvest :- playerloc(X,Y), croploc(X,Y,Crop,0), crop(Crop), addItem(Crop,1), write('you harvested '), write(Crop), write('.'), nl,
+           write('you gained 2 farming exp'), 
+           farmingexp(Username, X), Z is X+2, asserta(farmingexp(Username, Z)), retract(farmingexp(Username, X)), retract(croploc(X,Y)).
 
 /* Fishing */
 
-fish :- fishing(Fishing), Fishing==fish, random(1,6,_Y), getFish(_Y,Fish),
-        write('You got '), write(Fish), write('!'), nl,
-        write('You gained 10 fishing exp'), fishingexp(Username, X),Z is X+10, asserta(fishingexp(Username, Z)).
-fish :- fishing(Fishing), Fishing==none, 
-        write('You didn’t get anything!'), nl,
-        write('You gained 5 fishing exp')fishingexp(Username, X),Z is X+10, asserta(fishingexp(Username, Z)).
-
+fish :- random(1,5,Z), getFishing(Z,X), fishing(X). 
+fishing(Fishing) :- Fishing==fish, random(1,6,_Y), getFish(_Y,Fish),
+                    write('You got '), write(Fish), write('!'), nl,
+                    write('You gained 10 fishing exp'), 
+                    fishingexp(Username, X),Z is X+10, asserta(fishingexp(Username, Z)), retract(fishingexp(Username, X);
+                    Fishing==none
+                    write('You didn’t get anything!'), nl,
+                    write('You gained 5 fishing exp'), fishingexp(Username, X),Z is X+5, asserta(fishingexp(Username, Z)), retract(fishingexp(Username, X)).
 /* Ranching */
-ranching(X) :- isAnimal(X), isProduct(X,wool), ranchSheep.
+ranch :- playerloc(X,Y), ranchloc(X,Y) isProduct(X,wool), ranchSheep.
 ranching(X) :- isAnimal(X), isProduct(X,egg), ranchChicken.
 ranching(X) :- isAnimal(X), isProduct(X,milk), ranchCow.
 

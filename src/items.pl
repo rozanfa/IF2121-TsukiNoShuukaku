@@ -42,7 +42,7 @@ cropSeed(sweet_potato_seed).
 cropSeed(green_paper_seed).
 /* winter */
 /*no crop seed*/
-	
+
 /* Animal product */
 /* Animal */
 animal(chicken).
@@ -62,6 +62,7 @@ fish(tuna).
 
 /* crop section */
 /* harga beli*/
+
 /* spring */
 cropPurchasePrice(turnip_seed,200). /* 3 hari */
 cropPurchasePrice(potato_seed,160). /* 2 hari */
@@ -81,23 +82,43 @@ cropPurchasePrice(sweet_potato_seed,240). /* 3 hari */
 cropPurchasePrice(green_paper_seed,80). /* 1 hari */
 
 /*harga jual */
-/* spring */
-cropSellPrice(turnip,600).
-cropSellPrice(potato,800).
-cropSellPrice(cucumber,600).
-cropSellPrice(cabbage,2500).
+setCropPrice :-
+                /* spring */
+                asserta(cropSellPrice(turnip,600)).
+                asserta(cropSellPrice(potato,800)).
+                asserta(cropSellPrice(cucumber,600)).
+                asserta(cropSellPrice(cabbage,2500)).
 
-/* spring */
-cropSellPrice(tomato,600).
-cropSellPrice(corn,1000).
-cropSellPrice(onion,800).
-cropSellPrice(pineapple,2500).
+                /* spring */
+                asserta(cropSellPrice(tomato,600)).
+                asserta(cropSellPrice(corn,1000)).
+                asserta(cropSellPrice(onion,800)).
+                asserta(cropSellPrice(pineapple,2500)).
 
-/* spring */
-cropSellPrice(carrot,1200).
-cropSellPrice(eggplant,800).
-cropSellPrice(sweet_potato,1200).
-cropSellPrice(green_paper,400).
+                /* spring */
+                asserta(cropSellPrice(carrot,1200)).
+                asserta(cropSellPrice(eggplant,800)).
+                asserta(cropSellPrice(sweet_potato),1200).
+                asserta(cropSellPrice(green_paper,400)).
+
+changeCropPrice(M) :- cropSellPrice(X,Y), Z is Y*M, asserta(cropSellPrice(X,Z)), retract(cropSellPrice(X,Y)).
+
+/*product crop*/
+/* Spring */
+productCrop(turnip_seed,turnip).
+productCrop(potato_seed,potato).
+productCrop(cucumber_seed,cucumber).
+productCrop(cabbage_seed,cabbage).
+/*Summer*/
+productCrop(tomato_seed,tomato).
+productCrop(corn_seed,corn).
+productCrop(onion_seed,onion).
+productCrop(pineapple_seed,pinapple).
+/* Fall */
+productCrop(carrot_seed,carrot).
+productCrop(eggplant_seed,eggplant).
+productCrop(sweet_potato_seed,sweet_potato).
+productCrop(green_paper_seed,green_paper).
 
 /* season */
 seasonCrop(turnip,spring).
@@ -115,25 +136,35 @@ seasonCrop(green_paper,fall).
 
 
 /* Animal product section */
-:- dynamic(woolProduct/1).
-:- dynamic(eggProduct/1).
-:- dynamic(milkProduct/1).
+setProductCount :- asserta(woolProduct(0,0)),
+                   asserta(eggProduct(0)),
+                   asserta(milkProduct(0)).
 
 productYield(chicken,egg).
 productYield(cow,milk).
 productYield(sheep,wool).
 
-animalPrice(egg,150). /* tiap hari */
-animalPrice(milk,500).  /* tiap hari */
-animalPrice(wool,1000). /*3 hari sekali */
+animalPrice(egg,500).
+animalPrice(milk,1000).  
+animalPrice(wool,1500). 
 
+setProductPrice :-
+                    asserta(productPrice(egg,150)). /* tiap hari */
+                    asserta(productPrice(milk,500)).  /* tiap hari */
+                    asserta(productPrice(wool,1000)). /*3 hari sekali */
+
+changeProductPrice(M) :- productPrice(X,Y), Z is Y*M, asserta(productPrice(X,Z)), retract(productPrice(X,Y)).
 /* Fish section */
 /* harga ikan */
-fishPrice(carp, 100).
-fishPrice(eel, 180).
-fishPrice(salmon, 240).
-fishPrice(catfish, 400).
-fishPrice(tuna, 550).
+
+setFishPrice :-
+                asserta(fishPrice(carp, 100)),
+                asserta(fishPrice(eel, 180)),
+                asserta(fishPrice(salmon, 240)),
+                asserta(fishPrice(catfish, 400)),
+                asserta(fishPrice(tuna, 550)).
+
+changeFishPrice(M) :- fishPrice(X,Y), Z is Y*M, asserta(fishPrice(X,Z)), retract(fishPrice(X,Y)).
 
 /* random mancing */
 getFish(1,carp).
