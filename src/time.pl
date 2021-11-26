@@ -10,8 +10,8 @@ isSeason('Dingin',4).
 isSeason('Semi',5).
 
 /* Init time */
-time(22).
-day(5).
+time(1).
+day(1).
 season(1).
 
 addTime :-  retract(time(CurrTime)), 
@@ -27,7 +27,7 @@ addDay :-   retract(day(CurrDay)), NewDay is CurrDay + 1,
             asserta(day(NewDay)), writeDay,
             NewDay == 24 -> finishGame, !,
             S is mod(A,B), T is  == 0 -> addSeason.
-            
+
 
 addSeason :-    retract(season(CurrSeason)),
                 NewSeason is CurrSeason + 1, asserta(season(NewSeason)),!.
@@ -39,4 +39,4 @@ writeDay :-    ( write('--------------------------------------------------------
 
 writeTime :- write('Waktu sekarang : '), time(CurrTime), write(CurrTime), write('/24.'), nl.              
 
-finishGame :- write('Kamu telah berusaha, namun sayang sekali kamu masih jauh dari kesuksesan. Silakan coba lagi dan tetap semangat!').
+finishGame :- write('Kamu telah berusaha, namun sayang sekali kamu masih jauh dari kesuksesan. Silakan coba lagi dan tetap semangat!'). 

@@ -3,6 +3,7 @@
 :- include(items).
 :- include(house).
 :- include(player).
+:- include(level).
 
 /* declare dynamic predicates */
 :- dynamic(currentQuest/5).
@@ -29,14 +30,14 @@ questCheck(X):-
     questItems(X,A,B,C,G),
     currentQuest(X,D,E,F,_),
     (A =:= D, B =:= E, C =:= F) -> write('Quest Selesai!'), retract(currentQuest(_,_,_,_,_)), asserta(currentQuest(0,0,0,0,0)),
-    retract(inQuest(1)), asserta(inQuest(0)).
+    retract(inQuest(1)), asserta(inQuest(0)),
     questCounter(P), Pm is P+1,
-    retract(questCounter(P)), asserta(questCounter(Pm)).
-    exp(A,C), Cp is C+G,
-    retract(exp(A,C)), asserta(exp(A,Cp)).
+    retract(questCounter(P)), asserta(questCounter(Pm)),
+    exp(Player,C), Cp is C+G,
+    addExp(Player,Cp),
     Gm is (G * 2) + (G / 2),
-    gold(A,C), Cp is C+,
-    retract(gold(A,C)), asserta(gold(A,Cp)).
+    gold(Player,C), Cp is C+Gm,
+    retract(gold(Player,C)), asserta(gold(Player,Cp)).
 
 initQuest:-
     questCounter(C),
