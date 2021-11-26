@@ -61,25 +61,43 @@ fish(tuna).
 
 
 /* crop section */
+/* spring */
+cropTime(turnip,3).
+cropTime(potato,2).
+cropTime(cucumber,2).
+cropTime(cabbage,6).
+
+/* summer */
+cropTime(tomato,2).
+cropTime(corn,3).
+cropTime(onion,2).
+cropTime(pineapple,6).
+
+/*fall*/
+cropTime(carrot,3).
+cropTime(eggplant,2).
+cropTime(sweet_potato,3).
+cropTime(green_paper,1).
+
 /* harga beli*/
 
 /* spring */
-cropPurchasePrice(turnip_seed,200). /* 3 hari */
-cropPurchasePrice(potato_seed,160). /* 2 hari */
-cropPurchasePrice(cucumber_seed,120). /* 2 hari */
-cropPurchasePrice(cabbage_seed,500). /* 6 hari */
+cropPurchasePrice(turnip_seed,200). 
+cropPurchasePrice(potato_seed,160). 
+cropPurchasePrice(cucumber_seed,120). 
+cropPurchasePrice(cabbage_seed,500). 
 
 /* summer */
-cropPurchasePrice(tomato_seed,120). /* 2 hari */
-cropPurchasePrice(corn_seed,200). /* 3 hari */
-cropPurchasePrice(onion_seed,160). /* 2 hari */
-cropPurchasePrice(pineapple_seed,500). /* 6 hari */
+cropPurchasePrice(tomato_seed,120). 
+cropPurchasePrice(corn_seed,200). 
+cropPurchasePrice(onion_seed,160). 
+cropPurchasePrice(pineapple_seed,500). 
 
 /* fall */
-cropPurchasePrice(carrot_seed,200). /* 3 hari */
-cropPurchasePrice(eggplant_seed,160). /* 2 hari */
-cropPurchasePrice(sweet_potato_seed,240). /* 3 hari */
-cropPurchasePrice(green_paper_seed,80). /* 1 hari */
+cropPurchasePrice(carrot_seed,200). 
+cropPurchasePrice(eggplant_seed,160). 
+cropPurchasePrice(sweet_potato_seed,240). 
+cropPurchasePrice(green_paper_seed,80). 
 
 /*harga jual */
 
@@ -133,9 +151,9 @@ seasonCrop(green_paper,fall).
 
 
 /* Animal product section */
-setProductCount :- asserta(woolProduct(0,0)),
-                   asserta(eggProduct(0)),
-                   asserta(milkProduct(0)).
+setProductCount :- asserta(woolProduct(0,0)), /*3 hari sekali */
+                   asserta(eggProduct(0)), /* tiap hari */
+                   asserta(milkProduct(0)). /* tiap hari */
 
 productYield(chicken,egg).
 productYield(cow,milk).
@@ -146,10 +164,15 @@ animalPrice(milk,1000).
 animalPrice(wool,1500). 
 
 setProductPrice :-
-                    asserta(productPrice(egg,150)). /* tiap hari */
-                    asserta(productPrice(milk,500)).  /* tiap hari */
-                    asserta(productPrice(wool,1000)). /*3 hari sekali */
+                    asserta(productPrice(egg,150)). 
+                    asserta(productPrice(milk,500)).  
+                    asserta(productPrice(wool,1000)). 
 
+setAnimal :-
+                asserta(totalCow(0)),
+                asserta(totalsheep(0)),
+                asserta(totalChicken(0)).
+    
 changeProductPrice(M) :- productPrice(X,Y), Z is Y*M, asserta(productPrice(X,Z)), retract(productPrice(X,Y)).
 /* Fish section */
 /* harga ikan */
