@@ -1,23 +1,33 @@
+/* file : activities.pl */
+
+:- include('inventory.pl').
+:- include('map.pl').
+:- include('items.pl').
+
+/* fungsi tambahan */
 show_seed:- write('You have:'), nl,
-            write('seed yang ada di inventory').
+            crop(X), printInventory([[X,Count]|Other]). 
+fishing(X) :- random(1,5,_Z), getFishing(_Z,X).
 
 /* Farming */
 dig :- playerloc(X,Y), asserta(digged(X,Y)), write('You digged the tile').
 
 plant :- show_seed, nl, 
          write('What do you want to plant?'), nl,
-         read(Crop), drop(Crop), playerloc(X,Y), asserta(crop(X,Y)),
-         write('you planted a '), write(Crop), write('seed.').
+         read(Crop), dropItem(Crop,1), playerloc(X,Y), asserta(crop(X,Y)),
+         write('you planted a '), write(Crop), write(' seed.').
 
-harvest :- crop(Crop), isTilePlanted(Crop), get(Crop), write('you harvested '),write(Crop), write('.'), nl,
+harvest :- playerloc(X,Y), crop(Crop), addItem(Crop,1),, write('you harvested '),write(Crop), write('.'), nl,
            write('you gained 2 farming exp').
 
 /* Fishing */
-fish :- fishing(Fish), isFish(Fish), get(Fish),
+
+fish :- fishing(Fishing), Fishing==fish, random(1,6,_Y), getFish(_Y,Fish),
         write('You got '), write(Fish), write('!'), nl,
-        write('You gained 10 fishing exp'), !.
-fish :- write('You didn’t get anything!'), nl,
-        write('You gained 5 fishing exp').
+        write('You gained 10 fishing exp'), fishingexp(Username, X),Z is X+10, asserta(fishingexp(Username, Z)).
+fish :- fishing(Fishing), Fishing==none, 
+        write('You didn’t get anything!'), nl,
+        write('You gained 5 fishing exp')fishingexp(Username, X),Z is X+10, asserta(fishingexp(Username, Z)).
 
 /* Ranching */
 ranching(X) :- isAnimal(X), isProduct(X,wool), ranchSheep.
