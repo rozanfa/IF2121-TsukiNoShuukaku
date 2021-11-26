@@ -61,6 +61,7 @@ fish(tuna).
 
 
 /* crop section */
+/*waktu tanam */
 /* spring */
 cropTime(turnip,3).
 cropTime(potato,2).
@@ -159,9 +160,9 @@ productYield(chicken,egg).
 productYield(cow,milk).
 productYield(sheep,wool).
 
-animalPrice(egg,500).
-animalPrice(milk,1000).  
-animalPrice(wool,1500). 
+animalPrice(chicken,500).
+animalPrice(sheep,1000).  
+animalPrice(cow,1500). 
 
 setProductPrice :-
                     asserta(productPrice(egg,150)). 
