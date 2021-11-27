@@ -34,6 +34,7 @@ harvest :- playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay>=Time, 
            playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay<Time, write('Tanaman belum siap panen'), nl;
            playerloc(X,Y), \+croploc(X,Y,Crop,Time), write('Kamu harus berada di lokasi tempat yang sudah ditanam'), nl.
 
+
 /* Fishing */
 
 fish :-  playerloc(X,Y), Loc is Y+1, isWater(X, Loc), fishing_rodlevel(Z), fishingByLevel(Z),!;

@@ -32,9 +32,8 @@ cannotbeDigged(X,Y) :-  questloc(X,Y);
 
 
 /* Posisi tanaman dan tanah tergali */
-:- dynamic(cropLoc/2).
 :- dynamic(readyCropLoc/2).
-:- dynamic(digged/2).
+
 
 
 /* Posisi tile air */
@@ -97,9 +96,8 @@ printMap(SX, SY) :- (playerloc(SX, SY) -> write('P');
                     ranchloc(SX, SY) -> write('R');
                     houseloc(SX, SY) -> write('H');
                     marketplaceloc(SX, SY) -> write('M');
-                    cropLoc(SX, SY) -> write('c');
-                    readyCropLoc(SX, SY) -> write('C');
-                    digged(SX, SY) -> write('=');
+                    croploc(SX,SY,_,_) -> write('c');
+                    digloc(SX, SY) -> write('=');
                     write('-')), NewX is SX + 1,
                     (SX = 15, SY = 0 -> nl;
                     SX = 15 -> nl, X = 0, NewY is SY - 1, printMap(X, NewY);

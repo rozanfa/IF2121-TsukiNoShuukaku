@@ -25,7 +25,7 @@ isJob(rancher).
 
 :- dynamic(createFarmer/1).
 createFarmer(X) :-  asserta(job(X, farmer)),
-                    asserta(farmingexp(X, 20)),
+                    asserta(farmingexp(X, 100)),
                     asserta(fishingexp(X, 0)),
                     asserta(ranchingexp(X, 0)),
                     asserta(exp(X, 0)),
@@ -34,14 +34,14 @@ createFarmer(X) :-  asserta(job(X, farmer)),
                     asserta(fishinglevel(X, 1)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
-                    asserta(maxStamina(X, 8)),
-                    asserta(stamina(X, 8)),
+                    asserta(maxStamina(X, 6)),
+                    asserta(stamina(X, 6)),
                     initInventoryFarmer.
 
 :- dynamic(createFisher/1).
 createFisher(X) :-  asserta(job(X, fisher)),
                     asserta(farmingexp(X, 0)),
-                    asserta(fishingexp(X, 20)),
+                    asserta(fishingexp(X, 100)),
                     asserta(ranchingexp(X, 0)),
                     asserta(exp(X, 0)),
                     asserta(level(X, 1)),
@@ -49,23 +49,23 @@ createFisher(X) :-  asserta(job(X, fisher)),
                     asserta(fishinglevel(X, 1)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
-                    asserta(maxStamina(X, 8)),
-                    asserta(stamina(X, 8)),
+                    asserta(maxStamina(X, 6)),
+                    asserta(stamina(X, 6)),
                     initInventoryFisher.
 
 :- dynamic(createRancher/1).
 createRancher(X) :- asserta(job(X, rancher)),
                     asserta(farmingexp(X, 0)),
                     asserta(fishingexp(X, 0)),
-                    asserta(ranchingexp(X, 20)),
+                    asserta(ranchingexp(X, 100)),
                     asserta(exp(X, 0)),
                     asserta(level(X, 1)),
                     asserta(farminglevel(X, 1)),
                     asserta(fishinglevel(X, 1)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
-                    asserta(maxStamina(X, 8)),
-                    asserta(stamina(X, 8)),
+                    asserta(maxStamina(X, 6)),
+                    asserta(stamina(X, 6)),
                     initInventoryRancher.
 
 
@@ -78,9 +78,9 @@ initInventoryRancher. % addAnimal
 */
 
 /* DUMMY */
-initInventoryFarmer.
-initInventoryFisher.
-initInventoryRancher.
+initInventoryFarmer :- initIsiInventory('shovel',1)
+initInventoryFisher :- initIsiInventory('fishing_rod',1)
+initInventoryRancher :- retract(totalChicken(_), asserta(totalChicken(1).
 
 
 
