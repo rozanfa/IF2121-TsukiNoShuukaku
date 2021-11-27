@@ -1,5 +1,5 @@
 /* :- include('house.pl').
-:- include('items.pl').
+
 :- include('level.pl').
 :- include('marketplace.pl').*/
 %:- include('inventory.pl').
@@ -7,6 +7,8 @@
 :- include('player.pl').
 :- include('time.pl').
 :- include('prologue.pl').
+:- include('items.pl').
+:- include('activities.pl').
 %:- include('quest.pl').
 
 :- dynamic(isStarted/1).
@@ -50,7 +52,7 @@ write('| 2. help   : Kalo bingung mending ketik command ini ngab daripada bingun
 write('-------------------------------------------------------------------------------------'),nl.
 
 startGame:- \+ isStarted(_), bannerTsukiNoShukaku, nl,
-            mainMenu, asserta(isStarted(0)).
+            mainMenu, asserta(isStarted(0)), initItem.
 
 start:- isStarted(1) -> write('Permainan sudah dimulai. Selesaikan dulu dong!\n'), !, fail.
 start:- isStarted(0) -> (   
