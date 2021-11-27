@@ -120,7 +120,11 @@ checkStatus(Username) :-    write('Your status : '), nl,
                             write('--------------------------------------------------'),nl,
                             write('Exp              : '), exp(Username, Exp), write(Exp),  write('/'), expRequired(Username, Expr), write(Expr), nl,
                             write('Gold             : '), gold(Username, Gold), write(Gold), nl,
-                            write('Stamina          : '), stamina(Username, Stamina), write(Stamina), write('/'), maxStamina(Username, MaxStamina), write(MaxStamina), nl, !.
+                            write('Stamina          : '), stamina(Username, Stamina), write(Stamina), write('/'), maxStamina(Username, MaxStamina), write(MaxStamina), nl,
+                            write('--------------------------------------------------'),nl,
+                            write('Musim '), season(Season), isSeason(SeasonName, Season), write(SeasonName), nl,
+                            write('Hari Ke-'), day(CurrDay), write(CurrDay), nl,
+                            write('Waktu sekarang : '), time(CurrTime), write(CurrTime), write('/24.'), nl, !.
 
 
 /* Stamina */

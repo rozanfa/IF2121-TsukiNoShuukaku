@@ -69,18 +69,17 @@ start:- isStarted(0) -> (
 
         asserta(username(claire)),
         
-
         (ChoosenJob = 1 -> createFarmer(claire),
-        write('Kamu memileh petani!'), nl;
+        write('Kamu memilih petani!'), nl;
         
         ChoosenJob = 2 -> createFisher(claire),
-        write('Kamu memileh pemancing!'), nl;
+        write('Kamu memilih pemancing!'), nl;
         
         ChoosenJob = 3 -> createRancher(claire),
-        write('Kamu memileh peternak!'), nl),
+        write('Kamu memilih peternak!'), nl),
         
         asserta(playerloc(2,9)),
-        writePrologue,
+        writePrologue
         
 ).
 
@@ -89,7 +88,7 @@ quit.
 main.
 map.
 */
-status :- isStarted(1) -> username(Username), checkStatus(Username).
+status :- isStarted(1) -> checkStatus(claire).
 
 map :- isStarted(1) -> printMap(0,15).
 

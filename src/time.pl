@@ -53,4 +53,8 @@ writeDay :-    ( write('--------------------------------------------------------
 
 writeTime :- write('Waktu sekarang : '), time(CurrTime), write(CurrTime), write('/24.'), nl.              
 
-finishGame :- write('Kamu telah berusaha, namun sayang sekali kamu masih jauh dari kesuksesan. Silakan coba lagi dan tetap semangat!'). 
+finishGame :-   gold(_, currentGold), 
+                currentGold >= 20000 ->
+                write('Kamu telah berusaha, namun sayang sekali kamu masih jauh dari kesuksesan. \nSilakan coba lagi dan tetap semangat!'), halt;
+                currentGold < 20000 ->
+                write('Selamat! Kamu akhirnya berhasil mengumpulkan 20000 gold!\n'), halt.
