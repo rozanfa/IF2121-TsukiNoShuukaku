@@ -26,8 +26,8 @@ cropLoc(3, 2, ccc, 3).
 
 
 addTime :-  retract(time(CurrTime)), 
-            CurrTime < 23 -> NewTime is CurrTime + 1,  asserta(time(NewTime));
-            CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)), addDay, checkCrops.
+            CurrTime < 23 -> NewTime is CurrTime + 1,  asserta(time(NewTime)), writeTime;
+            CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)),writeTime, addDay, checkCrops.
 
 checkCrops :-   forall(cropLoc(X, Y, CropName, HarvestTime),
                 ((day(CurrDay), HarvestTime == CurrDay), 

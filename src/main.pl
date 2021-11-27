@@ -1,12 +1,15 @@
 /* :- include('house.pl').
-:- include('inventory.pl').
 :- include('items.pl').
 :- include('level.pl').
-:- include('marketplace.pl').
+:- include('marketplace.pl').*/
+%:- include('inventory.pl').
 :- include('map.pl').
-:- include('quest.pl').*/
+:- include('player.pl').
+:- include('time.pl').
+%:- include('quest.pl').
 
 :- dynamic(isStarted/1).
+isStarted(0).
 
 bannerTsukiNoShukaku:-
 write('::::::::::::::::::\'########::\'######::\'##::::\'##:\'##:::\'##:\'####:::::::::::::::::::::'),nl,
@@ -34,18 +37,44 @@ write('\'##::: ##: ##:::: ##: ##:::: ##: ##:::: ##: ##:. ##:: ##.... ##: ##:. ##
 write('. ######:: ##:::: ##:. #######::. #######:: ##::. ##: ##:::: ##: ##::. ##:. #######::'),nl,
 write(':......:::..:::::..:::.......::::.......:::..::::..::..:::::..::..::::..:::.......:::'),nl.
 
-startGame:- bannerTsukiNoShukaku, nl,
+
+startGame:- isStarted(1) -> write('Permaina sudah dimulai. Selesaikan dulu dong!\n'), !, fail.
+
+startGame:- isStarted(0) ->
+        bannerTsukiNoShukaku, nl, asserta(isStarted(1)),
         write('Selamat Datang di Tsuki No Shukaku.'), nl,
-        write('Silakan pilih role anda.'),nl,
-        asserta(isStarted(1))
-.
+        write('Silakan masukkan nama anda: '), read(Username), asserta(username(Username)), nl,
+        write('Silakan pilih pekerjaan utama anda.'),nl,
+        write('1. Petani.'),nl,
+        write('2. Pemancing.'),nl,
+        write('3. Peternak.'),nl,
+        write('Pilihan (1/2/3): '), read(ChoosenJob),nl,
+
+        (ChoosenJob = 1 -> createFarmer(Username),
+        write('Sekarang kamu adalah petani!'), nl;
+        
+        ChoosenJob = 2 -> createFisher(Username),
+        write('Sekarang kamu adalah pemancing!'), nl;
+        
+        ChoosenJob = 3 -> createRancher(Username),
+        write('Sekarang kamu adalah peternak!'), nl),
+        
+        asserta(playerloc(2,9)).
+
+
+
+
 /*
 start.
 quit.
 main.
 map.
 */
-quit :- \+isStarted(_), write('\033[91mCOMAND TIDAK VALID!!!!\033[0m Permain belum dimulai masa sudah keluar, mabok gan??!'), !.
+status :- isStarted(1) -> username(Username), checkStatus(Username).
 
-quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan \033[92m~~lolimu~~\033[0mladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
+map :- isStarted(1) -> printMap(0,15).
+
+quit :- \+isStarted(_), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+
+quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan ladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
 

@@ -17,6 +17,21 @@ ranchloc(2,12).
 houseloc(2,10).
 marketplaceloc(12,3).
 
+isBuilding(X,Y) :-  questloc(X,Y);
+                    ranchloc(X,Y);
+                    houseloc(X,Y);
+                    marketplaceloc(X,Y).
+
+/* Posisi Player */
+:- dynamic(playerloc/2).
+
+
+
+/* Posisi tanaman dan tanah tergali */
+:- dynamic(cropLoc/2).
+:- dynamic(readyCropLoc/2).
+:- dynamic(digged/2).
+
 
 /* Posisi tile air */
 
@@ -71,14 +86,15 @@ isWater(X,Y) :- water(X,Y).
 
 /* Print map */
 
-printMap(SX, SY)     :- (playerloc(SX, SY) -> write('P');
+printMap(SX, SY) :- (playerloc(SX, SY) -> write('P');
                     isBorder(SX, SY) -> write('#');
                     water(SX, SY) -> write('o');
                     questloc(SX, SY) -> write('Q');
                     ranchloc(SX, SY) -> write('R');
                     houseloc(SX, SY) -> write('H');
                     marketplaceloc(SX, SY) -> write('M');
-                    crop(SX, SY) -> write('c');
+                    cropLoc(SX, SY) -> write('c');
+                    readyCropLoc(SX, SY) -> write('C');
                     digged(SX, SY) -> write('=');
                     write('-')), NewX is SX + 1,
                     (SX = 15, SY = 0 -> nl;
@@ -87,16 +103,11 @@ printMap(SX, SY)     :- (playerloc(SX, SY) -> write('P');
                     
 
 
-/* DUMMY */ 
-crop(1,3).
-digged(1,4).
-getQuest.
-openMarketplace.
-dummy(X, Y):- asserta(playerloc(X,Y)).
+
 
 /* Move player */
-:- dynamic(playerloc/2).
-w :-    write('Bergerak ke atas..'), nl,
+
+w :-    write('Bergerak ke atas..'), nl, 
         retract(playerloc(PrevX, PrevY)), NewY is PrevY + 1,
         asserta(playerloc(PrevX, NewY)),
         isMoveValid(PrevX, PrevY, PrevX, NewY), !.
@@ -117,9 +128,12 @@ d :-    write('Bergerak ke kanan..'), nl,
         isMoveValid(PrevX, PrevY, NewX, PrevY), !.
 
 
-isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write('Welcome to Marketplace'), openMarketplace;
-                                            questloc(NewX, NewY) -> write('Welcome to Quest Tile!'), nl, nl, getQuest;
+isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write('Selamat datang di Marketplace!'), nl,addTime;
+                                            questloc(NewX, NewY) -> write('Selamat datang di Quest!'), nl,addTime;
+                                            houseloc(NewX, NewY) -> write('Sekarang kamu berada di rumah!'), nl,addTime;
+                                            ranchloc(NewX, NewY) -> write('Sekarang kamu berada di kandang!'), nl,addTime;
                                             isBorder(NewX, NewY) -> retract(playerloc(NewX,NewY)), asserta(playerloc(PrevX, PrevY)), 
-                                            write('Batas map tidak bisa dilewati!'), nl, !;
+                                            write('Batas map tidak bisa dilewati!'), nl, fail, !;
                                             isWater(NewX, NewY) -> retract(playerloc(NewX, NewY)), asserta(playerloc(PrevX, PrevY)),
-                                            write('Kamu tidak bisa berjalan di atas air!'), nl, !).
+                                            write('Kamu tidak bisa berjalan di atas air!'), nl, fail, !;
+                                            (\+ isWater(NewX, NewY), \+ isBorder(NewX, NewY)) -> addTime).

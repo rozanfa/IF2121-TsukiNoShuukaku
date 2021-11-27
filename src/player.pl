@@ -6,7 +6,23 @@ isJob(farmer).
 isJob(fisher).
 isJob(rancher).
 
+/* Dynamic Variables */
+/*
+:-dynamic(farmingexp/2).
+:-dynamic(fishingexp/2).
+:-dynamic(ranchingexp/2).
+:-dynamic(exp/2).
+:-dynamic(level/2).
+:-dynamic(farminglevel/2).
+:-dynamic(fishinglevel/2).
+:-dynamic(ranchinglevel/2).
+:-dynamic(gold/2).
+:-dynamic(maxStamina/2). */
 :-dynamic(stamina/2).
+
+
+/* Create Job */
+
 :- dynamic(createFarmer/1).
 createFarmer(X) :-  asserta(job(X, farmer)),
                     asserta(farmingexp(X, 20)),
@@ -19,10 +35,11 @@ createFarmer(X) :-  asserta(job(X, farmer)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
                     asserta(maxStamina(X, 8)),
+                    asserta(stamina(X, 8)),
                     initInventoryFarmer.
 
 :- dynamic(createFisher/1).
-createFisher(X) :-  asserta(job(X, farmer)),
+createFisher(X) :-  asserta(job(X, fisher)),
                     asserta(farmingexp(X, 0)),
                     asserta(fishingexp(X, 20)),
                     asserta(ranchingexp(X, 0)),
@@ -33,6 +50,7 @@ createFisher(X) :-  asserta(job(X, farmer)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
                     asserta(maxStamina(X, 8)),
+                    asserta(stamina(X, 8)),
                     initInventoryFisher.
 
 :- dynamic(createRancher/1).
@@ -47,20 +65,42 @@ createRancher(X) :- asserta(job(X, rancher)),
                     asserta(ranchinglevel(X, 1)),
                     asserta(gold(X, 1000)),
                     asserta(maxStamina(X, 8)),
+                    asserta(stamina(X, 8)),
                     initInventoryRancher.
 
+
+/* Initialize Inventory */
+
+/*
+initInventoryFarmer :- addItem(shovel, 1).
+initInventoryFisher :- addItem(fishing_rod, 1).
+initInventoryRancher. % addAnimal
+*/
+
 /* DUMMY */
-expRequired(a,200).
-stamina(a, 5).
 initInventoryFarmer.
 initInventoryFisher.
 initInventoryRancher.
-/* END DUMMY */
 
-/* Definisi cek status */
+
+
+/* Exp required each level */
+expRequired(Username, Req) :-   level(Username, Level),
+                                (
+                                Level = 1 -> Req is 200;
+                                Level = 2 -> Req is 400;
+                                Level = 3 -> Req is 800;
+                                Level = 4 -> Req is 1600;
+                                Level = 5 -> Req is maximum
+                                ).
+
+
+
+/* Cek status */
 
 checkStatus(Username) :-    write('Your status : '), nl,
                             write('--------------------------------------------------'),nl,
+                            write('Name             : '), write(Username), nl,
                             write('Job              : '), job(Username, Job), write(Job), nl,
                             write('Level            : '), 
                             (level(Username, 5), write('MAX LEVEL!'), nl;
@@ -82,6 +122,8 @@ checkStatus(Username) :-    write('Your status : '), nl,
                             write('Gold             : '), gold(Username, Gold), write(Gold), nl,
                             write('Stamina          : '), stamina(Username, Stamina), write(Stamina), write('/'), maxStamina(Username, MaxStamina), write(MaxStamina), nl, !.
 
+
+/* Stamina */
 
 decreaseStamina:-  ( retract(stamina(Username, CurrStamina)),
                     NewStamina is CurrStamina - 1),
