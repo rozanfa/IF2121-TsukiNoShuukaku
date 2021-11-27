@@ -149,7 +149,7 @@ seasonCrop(green_pepper,fall).
 
 
 /* Animal product section */
-setProductCount :- asserta(woolProduct(0,0)), /*3 hari sekali */
+setProductCount :- asserta(woolProduct(0)), /*3 hari sekali */
                    asserta(eggProduct(0)), /* tiap hari */
                    asserta(milkProduct(0)). /* tiap hari */
 
@@ -160,6 +160,7 @@ productYield(sheep,wool).
 animalPrice(chicken,500).
 animalPrice(sheep,1000).  
 animalPrice(cow,1500). 
+
 
 setProductPricelvl1 :-
                     asserta(productPrice(egg,150)),
@@ -182,7 +183,7 @@ setAnimal :-
                 asserta(totalCow(0)),
                 asserta(totalsheep(0)),
                 asserta(totalChicken(0)).
-    
+
 /* Fish section */
 /* harga ikan */
 fishPrice(carp, 100).
@@ -214,4 +215,11 @@ setTool :- asserta(shovellevel(1)),
         
 toolPurchasePrice(shovel, 300). /* bisa dibeli sampe max kali nyesuain max level farming */
 toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max kali nyesuain max level fishing */
+
+/* Initialize items */
+setProductCount.
+setProductPricelvl1.
+setAnimal.
+setTool.
+
 

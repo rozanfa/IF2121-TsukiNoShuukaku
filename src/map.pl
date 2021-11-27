@@ -17,12 +17,12 @@ ranchloc(2,12).
 houseloc(2,10).
 marketplaceloc(12,3).
 
-canbeDigged(X,Y) :-  questloc(X,Y);
-                    ranchloc(X,Y);
-                    houseloc(X,Y);
-                    marketplaceloc(X,Y);
-                    croploc(X,Y);
-                    water(X,Y).
+cannotbeDigged(X,Y) :-  questloc(X,Y);
+                        ranchloc(X,Y);
+                        houseloc(X,Y);
+                        marketplaceloc(X,Y);
+                        croploc(X,Y);
+                        water(X,Y).
 
 /* Posisi Player */
 :- dynamic(playerloc/2).
