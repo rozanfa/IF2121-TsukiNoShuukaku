@@ -55,9 +55,7 @@ startGame:- \+ isStarted(_), bannerTsukiNoShukaku, nl,
             mainMenu, asserta(isStarted(0)), initItem.
 
 start:- isStarted(1) -> write('Permainan sudah dimulai. Selesaikan dulu dong!\n'), !, fail.
-start:- isStarted(0) -> (   
-        retract(isStarted(0)),   
-        asserta(isStarted(1)), nl,
+start:- isStarted(0) -> ( nl,
         write('Selamat Datang di Tsuki No Shukaku.'), nl,
         %write('Silakan masukkan nama anda: '), read(Username), asserta(username(Username)), nl,
         %Harusnya namanya Claire aja
@@ -79,7 +77,9 @@ start:- isStarted(0) -> (
         write('Kamu memilih peternak!'), nl),
         
         asserta(playerloc(2,9)),
-        writePrologue
+        writePrologue,
+        retract(isStarted(0)),   
+        asserta(isStarted(1))
         
 ).
 
