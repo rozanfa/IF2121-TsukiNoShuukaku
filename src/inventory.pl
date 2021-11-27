@@ -14,7 +14,7 @@ inventory:- isiInventory(Isi), countInventory(Isi,Cap),
             write('Inventory kosong'),!.
 
 
-cheatInventory(Item,Count):- \+ isiInventory(_) -> assertz(isiInventory([[Item,Count]])).
+cheatInventory(Item,Count):- \+ isiInventory(_) -> assertz(isiInventory([[Item,Count]])),!.
 cheatInventory(Item,Count):- retract(isiInventory(_)), assertz(isiInventory([[Item,Count]])).
 
 printInventory([]).
@@ -26,8 +26,12 @@ countInventory([],0).
 countInventory([[_,Count]|Other],Sum):-
         countInventory(Other,Temp), Sum is Temp + Count.
 
+addItem(Item,Count):-
+    \+ isiInventory(_) ->
+    append(_,[[Item,Count]],NewIsi),
+    assertz(isiInventory(NewIsi)), !.
 addItem(_,Count):-
-    (Count =< 0 -> write('Jumlah item yang disimpan tidak valid')), fail.
+    (Count =< 0 -> write('Jumlah item yang disimpan tidak valid')), !.
 addItem(Item,Count):-
     isiInventory(Isi),
     countInventory(Isi, Cap),
@@ -47,10 +51,7 @@ addItem(Item,Count):-
         write('Inventory penuh silakan drop beberapa item yang tidak digunakan')),
         (Cap + Count =:= 100 -> write('Hati-hati inventory sudah penuh');true).
 
-addItem(Item,Count):-
-    \+ isiInventory(_) ->
-    append(_,[[Item,Count]],NewIsi),
-    assertz(isiInventory(NewIsi)).
+
 
 dropItem(_,Count):-
         (Count =< 0 -> write("Jumlah item yang dibuang tidak valid")),fail.
