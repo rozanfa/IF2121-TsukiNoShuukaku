@@ -1,4 +1,3 @@
-
 /* Material and Tool */
 
 /* Tools */
@@ -7,30 +6,37 @@ tool(fishing_rod).
 
 /* crop */
 /*hasil*/
-crop(turnip). /* Spring */
+/* Spring */
+crop(turnip). 
 crop(potato).
 crop(cucumber).
 crop(cabbage).
-crop(tomato). /*Summer*/
+/*Summer*/
+crop(tomato). 
 crop(corn).
 crop(onion).
 crop(pineapple).
-crop(carrot). /* Fall */
+/* Fall */
+crop(carrot). 
 crop(eggplant).
 crop(sweet_potato).
 crop(green_pepper).
 /* winter */
 /*no crop */
+
 /* seed */
-cropSeed(turnip_seed). /* Spring */
+/* Spring */
+cropSeed(turnip_seed). 
 cropSeed(potato_seed).
 cropSeed(cucumber_seed).
 cropSeed(cabbage_seed).
-cropSeed(tomato_seed). /*Summer*/
+/*Summer*/
+cropSeed(tomato_seed). 
 cropSeed(corn_seed).
 cropSeed(onion_seed).
 cropSeed(pineapple_seed).
-cropSeed(carrot_seed). /* Fall */
+/* Fall */
+cropSeed(carrot_seed). 
 cropSeed(eggplant_seed).
 cropSeed(sweet_potato_seed).
 cropSeed(green_pepper_seed).
@@ -53,18 +59,20 @@ fish(salmon).
 fish(catfish).
 fish(tuna).
 
-
 /* crop section */
 /*waktu tanam */
-cropTime(turnip,3). /* spring */
+/* spring */
+cropTime(turnip,3). 
 cropTime(potato,2).
 cropTime(cucumber,2).
 cropTime(cabbage,6).
-cropTime(tomato,2). /* summer */
+/* summer */
+cropTime(tomato,2). 
 cropTime(corn,3).
 cropTime(onion,2).
 cropTime(pineapple,6).
-cropTime(carrot,3). /*fall*/
+/*fall*/
+cropTime(carrot,3). 
 cropTime(eggplant,2).
 cropTime(sweet_potato,3).
 cropTime(green_pepper,1).
@@ -153,17 +161,28 @@ animalPrice(chicken,500).
 animalPrice(sheep,1000).  
 animalPrice(cow,1500). 
 
-setProductPrice :-
+setProductPricelvl1 :-
                     asserta(productPrice(egg,150)),
                     asserta(productPrice(milk,500)),  
                     asserta(productPrice(wool,1000)). 
+
+setProductPricelvl2 :-
+                    retractall(productPrice(_,_)),
+                    asserta(productPrice(egg,300)),
+                    asserta(productPrice(milk,1000)),  
+                    asserta(productPrice(wool,2000)). 
+
+setProductPricelvl3 :-
+                    retractall(productPrice(_,_)),
+                    asserta(productPrice(egg,450)), 
+                    asserta(productPrice(milk,1500)),  
+                    asserta(productPrice(wool,3000)). 
 
 setAnimal :-
                 asserta(totalCow(0)),
                 asserta(totalsheep(0)),
                 asserta(totalChicken(0)).
     
-changeProductPrice(M) :- productPrice(X,Y), Z is Y*M, asserta(productPrice(X,Z)), retract(productPrice(X,Y)).
 /* Fish section */
 /* harga ikan */
 fishPrice(carp, 100).
@@ -178,12 +197,21 @@ getFish(2,eel).
 getFish(3,salmon).
 getFish(4,catfish).
 getFish(5,tuna).
-getFishing(1,none).
+getFishing(1,fish).
 getFishing(2,none).
 getFishing(3,none).
-getFishing(4,fish).
+getFishing(4,none).
 
 /* tool section */
 /* harga beli */
-toolPurchasePrice(shovel, 300). /* sekali beli nyesuain level sekunder */
-toolPurchasePrice(fishing_rod,500). /* sekali beli nyesuain level sekunder */
+
+toolPurchasePrice(shovel, 300). /*  bisa dibeli sampe max nyesuain max lvlfarming */
+toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfishing*/
+
+setTool :- asserta(shovellevel(1)),
+           asserta(fishing_rodlevel(1)),
+           asserta(digTime(0)).
+        
+toolPurchasePrice(shovel, 300). /* bisa dibeli sampe max kali nyesuain max level farming */
+toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max kali nyesuain max level fishing */
+
