@@ -21,6 +21,7 @@ questItems(3,3,2,2,30).
 questItems(4,3,3,3,40).
 questItems(5,4,5,4,50).
 
+progQuest(X):- inQuest(Chk), Chk =:= 0, !.
 progQuest(X):-
     crop(X) -> currentQuest(Z,Y,_,_,_), Ym is Y+1, retract(currentQuest(_,Y,_,_,_)), asserta(currentQuest(_,Ym,_,_,_)), questCheck(Z);
     fish(X) -> currentQuest(Z,_,Y,_,_), Ym is Y+1, retract(currentQuest(_,_,Y,_,_)), asserta(currentQuest(_,_,Ym,_,_)), questCheck(Z);

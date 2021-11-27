@@ -29,12 +29,9 @@ cannotbeDigged(X,Y) :-  questloc(X,Y);
 /* Posisi Player */
 :- dynamic(playerloc/2).
 
-
-
-/* Posisi tanaman dan tanah tergali */
-:- dynamic(readyCropLoc/2).
-
-
+/* Posisi Tanaman */
+:- dynamic(croploc/4).
+:- dynamic(digloc/2).
 
 /* Posisi tile air */
 

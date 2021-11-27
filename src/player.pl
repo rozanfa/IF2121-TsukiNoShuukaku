@@ -71,16 +71,9 @@ createRancher(X) :- asserta(job(X, rancher)),
 
 /* Initialize Inventory */
 
-/*
-initInventoryFarmer :- addItem(shovel, 1).
-initInventoryFisher :- addItem(fishing_rod, 1).
-initInventoryRancher. % addAnimal
-*/
-
-/* DUMMY */
-initInventoryFarmer :- initIsiInventory('shovel',1)
-initInventoryFisher :- initIsiInventory('fishing_rod',1)
-initInventoryRancher :- retract(totalChicken(_), asserta(totalChicken(1).
+initInventoryFarmer :- initIsiInventory('shovel',1).
+initInventoryFisher :- initIsiInventory('fishing_rod',1).
+initInventoryRancher :- retract(totalChicken(_)), asserta(totalChicken(1)).
 
 
 
