@@ -6,6 +6,7 @@
 :- include('map.pl').
 :- include('player.pl').
 :- include('time.pl').
+:- include('prologue.pl').
 %:- include('quest.pl').
 
 :- dynamic(isStarted/1).
@@ -54,25 +55,31 @@ startGame:- \+ isStarted(_), bannerTsukiNoShukaku, nl,
 start:- isStarted(1) -> write('Permainan sudah dimulai. Selesaikan dulu dong!\n'), !, fail.
 start:- isStarted(0) -> (   
         retract(isStarted(0)),   
-        asserta(isStarted(1)),
+        asserta(isStarted(1)), nl,
         write('Selamat Datang di Tsuki No Shukaku.'), nl,
-        write('Silakan masukkan nama anda: '), read(Username), asserta(username(Username)), nl,
+        %write('Silakan masukkan nama anda: '), read(Username), asserta(username(Username)), nl,
+        %Harusnya namanya Claire aja
         write('Silakan pilih pekerjaan utama anda.'),nl,
         write('1. Petani.'),nl,
         write('2. Pemancing.'),nl,
         write('3. Peternak.'),nl,
         write('Pilihan (1/2/3): '), read(ChoosenJob),nl,
 
-        (ChoosenJob = 1 -> createFarmer(Username),
-        write('Sekarang kamu adalah petani!'), nl;
+        asserta(username(claire)),
         
-        ChoosenJob = 2 -> createFisher(Username),
-        write('Sekarang kamu adalah pemancing!'), nl;
+
+        (ChoosenJob = 1 -> createFarmer(claire),
+        write('Kamu memileh petani!'), nl;
         
-        ChoosenJob = 3 -> createRancher(Username),
-        write('Sekarang kamu adalah peternak!'), nl),
+        ChoosenJob = 2 -> createFisher(claire),
+        write('Kamu memileh pemancing!'), nl;
         
-        asserta(playerloc(2,9))
+        ChoosenJob = 3 -> createRancher(claire),
+        write('Kamu memileh peternak!'), nl),
+        
+        asserta(playerloc(2,9)),
+        writePrologue,
+        
 ).
 
 /*
@@ -86,7 +93,7 @@ map :- isStarted(1) -> printMap(0,15).
 
 help:-
 write('-------------------------------------------------------------------------------------'),nl,
-write('| Daftar Command                                                                   |'),nl,
+write('| Daftar Command                                                                    |'),nl,
 write('| Command Umum (Bisa dipake di mana aja ngab)                                       |'),nl,
 write('| 1. start  : Mulailah bermain menjadi petani dan bayar hutangmu                    |'),nl,
 write('| 2. map    : Nampilin peta supaya gak buta map kek dora                            |'),nl,
