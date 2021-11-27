@@ -119,6 +119,8 @@ checkStatus(Username) :-    write('Your status : '), nl,
                             write('Hari Ke-'), day(CurrDay), write(CurrDay), nl,
                             write('Waktu sekarang : '), time(CurrTime), write(CurrTime), write('/24.'), nl, !.
 
+status :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
+status :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn, mabok gan??!'), !.
 status :- isStarted(1) -> username(Username), checkStatus(Username).
 
 /* Stamina */

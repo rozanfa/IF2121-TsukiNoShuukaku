@@ -100,26 +100,35 @@ printMap(SX, SY) :- (playerloc(SX, SY) -> write('P');
                     SX = 15 -> nl, X = 0, NewY is SY - 1, printMap(X, NewY);
                     printMap(NewX, SY)).
                     
+map :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
+map :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn, mabok gan??!'), !.
 map :- isStarted(1) -> printMap(0,15).
 
 
 /* Move player */
-
+w :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
+w :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
 w :-    write('Bergerak ke atas..'), nl, 
         retract(playerloc(PrevX, PrevY)), NewY is PrevY + 1,
         asserta(playerloc(PrevX, NewY)),
         isMoveValid(PrevX, PrevY, PrevX, NewY), !.
-        
+
+a :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
+a :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.    
 a :-    write('Bergerak ke kiri..'), nl,
         retract(playerloc(PrevX, PrevY)), NewX is PrevX - 1,
         asserta(playerloc(NewX, PrevY)),
         isMoveValid(PrevX, PrevY, NewX, PrevY), !.
 
+s :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
+s :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
 s :-    write('Bergerak ke bawah..'), nl,
         retract(playerloc(PrevX, PrevY)), NewY is PrevY - 1,
         asserta(playerloc(PrevX, NewY)),
         isMoveValid(PrevX, PrevY, PrevX, NewY), !.
 
+d :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
+d :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.    
 d :-    write('Bergerak ke kanan..'), nl,
         retract(playerloc(PrevX, PrevY)), NewX is PrevX + 1,
         asserta(playerloc(NewX, PrevY)),

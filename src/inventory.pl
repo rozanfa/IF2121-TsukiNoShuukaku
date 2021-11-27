@@ -79,6 +79,8 @@ dropItem(Item,Count):-
 isAvailable(Item,Count):-
     isiInventory(Isi), (member([Item,CurrentCount],Isi) -> Count is CurrentCount).
 
+throwItem :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
+throwItem :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
 throwItem:-
     isiInventory(Isi), countInventory(Isi,Cap),
     (Cap =\= 0 ->
