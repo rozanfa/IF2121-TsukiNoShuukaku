@@ -9,7 +9,7 @@
 %:- include('quest.pl').
 
 :- dynamic(isStarted/1).
-isStarted(0).
+
 
 bannerTsukiNoShukaku:-
 write('::::::::::::::::::\'########::\'######::\'##::::\'##:\'##:::\'##:\'####:::::::::::::::::::::'),nl,
@@ -38,20 +38,22 @@ write('. ######:: ##:::: ##:. #######::. #######:: ##::. ##: ##:::: ##: ##::. ##
 write(':......:::..:::::..:::.......::::.......:::..::::..::..:::::..::..::::..:::.......:::'),nl.
 
 
-start:- isStarted(1) -> write('Permaina sudah dimulai. Selesaikan dulu dong!\n'), !, fail.
+
 
 mainMenu:-
-write('                             \033[92mTsuki no Shukaku e Yokoso\033[0m                                   '),nl,
+write('                              Tsuki no Shukaku e Yokoso                              '),nl,
 write('-------------------------------------------------------------------------------------'),nl,
 write('|                                    Main Menu                                      |'),nl,
 write('| 1. start  : Mulailah menjadi petani dan bayar hutangmu                            |'),nl,
 write('| 2. help   : Kalo bingung mending ketik command ini ngab daripada bingung          |'),nl,
 write('-------------------------------------------------------------------------------------'),nl.
 
-startGame:- bannerTsukiNoShukaku, nl,
-            mainMenu.
+startGame:- \+ isStarted(_), bannerTsukiNoShukaku, nl,
+            mainMenu, asserta(isStarted(0)).
 
-start:- write('Silakan pilih job anda.'),nl,         
+start:- isStarted(1) -> write('Permainan sudah dimulai. Selesaikan dulu dong!\n'), !, fail.
+start:- isStarted(0) -> (   
+        retract(isStarted(0)),   
         asserta(isStarted(1)),
         write('Selamat Datang di Tsuki No Shukaku.'), nl,
         write('Silakan masukkan nama anda: '), read(Username), asserta(username(Username)), nl,
@@ -70,7 +72,9 @@ start:- write('Silakan pilih job anda.'),nl,
         ChoosenJob = 3 -> createRancher(Username),
         write('Sekarang kamu adalah peternak!'), nl),
         
-        asserta(playerloc(2,9)).
+        asserta(playerloc(2,9))
+).
+
 /*
 quit.
 main.
@@ -82,7 +86,7 @@ map :- isStarted(1) -> printMap(0,15).
 
 help:-
 write('-------------------------------------------------------------------------------------'),nl,
-write('| \033[93mDaftar Command\033[0m                                                                    |'),nl,
+write('| Daftar Command                                                                   |'),nl,
 write('| Command Umum (Bisa dipake di mana aja ngab)                                       |'),nl,
 write('| 1. start  : Mulailah bermain menjadi petani dan bayar hutangmu                    |'),nl,
 write('| 2. map    : Nampilin peta supaya gak buta map kek dora                            |'),nl,
@@ -96,8 +100,8 @@ write('| Commad Market (Bisa dipake di pasar aja)                               
 write('| 8. buy                                                                            |'),nl,
 write('| 9. sell                                                                           |'),nl,
 write('-------------------------------------------------------------------------------------'),nl.
-quit :- \+isStarted(_), write('\033[91mCOMAND TIDAK VALID!!!!\033[0m Permain belum dimulai masa sudah keluar, mabok gan??!'), !.
+quit :- \+isStarted(_), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
 
 quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan'),nl,
-        write('\033[94m~~lolimu~~\033[0m ladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
+        write('ladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
 
