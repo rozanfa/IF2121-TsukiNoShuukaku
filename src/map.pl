@@ -100,8 +100,7 @@ printMap(SX, SY) :- (playerloc(SX, SY) -> write('P');
                     SX = 15 -> nl, X = 0, NewY is SY - 1, printMap(X, NewY);
                     printMap(NewX, SY)).
                     
-
-
+map :- isStarted(1) -> printMap(0,15).
 
 
 /* Move player */

@@ -40,9 +40,6 @@ write('\'##::: ##: ##:::: ##: ##:::: ##: ##:::: ##: ##:. ##:: ##.... ##: ##:. ##
 write('. ######:: ##:::: ##:. #######::. #######:: ##::. ##: ##:::: ##: ##::. ##:. #######::'),nl,
 write(':......:::..:::::..:::.......::::.......:::..::::..::..:::::..::..::::..:::.......:::'),nl.
 
-
-
-
 mainMenu:-
 write('                              Tsuki no Shukaku e Yokoso                              '),nl,
 write('-------------------------------------------------------------------------------------'),nl,
@@ -51,11 +48,17 @@ write('| 1. start  : Mulailah menjadi petani dan bayar hutangmu                 
 write('| 2. help   : Kalo bingung mending ketik command ini ngab daripada bingung          |'),nl,
 write('-------------------------------------------------------------------------------------'),nl.
 
+farmerBanner.
+fishermanBanner.
+rancherBanner.
+
 startGame:- \+ isStarted(_), bannerTsukiNoShukaku, nl,
             mainMenu, asserta(isStarted(0)), initItem.
 
 start:- isStarted(1) -> write('Permainan sudah dimulai. Selesaikan dulu dong!\n'), !, fail.
-start:- isStarted(0) -> ( nl,
+start:- isStarted(0) -> (
+        retract(isStarted(0)),
+        asserta(isStarted(1)), nl,
         write('Selamat Datang di Tsuki No Shukaku.'), nl,
         %write('Silakan masukkan nama anda: '), read(Username), asserta(username(Username)), nl,
         %Harusnya namanya Claire aja
@@ -66,50 +69,108 @@ start:- isStarted(0) -> ( nl,
         write('Pilihan (1/2/3): '), read(ChoosenJob),nl,
 
         asserta(username(claire)),
-        
+
+
         (ChoosenJob = 1 -> createFarmer(claire),
-        write('Kamu memilih petani!'), nl;
-        
+        write('Kamu memileh petani!'), nl;
+
         ChoosenJob = 2 -> createFisher(claire),
-        write('Kamu memilih pemancing!'), nl;
-        
+        write('Kamu memileh pemancing!'), nl;
+
         ChoosenJob = 3 -> createRancher(claire),
-        write('Kamu memilih peternak!'), nl),
-        
+        write('Kamu memileh peternak!'), nl),
+
         asserta(playerloc(2,9)),
-        writePrologue,
-        retract(isStarted(0)),   
-        asserta(isStarted(1))
-        
-).
-
-/*
-quit.
-main.
-map.
-*/
-status :- isStarted(1) -> checkStatus(claire).
-
-map :- isStarted(1) -> printMap(0,15).
+        writePrologue).
 
 help:-
 write('-------------------------------------------------------------------------------------'),nl,
-write('| Daftar Command                                                                    |'),nl,
-write('| Command Umum (Bisa dipake di mana aja ngab)                                       |'),nl,
-write('| 1. start  : Mulailah bermain menjadi petani dan bayar hutangmu                    |'),nl,
-write('| 2. map    : Nampilin peta supaya gak buta map kek dora                            |'),nl,
-write('| 3. status : Mau cek status udah ganteng belum?? masukin command ini ngab          |'),nl,
-write('| Command Jalan (Buat nyamperin perkebunan, perternakan, dan tempat-tempat lain)    |'),nl,
-write('| 4. w      : jalan ke utara 1 langkah (makan waktu ini ngab ati-ati)               |'),nl,
-write('| 5. s      : jalan ke selatan 1 langkah (makan waktu ini ngab ati-ati)             |'),nl,
-write('| 6. d      : jalan ke ke timur 1 langkah (makan waktu ini ngab ati-ati)            |'),nl,
-write('| 7. a      : jalan ke barat 1 langkah (makan waktu ini ngab ati-ati)               |'),nl,
-write('| Commad Market (Bisa dipake di pasar aja)                                          |'),nl,
-write('| 8. buy                                                                            |'),nl,
-write('| 9. sell                                                                           |'),nl,
-write('-------------------------------------------------------------------------------------'),nl.
-quit :- \+isStarted(_), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+write('| Daftar Command :                                                                  |'),nl,
+write('| 1. Command Umum (Bisa dipake di mana aja ngab)                                    |'),nl,
+write('| 2. Command Jalan (Buat nyamperin perkebunan, perternakan, dan tempat-tempat lain) |'),nl,
+write('| 3. Commad Activities (melakukan sesuatu kegiatan)                                 |'),nl,
+write('| 4. Commad Tempat (memasuki suatu tempat khusus)                                   |'),nl,
+write('-------------------------------------------------------------------------------------'),nl,
+write('Masukan command yang ingin diliat :'), read(N),
+        (N =:= 1 -> commandUmum);
+        (N =:= 2 -> commandJalan);
+        (N =:= 3 -> commandActivities);
+        (N =:= 4 -> commandTempat).
+
+commandUmum :-
+        write('-------------------------------------------------------------------------------------'),nl,
+        write('| 1. start       : Mulailah bermain menjadi petani dan bayar hutangmu               |'),nl,
+        write('| 2. map         : Nampilin peta supaya gak buta map kek dora                       |'),nl,
+        write('| 3. inventory   : Nampilin peta supaya gak buta map kek dora                       |'),nl,
+        write('| 4. status      : Mau cek status udah ganteng belum?? masukin command ini ngab     |'),nl,
+        write('| 5. quit        : keluar dari tempat-tempat khusus ngab seperti market atau house  |'),nl,
+        write('-------------------------------------------------------------------------------------'),nl.
+
+commandJalan :-
+        write('-------------------------------------------------------------------------------------'),nl,
+        write('| 1. w           : jalan ke utara 1 langkah (makan waktu ini ngab ati-ati)          |'),nl,
+        write('| 2. s           : jalan ke selatan 1 langkah (makan waktu ini ngab ati-ati)        |'),nl,
+        write('| 3. d           : jalan ke ke timur 1 langkah (makan waktu ini ngab ati-ati)       |'),nl,
+        write('| 4. a           : jalan ke barat 1 langkah (makan waktu ini ngab ati-ati)          |'),nl,
+        write('-------------------------------------------------------------------------------------'),nl.
+
+commandActivities :-
+        write('-------------------------------------------------------------------------------------'),nl,
+        write('| (1-2 cuma bisa dipake di pasar aja)                                               |'),nl,
+        write('| 1. buy         : membeli item yang tersedia di market ngab (untuk pembelian       |'),nl,
+        write('|                  equipment diupgrade dan equipment lama akan hilang)              |'),nl,
+        write('| 2. sell        : menjual item di ada di inventory agan                            |'),nl,
+        write('| (3-6 cuma bisa dipake di house aja)                                               |'),nl,
+        write('| 3. sleep       : membeli item yang tersedia di market ngab                        |'),nl,
+        write('| 4. writeDiary  : menjual item di ada di inventory agan                            |'),nl,
+        write('| 5. readDiary   : menjual item di ada di inventory agan                            |'),nl,
+        write('| 6. [namahewan]        : mengambil hasil dari hewan tersebut (Bisa dipake di ranch |'),nl,
+        write('|                          ranch aja)                                               |'),nl,
+        write('| 7. [namaTanaman]      : memanen tanaman yang sudah siap dipanen (Bisa dipake di   |'),nl,
+        write('|                          farm aja)                                                |'),nl,
+        write('| 8. fish        : memancing ikan (Ingatttt harus ada di tile water & gacha)        |'),nl,
+        write('| 9. dig         : menggali tanah untuk farming (Ingatttt harus ada di tile kosong) |'),nl,
+        write('| 9. plant       : menanam tanaman (Ingatttt harus ada di tile yang sudah di dig)   |'),nl,
+        write('| 9. harvest     : mengambil tanaman (Ingatttt tanaman harus udah selesai bertumbuh)|'),nl,
+        write('| 11. throwItem  : membuang item yang ada di inventory                              |'),nl
+        write('-------------------------------------------------------------------------------------'),nl.
+
+commandTempat :-
+        write('-------------------------------------------------------------------------------------'),nl,
+        write('| 1. house      : masuk ke house (Ingatttt harus ada di tile house)                |'),nl,
+        write('| 2. ranch      : mengurus peternakan (Ingatttt harus ada di tile ranch)           |'),nl,
+        write('| 3. market      : masuk ke market (Ingatttt harus ada di tile market)              |'),nl,
+        write('-------------------------------------------------------------------------------------'),nl.
+
 
 quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan'),nl,
         write('ladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
 
+
+/* handel ketika mencoba memasukan command sebelum game di mulai */
+map :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn, mabok gan??!'), !.
+inventory :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn, mabok gan??!'), !.
+status :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn, mabok gan??!'), !.
+quit :- \+isStarted(_), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+
+w :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+a :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+s :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+d :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+
+buy :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+sell :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+
+sleep :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+writeDiary :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+readDiary :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+
+fish :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+dig :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+plant :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+harvest :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+throwItem :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+
+market :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+house :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
+ranch :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
