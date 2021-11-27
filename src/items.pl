@@ -212,5 +212,7 @@ toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfis
 setTool :- asserta(shovellevel(1)),
            asserta(fishing_rodlevel(1)),
            asserta(digTime(0)).
-    
+
+/* Initialize Items */
+initItem :- setTool, setAnimal, setProductCount, setProductPricelvl1.
 
