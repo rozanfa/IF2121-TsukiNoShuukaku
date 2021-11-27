@@ -1,5 +1,9 @@
 /* file : activities.pl */
 
+/* set dynamic */
+:- dynamic(digTime/1).
+digTime(0).
+
 /* Farming */
 dig :- playerloc(X,Y), \+cannotbeDigged(X,Y), isAvailable(shovel,1), shovellevel(X), digging(X);
        playerloc(X,Y), \+cannotbeDigged(X,Y), \+isAvailable(shovel,1), write('Kamu tidak punya sekop untuk menggali'), nl;
@@ -20,13 +24,13 @@ plant :- playerloc(X,Y), digloc(X,Y), cropSeed(Seed), isAvailable(Seed,Count), w
          playerloc(X,Y), \+digloc(X,Y), write('Kamu harus menggali terlebih dahulu sebelum menanam'), nl;
          playerloc(X,Y), digloc(X,Y), cropSeed(Seed), \+isAvailable(Seed,Count), write('Maaf kamu tidak punya bibit tanaman yang tersedia'), nl.
 
-planting(Crop) :- playerloc(X,Y), crop(Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), isAvailable(Z,Count), seasonCrop(Crop,CurrSeason), dropItem(Z,1), cropTime(Crop,Time), day(CurrDay), Z1 is Time+CurrDay, asserta(croploc(X,Y,Crop,Z1)),
-                  write('Kamu menanam '), mkstr(Crop,A), write(A), write('.'), nl,
+planting(Crop1) :- playerloc(X,Y), mkstr(Crop,Crop1), crop(Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), isAvailable(Z,Count), seasonCrop(Crop,CurrSeason), dropItem(Z,1), cropTime(Crop,Time), day(CurrDay), Z1 is Time+CurrDay, asserta(croploc(X,Y,Crop,Z1)),
+                  write('Kamu menanam '),write(Crop1), write('.'), nl,
                   addTime, decreaseStamina, stamina(_, Z), write('Stamina: '), write(Z), write('/12'), nl,
                   retract(digloc(X,Y));
-                  crop(Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), \+isAvailable(Z,Count), write('Kamu tidak punya '), mkstr(Z,A), write(A), nl;
-                  crop(Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), isAvailable(Z,Count), \+seasonCrop(Crop,CurrSeason), write(Crop), write('tidak bisa ditanam di musim'), write(CurrSeason), nl;
-                  \+crop(Crop), write('Tanaman yang kamu tulis tidak ada'), nl. 
+                  mkstr(Crop,Crop1), crop(Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), \+isAvailable(Z,Count), write('Kamu tidak punya '), mkstr(Z,A), write(A), nl;
+                  mkstr(Crop,Crop1), crop(Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), isAvailable(Z,Count), \+seasonCrop(Crop,CurrSeason), isSeason(Season,CurrSeason), write(Crop1), write('tidak bisa ditanam di musim '), write(Season), nl;
+                  mkstr(Crop,Crop1), \+crop(Crop), write('Tanaman yang kamu tulis tidak ada'), nl.
 
 harvest :- playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay>=Time, addItem(Crop,1), write('Kamu memanen '), mkstr(Crop,A), write(A), write('.'), nl,
            addExpFarming(_,2), addTime, decreaseStamina, stamina(_, Z), write('Stamina: '), write(Z), write('/12'), nl,
@@ -68,10 +72,10 @@ ranch :- playerloc(X,Y), ranchloc(X,Y), totalChicken(A), totalSheep(B), totalCow
          playerloc(X,Y), ranchloc(X,Y), totalChicken(A), totalSheep(B), totalCow(C), Z is A+B+C, Z==0, write('Kamu tidak punya Hewan di peternakan'), nl;
          playerloc(X,Y), \+ranchloc(X,Y), write('Kamu harus berada di lokasi peternakan untuk mengambil hasil ternak'), nl.
 
-ranching(Animal) :- animal(Animal), productYield(Animal,egg), ranchChicken;
-                    animal(Animal), productYield(Animal,wool), ranchSheep;
-                    animal(Animal), productYield(Animal,milk), ranchCow;
-                    \+animal(Animal), write('Hewan yang kamu tulis tidak ada'), nl.
+ranching(Animal1) :- mkstr(Animal,Animal1), animal(Animal), productYield(Animal,egg), ranchChicken;
+                    mkstr(Animal,Animal1), animal(Animal), productYield(Animal,wool), ranchSheep;
+                    mkstr(Animal,Animal1), animal(Animal), productYield(Animal,milk), ranchCow;
+                    mkstr(Animal,Animal1), \+animal(Animal), write('Hewan yang kamu tulis tidak ada'), nl.
 
 ranchChicken :- totalChicken(A), A\==0, eggProduct(X), day(CurrDay), B is CurrDay-X, B>0, C is A*B, addItem(egg,C), 
                 write('Ayam kamu menghasilkan '), write(C), write(' Telur.'), nl,

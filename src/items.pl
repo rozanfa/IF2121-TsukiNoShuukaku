@@ -134,18 +134,18 @@ productCrop(sweet_potato_seed,sweet_potato).
 productCrop(green_pepper_seed,green_pepper).
 
 /* season */
-seasonCrop(turnip,spring).
-seasonCrop(potato,spring).
-seasonCrop(cucumber,spring).
-seasonCrop(cabbage,spring).
-seasonCrop(tomato,summer).
-seasonCrop(corn,summer).
-seasonCrop(onion,summer).
-seasonCrop(pineapple,summer).
-seasonCrop(carrot,fall).
-seasonCrop(eggplant,fall).
-seasonCrop(sweet_potato,fall).
-seasonCrop(green_pepper,fall).
+seasonCrop(turnip,1).
+seasonCrop(potato,1).
+seasonCrop(cucumber,1).
+seasonCrop(cabbage,1).
+seasonCrop(tomato,2).
+seasonCrop(corn,2).
+seasonCrop(onion,2).
+seasonCrop(pineapple,2).
+seasonCrop(carrot,3).
+seasonCrop(eggplant,3).
+seasonCrop(sweet_potato,3).
+seasonCrop(green_pepper,3).
 
 
 /* Animal product section */
@@ -210,8 +210,7 @@ toolPurchasePrice(shovel, 300). /*  bisa dibeli sampe max nyesuain max lvlfarmin
 toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfishing*/
 
 setTool :- asserta(shovellevel(1)),
-           asserta(fishing_rodlevel(1)),
-           asserta(digTime(0)).
+           asserta(fishing_rodlevel(1)).
 
 /* Initialize Items */
 initItem :- setTool, setAnimal, setProductCount, setProductPricelvl1.
