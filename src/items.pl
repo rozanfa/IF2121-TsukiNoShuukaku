@@ -212,14 +212,5 @@ toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfis
 setTool :- asserta(shovellevel(1)),
            asserta(fishing_rodlevel(1)),
            asserta(digTime(0)).
-        
-toolPurchasePrice(shovel, 300). /* bisa dibeli sampe max kali nyesuain max level farming */
-toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max kali nyesuain max level fishing */
-
-/* Initialize items */
-setProductCount.
-setProductPricelvl1.
-setAnimal.
-setTool.
-
+    
 
