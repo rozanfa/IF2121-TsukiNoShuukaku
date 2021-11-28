@@ -1,9 +1,7 @@
 /* Include necessary modules */
-:- include('house.pl').
-:- include('items.pl').
 :- include('player.pl').
-% :- include('time.pl').
-:- include('stringify.pl').
+:- include('time.pl').
+:- include('inventory.pl').
 :- include('map.pl').
 
 /* declare dynamic predicates */
@@ -76,17 +74,17 @@ buy:-
     write('Barang yang ingin dibeli?\n'),
     season(X),
     write('Musim: '), isSeason(NamaMusim,X),
-    write(NamaMusim), write('\n'),
+    write(NamaMusim), nl,
     X =:= 1 -> springMarketCrop(Y), formList(Y), tempList(List), showList(1,List), pickItem;
     X =:= 2 -> summmerMarketCrop(Y), formList(Y), tempList(List), showList(1,List), pickItem;
     X =:= 3 -> showRanch, autumnMarketCrop(Y), tempList(List), showList(1,List), pickItem;
     X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem.
     
 sell:-
-    write('Daftar item di dalam inventory'), write('\n'),
-    write('Barang yang ingin dijual?'), write('\n'),
+    write('Daftar item di dalam inventory'), nl,
+    write('Barang yang ingin dijual?'), nl,
     read(X),
-    write(X), write('\n').
+    write(X), nl.
 
 market:-
     retract(inMarketState(0)), asserta(inMarketState(1)),
