@@ -147,14 +147,21 @@ isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write
                                             questloc(NewX, NewY) -> write('Selamat datang di Quest!'), nl,addTime;
                                             houseloc(NewX, NewY) -> write('Sekarang kamu berada di rumah!'), nl,addTime;
                                             ranchloc(NewX, NewY) -> write('Sekarang kamu berada di kandang!'), nl,addTime;
-                                            (alchemitsloc(NewX, NewY,TP,_) ->
-                                                TP > 0 -> write('Sekarang kamu berada di kandang!'), nl;
-                                                true), addTime;
+                                            alchemitsloc(NewX, NewY,TP,_) ->
+                                                (TP > 0 -> write('Sekarang kamu berada di alchemits!'), nl, !;
+                                                           true), addTime;
                                             isBorder(NewX, NewY) -> retract(playerloc(NewX,NewY)), asserta(playerloc(PrevX, PrevY)), 
-                                            write('Batas map tidak bisa dilewati!'), nl, fail, !;
+                                            write('Batas map tidak bisa dilewati!'), nl, !;
                                             isWater(NewX, NewY) -> retract(playerloc(NewX, NewY)), asserta(playerloc(PrevX, PrevY)),
-                                            write('Kamu tidak bisa berjalan di atas air!'), nl, fail, !;
+                                            write('Kamu tidak bisa berjalan di atas air!'), nl, !;
                                             (\+ isWater(NewX, NewY), \+ isBorder(NewX, NewY)) -> addTime).
+
+
+/* Teleport */
+
+gachaPeriTidur :-       random(1,6,X),
+                        (X = 2 -> periTidur;
+                        \+ X = 2 -> true).
 
 teleport :-     write('    ____________'),nl,
                 write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,

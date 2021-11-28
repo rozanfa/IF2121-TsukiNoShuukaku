@@ -151,4 +151,4 @@ setPotion(X) :-
                        retract(ranchinglevel(_,V)), asserta(ranchinglevel(_,3)),
                        retract(maxStamina(_,W)), asserta(maxStamina(_,99)), asserta(tempLevel(Y,Z,V,W)),
                        write('Potion God sudah aktif (Efek sama seperti menggunakan keempat potion)')),!;
-        write('Hanya bisa menggunakan satu potion'),!.
+        write('Gagal membeli hanya bisa menggunakan satu potion'),!.
