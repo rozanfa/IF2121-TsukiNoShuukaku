@@ -209,9 +209,6 @@ getFishing(4,none).
 toolPurchasePrice(shovel, 300).
 toolPurchasePrice(fishing_rod,500).
 
-setTool :- asserta(shovellevel(1)),
-           asserta(fishing_rodlevel(1)).
-
 /* Initialize Items */
-initItem :- setTool, setAnimal, setProductCount, setProductPricelvl1.
+initItem :- setAnimal, setProductCount, setProductPricelvl1.
 

@@ -10,6 +10,7 @@
 :- include('activities.pl').
 :- include('quest.pl').
 :- include('stringify.pl').
+:- include('items.pl').
 
 :- dynamic(isStarted/1).
 
