@@ -1,9 +1,6 @@
 :- include('stringify.pl').
 :- include('items.pl').
 /* file : level.pl */
-
-:- dynamic(used/1).
-
 :- dynamic(isiInventory/1).
 
 inventory:- isiInventory(Isi), countInventory(Isi,Cap),

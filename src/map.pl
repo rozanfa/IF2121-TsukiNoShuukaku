@@ -18,13 +18,18 @@ questloc(2,5).
 ranchloc(2,12).
 houseloc(2,10).
 marketplaceloc(12,3).
+:- dynamic(alchemitsloc/4).
+alchemitsloc(9,1,2,0).
+
 
 cannotbeDigged(X,Y) :-  questloc(X,Y);
                         ranchloc(X,Y);
                         houseloc(X,Y);
                         marketplaceloc(X,Y);
                         croploc(X,Y,_,_);
-                        digloc(X,Y). 
+                        water(X,Y);
+                        alchemitsloc(X,Y,TP,_),
+                        (TP > 0 -> true; false).
 
 /* Posisi Player */
 :- dynamic(playerloc/2).
@@ -95,26 +100,29 @@ printMap(SX, SY) :- (playerloc(SX, SY) -> write('P');
                     marketplaceloc(SX, SY) -> write('M');
                     croploc(SX,SY,_,_) -> write('c');
                     digloc(SX, SY) -> write('=');
+                    alchemitsloc(SX, SY, TP, _) ->
+                        (TP > 0 -> write('A');
+                                   write('-'));
                     write('-')), NewX is SX + 1,
                     (SX = 15, SY = 0 -> nl;
                     SX = 15 -> nl, X = 0, NewY is SY - 1, printMap(X, NewY);
                     printMap(NewX, SY)).
-                    
+
 map :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
 map :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn, mabok gan??!'), !.
-map :- isStarted(1) -> printMap(0,15).
+map :- isStarted(1) -> printMap(0,15), !.
 
 
 /* Move player */
 w :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
 w :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
-w :-    write('Bergerak ke atas..'), nl, 
+w :-    write('Bergerak ke atas..'), nl,
         retract(playerloc(PrevX, PrevY)), NewY is PrevY + 1,
         asserta(playerloc(PrevX, NewY)),
         isMoveValid(PrevX, PrevY, PrevX, NewY), !.
 
 a :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
-a :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.    
+a :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
 a :-    write('Bergerak ke kiri..'), nl,
         retract(playerloc(PrevX, PrevY)), NewX is PrevX - 1,
         asserta(playerloc(NewX, PrevY)),
@@ -128,7 +136,7 @@ s :-    write('Bergerak ke bawah..'), nl,
         isMoveValid(PrevX, PrevY, PrevX, NewY), !.
 
 d :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
-d :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.    
+d :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
 d :-    write('Bergerak ke kanan..'), nl,
         retract(playerloc(PrevX, PrevY)), NewX is PrevX + 1,
         asserta(playerloc(NewX, PrevY)),
@@ -139,10 +147,13 @@ isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write
                                             questloc(NewX, NewY) -> write('Selamat datang di Quest!'), nl,addTime;
                                             houseloc(NewX, NewY) -> write('Sekarang kamu berada di rumah!'), nl,addTime;
                                             ranchloc(NewX, NewY) -> write('Sekarang kamu berada di kandang!'), nl,addTime;
+                                            alchemitsloc(NewX, NewY,TP,_) ->
+                                                (TP > 0 -> write('Sekarang kamu berada di alchemits!'), nl, !;
+                                                           true), addTime;
                                             isBorder(NewX, NewY) -> retract(playerloc(NewX,NewY)), asserta(playerloc(PrevX, PrevY)), 
-                                            write('Batas map tidak bisa dilewati!'), nl, fail, !;
+                                            write('Batas map tidak bisa dilewati!'), nl, !;
                                             isWater(NewX, NewY) -> retract(playerloc(NewX, NewY)), asserta(playerloc(PrevX, PrevY)),
-                                            write('Kamu tidak bisa berjalan di atas air!'), nl, fail, !;
+                                            write('Kamu tidak bisa berjalan di atas air!'), nl, !;
                                             (\+ isWater(NewX, NewY), \+ isBorder(NewX, NewY)) -> addTime).
 
 
@@ -228,7 +239,3 @@ periTidur :-      nl,
                         write('|  Baiklah kalau begitu. Semoga harimu menyenangkan!                                |'),nl,
                         write('|  Selamat tinggal..                                                                |'),nl,
                         write('|-----------------------------------------------------------------------------------|'),nl), !.
-
-
-
-% belum selesai

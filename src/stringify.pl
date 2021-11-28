@@ -77,3 +77,9 @@ mkstr(wortel, carrot).
 mkstr(terong, eggplant).
 mkstr(bayam, spinach).
 mkstr(labu, pumpkin).
+
+mkstr(fishing_potion,'Potion Fishing').
+mkstr(farming_potion,'Potion Farming').
+mkstr(ranching_potion,'Potion Ranching').
+mkstr(stamina_potion,'Potion Stamina').
+mkstr(all_potion,'Potion Dewa').
