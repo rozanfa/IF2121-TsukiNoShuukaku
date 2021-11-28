@@ -2,28 +2,13 @@
 
 /* Job list */
 
-isJob(farmer).
-isJob(fisher).
-isJob(rancher).
-
 /* Dynamic Variables */
-/*
-:-dynamic(farmingexp/2).
-:-dynamic(fishingexp/2).
-:-dynamic(ranchingexp/2).
-:-dynamic(exp/2).
-:-dynamic(level/2).
-:-dynamic(farminglevel/2).
-:-dynamic(fishinglevel/2).
-:-dynamic(ranchinglevel/2).
-:-dynamic(gold/2).
-:-dynamic(maxStamina/2). */
+
 :-dynamic(stamina/2).
 
 
 /* Create Job */
 
-:- dynamic(createFarmer/1).
 createFarmer(X) :-  asserta(job(X, farmer)),
                     asserta(farmingexp(X, 100)),
                     asserta(fishingexp(X, 0)),
@@ -38,7 +23,6 @@ createFarmer(X) :-  asserta(job(X, farmer)),
                     asserta(stamina(X, 6)),
                     initInventoryFarmer.
 
-:- dynamic(createFisher/1).
 createFisher(X) :-  asserta(job(X, fisher)),
                     asserta(farmingexp(X, 0)),
                     asserta(fishingexp(X, 100)),
@@ -53,7 +37,6 @@ createFisher(X) :-  asserta(job(X, fisher)),
                     asserta(stamina(X, 6)),
                     initInventoryFisher.
 
-:- dynamic(createRancher/1).
 createRancher(X) :- asserta(job(X, rancher)),
                     asserta(farmingexp(X, 0)),
                     asserta(fishingexp(X, 0)),

@@ -52,15 +52,6 @@ setWinterWeather(X) :-  X = 1 -> (retract(weather(_)), asserta(weather('salju'))
 weather('cerah').
 
 
-/*DUMMY*/
-:- dynamic(cropLoc/4).
-:- dynamic(readyCropLoc/4).
-cropLoc(1, 2, aaa, 3).
-cropLoc(2, 2, bbb, 3).
-cropLoc(3, 2, ccc, 3).
-/*DUMMY*/
-
-
 addTime :-  retract(time(CurrTime)),
             CurrTime < 23 -> NewTime is CurrTime + 1,  asserta(time(NewTime)), writeTime, decreasePotion;
             CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)),writeTime, addDay, checkCrops, setAlchemist.

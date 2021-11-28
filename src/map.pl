@@ -1,17 +1,5 @@
 /* map.pl */
 
-/* Generate koordinat map */
-:- dynamic(coordinate/2).
-:- dynamic(width/1).
-:- dynamic(height/1).
-
-/*
-generate(X,Y) :-    (X = 0, Y = 0 -> asserta(coordinate(0, 0));
-                    X = 0 -> asserta(coordinate(0,Y)), newY is Y - 1, generate(X, NewY);
-                    Y = 0 -> asserta(coordinate(X,Y)), NewY = 15, NewX is X-1, generate(NewX, NewY);
-                    asserta(coordinate(X,Y)), NewY is Y-1, generate(X, NewY)).
-*/
-
 /* Posisi tile bangunan */
 
 questloc(2,5).
