@@ -54,13 +54,7 @@ weather('cerah').
 
 addTime :-  retract(time(CurrTime)),
             CurrTime < 23 -> NewTime is CurrTime + 1,  asserta(time(NewTime)), writeTime, decreasePotion;
-            CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)),writeTime, addDay, checkCrops, setAlchemist.
-
-checkCrops :-   forall(cropLoc(X, Y, CropName, HarvestTime),
-                ((day(CurrDay), HarvestTime == CurrDay),
-                retract(cropLoc(X, Y, CropName, HarvestTime)),
-                asserta(readyCropLoc(X, Y, CropName, HarvestTime)))); true.
-
+            CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)),writeTime, addDay, setAlchemist.
 
 addDay :-   (retract(day(CurrDay)), NewDay is CurrDay + 1,
             asserta(day(NewDay))), randomizeWeather,
