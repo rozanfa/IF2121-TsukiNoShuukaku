@@ -56,7 +56,7 @@ addTime :-  retract(time(CurrTime)),
             CurrTime < 23 -> NewTime is CurrTime + 1,  asserta(time(NewTime)), writeTime, decreasePotion;
             CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)),writeTime, addDay, setAlchemist.
 
-addDay :-   (retract(day(CurrDay)), NewDay is CurrDay + 1,
+addDay :-   checkAnimal, (retract(day(CurrDay)), NewDay is CurrDay + 1,
             asserta(day(NewDay))), randomizeWeather,
            ( NewDay == 24 -> finishGame;
             S is mod(NewDay,6),  S == 0 -> addSeason;

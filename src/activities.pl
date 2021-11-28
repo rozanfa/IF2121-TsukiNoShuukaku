@@ -75,7 +75,7 @@ ranch :- playerloc(X,Y), ranchloc(X,Y), totalChicken(A), totalSheep(B), totalCow
          playerloc(X,Y), ranchloc(X,Y), totalChicken(A), totalSheep(B), totalCow(C), Z is A+B+C, Z==0, write('Kamu tidak punya Hewan di kandang'), nl, !;
          playerloc(X,Y), \+ranchloc(X,Y), write('Kamu harus berada di kandang untuk mengambil hasil ternak'), nl, !.
 
-ranching(Animal1) :- mkstr(Animal1,Animal), productYield(Animal,egg), ranchChicken, !;
+ ranching(Animal1) :- mkstr(Animal1,Animal), productYield(Animal,egg), ranchChicken, !;
                      mkstr(Animal1,Animal), productYield(Animal,wool), ranchSheep, !;
                      mkstr(Animal1,Animal), productYield(Animal,milk), ranchCow, !;
                      \+mkstr(Animal1,Animal), write('Hewan yang kamu tulis tidak ada'), nl, !.
@@ -106,3 +106,17 @@ ranchCow :- totalCow(C), C\==0, milkProduct(X), day(CurrDay), A is CurrDay-X, A>
             addTime, asserta(milkProduct(CurrDay)), retract(milkProduct(X)), progQuest(milk), !;
             totalCow(C), C\==0, milkProduct(X), day(CurrDay), A is CurrDay-X, A==0, write('Sapi milikmu belum menghasilkan Susu.'), nl, !;
             totalCow(C), C==0, write('Kamu tidak punya Sapi'), nl, !.
+
+checknewChicken :- totalnewChicken(X), totalChicken(Y), Y>0, Z is Y+X, asserta(totalChicken(Z)), retract(totalChicken(Y)), retract(totalnewChicken(X)) -> true;
+                   totalnewChicken(X), totalChicken(Y), Y==0, day(CurrDay), asserta(eggProduct(CurrDay)), asserta(totalChicken(X)), retract(totalChicken(0)), retract(totalnewChicken(X)) -> true;
+                   \+totalnewChicken(X) -> true.
+                   
+checknewSheep :- totalnewSheep(X), totalSheep(Y), Y>0, Z is Y+X, asserta(totalSheep(Z)), retract(totalSheep(Y)), retract(totalnewSheep(X)) -> true;
+                 totalnewSheep(X), totalSheep(Y), Y==0, day(CurrDay), asserta(woolProduct(CurrDay)), asserta(totalSheep(X)), retract(totalSheep(0)), retract(totalnewSheep(X)) -> true;
+                 \+totalnewSheep(X) -> true.
+
+checknewCow : totalnewCow(X), totalCow(Y), Y>0, Z is Y+X, asserta(totalCow(Z)), retract(totalCow(Y)), retract(totalnewCow(X)) -> true;
+              totalnewCow(X), totalCow(Y), Y==0, day(CurrDay), asserta(milkProduct(CurrDay)), asserta(totalCow(X)), retract(totalCow(0)), retract(totalnewCow(X)) -> true;
+              \+totalnewCow(X) -> true.
+
+checkAnimal : checknewChicken, checknewCow, checknewSheep.
