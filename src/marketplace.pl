@@ -55,24 +55,24 @@ pickfromTemp(X,[Head|_],Head):- Xm is X-1, Xm =:= 0, !.
 pickfromTemp(X,[_|Tail],Item):-
     Xm is X-1, pickfromTemp(Xm,Tail,Item).
 
-processItem(Item,Pr,Am):-
+buyItem(Item,Pr,Am):-
     Total is Pr * Am,
-    gold(_,X),
-    Am < 0 -> write('Jumlah tidak valid, ulang kembali masukan!\n'), read(Am), processItem(Item,Pr,Am);
+    username(Usr), gold(Usr,X),
+    (Am < 0 -> write('Jumlah tidak valid, ulangi kembali masukan!\n'), read(Am), buyItem(Item,Pr,Am);
     X < Total -> write('Jumlah gold kamu tidak cukup untuk membeli barang ini!\n\n'), buy;
     tool(Item) -> upTool(Item), buy;
     GLeft is X - Total,
-    retract(gold(Player,X)), asserta(gold(Player,GLeft)),
+    retract(gold(Usr,X)), asserta(gold(Usr,GLeft)),
     addItem(Item,Am), mkstr(Item,Str),
-    write('Kamu berhasil membeli '), write(Am), write(' '), write(Str), write('.\nKamu membayar sebesar '), write(Total), write(' gold\n\n'), buy.
+    write('Kamu berhasil membeli '), write(Am), write(' '), write(Str), write('.\nKamu membayar sebesar '), write(Total), write(' gold\n\n'), buy).
 
 pickItem:-
     read(X),
     tempList(List),
     pickfromTemp(X,List,Item), C is X,
-    (C >= 1, C < 5 -> cropPurchasePrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), processItem(Item,Pr,Am);
-    C >= 5, C < 8 -> animalPrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), processItem(Item,Pr,Am);
-    C >= 8 ->  toolPurchasePrice(Item,Pr), processItem(Item,Pr,1);
+    (C >= 1, C < 5 -> cropPurchasePrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), buyItem(Item,Pr,Am);
+    C >= 5, C < 8 -> animalPrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), buyItem(Item,Pr,Am);
+    C >= 8 ->  toolPurchasePrice(Item,Pr), buyItem(Item,Pr,1);
     write('Item tidak ditemukan.\n\n'), buy).
 
 buy:-
@@ -82,18 +82,39 @@ buy:-
     season(X),
     write('Musim: '), isSeason(NamaMusim,X),
     write(NamaMusim), nl,
-    X =:= 1 -> springMarketCrop(Y), formList(Y), tempList(List), showList(1,List), pickItem;
+    (X =:= 1 -> springMarketCrop(Y), formList(Y), tempList(List), showList(1,List), pickItem;
     X =:= 2 -> summmerMarketCrop(Y), formList(Y), tempList(List), showList(1,List), pickItem;
     X =:= 3 -> showRanch, autumnMarketCrop(Y), tempList(List), showList(1,List), pickItem;
-    X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem.
+    X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem).
+
+inInvChk(_,[],[Name,_]]):- Name is nan, !.
+inInvChk(X,[[Name,Count]|_],[Name,Count]):- X == Name, !.
+inInvChk(X,[_|Other],Item):- inInvChk(X,Other,Item).
+
+sellItem(Name,Count,Pr,Am):-
+    Total is Pr * Am,
+    (Am < 0 -> write('Jumlah tidak valid, ulangi kembali masukan!\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    Count < Am -> write('Jumlah item yang kamu miliki tidak cukup!\n'), sell;
+    username(Usr), gold(Usr, X),
+    AmLeft is Count - Am,
+    GAdd is X + Total,
+    retract(gold(Usr,X)), asserta(gold(Usr,GAdd)),
+    dropItem(Name,Am), mkstr(Name,Str),
+    write('Kamu berhasil menjual '), write(Am), write(' '), write(Str), nl,
+    write('Kamu mendapatkan '), write(Total), write(' gold dari hasil penjualan! Sisa item yang kamu jual sebanyak '), write(AmLeft), write(' buah.'), nl, sell).
 
 sell:-
     inMarket(X),
     X =:= 0 -> write('Kamu tidak sedang berada di dalam market!');
     write('Daftar item di dalam inventory'), nl,
+    isiInventory(Isi), printInventory(Isi),
     write('Barang yang ingin dijual?'), nl,
     read(X),
-    write(X), nl.
+    inInvChk(X,Isi,[Name,Count]),
+    (crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    product(Name) -> productPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    fish(Name) -> fishPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    write('Item ini tidak ada di dalam inventory!'), sell).
 
 market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
 market:- 
