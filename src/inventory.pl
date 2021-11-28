@@ -1,8 +1,5 @@
 /* file : level.pl */
 
-:- include('items.pl').
-:- include('stringify.pl').
-
 :- dynamic(used/1).
 
 :- dynamic(isiInventory/1).

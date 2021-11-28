@@ -1,7 +1,3 @@
-/* Include necessary modules */
-:- include('marketplace.pl').
-:- include('level.pl').
-
 /* declare dynamic predicates */
 :- dynamic(currentQuest/5).
 :- dynamic(inQuest/1).
