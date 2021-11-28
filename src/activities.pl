@@ -115,8 +115,8 @@ checknewSheep :- totalnewSheep(X), totalSheep(Y), Y>0, Z is Y+X, asserta(totalSh
                  totalnewSheep(X), totalSheep(Y), Y==0, day(CurrDay), asserta(woolProduct(CurrDay)), asserta(totalSheep(X)), retract(totalSheep(0)), retract(totalnewSheep(X)) -> true;
                  \+totalnewSheep(X) -> true.
 
-checknewCow : totalnewCow(X), totalCow(Y), Y>0, Z is Y+X, asserta(totalCow(Z)), retract(totalCow(Y)), retract(totalnewCow(X)) -> true;
+checknewCow :- totalnewCow(X), totalCow(Y), Y>0, Z is Y+X, asserta(totalCow(Z)), retract(totalCow(Y)), retract(totalnewCow(X)) -> true;
               totalnewCow(X), totalCow(Y), Y==0, day(CurrDay), asserta(milkProduct(CurrDay)), asserta(totalCow(X)), retract(totalCow(0)), retract(totalnewCow(X)) -> true;
               \+totalnewCow(X) -> true.
 
-checkAnimal : checknewChicken, checknewCow, checknewSheep.
+checkAnimal :- checknewChicken, checknewCow, checknewSheep.
