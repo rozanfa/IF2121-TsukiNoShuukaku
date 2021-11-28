@@ -8,19 +8,27 @@
 :- dynamic(isiInventory/1).
 
 inventory:- isiInventory(Isi), countInventory(Isi,Cap),
-            (Cap =\= 0 ->
+            Cap =\= 0 ->
                 write("Your inventory "), write(Cap), write("/100 : "), nl,
-                printInventory(Isi),!);
-            write('Inventory kosong'),!.
+                printInventory(Isi),!;
+                write('Inventory kosong').
 
+printSeed([]):- !.
+printSeed([[Name,Count]|Other]):-
+            cropSeed(Name) -> write(Count), write(" "), mkstr(Name,Str), write(Str), nl, printSeed(Other);
+            printSeed(Other).
 
 cheatInventory(Item,Count):- \+ isiInventory(_) -> assertz(isiInventory([[Item,Count]])),!.
 cheatInventory(Item,Count):- retract(isiInventory(_)), assertz(isiInventory([[Item,Count]])).
 
-printInventory([]).
+printInventory([]):- !.
 printInventory([[Name,Count]|Other]):-
-            write(Count), write(" "), mkstr(Name,Str), write(Str), nl, printInventory(Other)/*;
-            nl, printInventory(Other)*/.
+            write(Count), write(" "), mkstr(Name,Str), write(Str),
+            (tool(Name) ->  
+                shovellevel(Level) -> write(' level '), write(Level);
+             tool(Name) ->
+                fishing_rodlevel(Level) -> write(' level '), write(Level);
+                true),  nl, printInventory(Other).
 
 countInventory([],0).
 countInventory([[_,Count]|Other],Sum):-
@@ -51,8 +59,6 @@ addItem(Item,Count):-
         write('Inventory penuh silakan drop beberapa item yang tidak digunakan')),
         (Cap + Count =:= 100 -> write('Hati-hati inventory sudah penuh');true).
 
-
-
 dropItem(_,Count):-
         (Count =< 0 -> write("Jumlah item yang dibuang tidak valid")),fail.
 dropItem(Item,Count):-
@@ -80,12 +86,8 @@ isAvailable(Item,Count):-
     isiInventory(Isi), (member([Item,CurrentCount],Isi) -> Count is CurrentCount).
 
 throwItem :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
-throwItem :- isStarted(0), write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
+throwItem :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
 throwItem:-
-    isiInventory(Isi), countInventory(Isi,Cap),
-    (Cap =\= 0 ->
-        write("Your inventory "), write(Cap), write("/100 : "), nl,
-        printInventory(Isi),
-    write('Masukan item yang ingin dibuang :'), nl, read(X), nl,
-    write('Berapa jumlah item yang ingin dibuang'), nl, read(Y), dropItem(X,Y),!);
-    write('Inventory kosong tidak ada item yang bisa dibuang').
+    inventory,
+    write("Masukan item yang ingin dibuang : (contoh masukan '[nama item]')"), nl, read(X), nl,
+    write('Berapa jumlah item yang ingin dibuang'), nl, read(Y), mkstr(Z,X), dropItem(Z,Y),!.
