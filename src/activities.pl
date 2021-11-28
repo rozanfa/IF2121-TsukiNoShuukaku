@@ -17,7 +17,7 @@ digging(Level) :- Level==1, playerloc(X,Y), asserta(digloc(X,Y)), write('Kamu me
                   Level==3, playerloc(X,Y), asserta(digloc(X,Y)), digTime(A), A==2, write('Kamu menggali tempat ini.'), nl, asserta(digTime(0)), retract(digTime(A)), decreaseStamina, stamina(_, Z), maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl, addTime,!.
             
 plant :- playerloc(X,Y), digloc(X,Y), cropSeed(Seed), isAvailable(Seed,Count), write('Kamu mempunyai:'), nl,
-         printInventory([[Seed,Count]|_]), nl,
+         printSeed([[_,_]|_]), nl,
          write('Apa yang ingin kamu tanam?'), nl,
          read(Crop), nl,
          planting(Crop), !; 
