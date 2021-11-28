@@ -3,7 +3,7 @@
 /* set dynamic */
 :- dynamic(digTime/1).
 digTime(0).
-
+printbibit :- isiInventory(Isi), printSeed(Isi).
 /* Farming */
 dig :- playerloc(X,Y), \+cannotbeDigged(X,Y), isAvailable(shovel,1), shovellevel(Z), digging(Z), !;
        playerloc(X,Y), \+cannotbeDigged(X,Y), \+isAvailable(shovel,1), write('Kamu tidak punya sekop untuk menggali'), nl, !;
@@ -17,7 +17,7 @@ digging(Level) :- Level==1, playerloc(X,Y), asserta(digloc(X,Y)), write('Kamu me
                   Level==3, playerloc(X,Y), asserta(digloc(X,Y)), digTime(A), A==2, write('Kamu menggali tempat ini.'), nl, asserta(digTime(0)), retract(digTime(A)), decreaseStamina, stamina(_, Z), maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl, addTime,!.
             
 plant :- playerloc(X,Y), digloc(X,Y), cropSeed(Seed), isAvailable(Seed,Count), write('Kamu mempunyai:'), nl,
-         printSeed([[_,_]|_]), nl,
+         printbibit, nl,
          write('Apa yang ingin kamu tanam?'), nl,
          read(Crop), nl,
          planting(Crop), !; 
@@ -27,7 +27,7 @@ plant :- playerloc(X,Y), digloc(X,Y), cropSeed(Seed), isAvailable(Seed,Count), w
 planting(Crop1) :- mkstr(Crop1,Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), isAvailable(Z,Count), seasonCrop(Crop,CurrSeason), cropTime(Crop,Time), day(CurrDay), Z1 is Time+CurrDay, playerloc(X,Y), asserta(croploc(X,Y,Crop,Z1)),
                    write('Kamu menanam '), mkstr(Crop,Crop2), write(Crop2), write('.'), nl,
                    dropItem(Z,1), nl,
-                   decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
+                   decreaseStamina, stamina(_, Stamina),maxStamina(_, MaxStamina), write('Stamina: '), write(Stamina), write('/'), write(MaxStamina), write('.'), nl,
                    addTime, retract(digloc(X,Y)), !;
                    mkstr(Crop1,Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), \+isAvailable(Z,Count), write('Kamu tidak punya '), mkstr(Z,A), write(A), nl, !;
                    mkstr(Crop1,Crop), season(CurrSeason), atom_concat(Crop,'_seed',Z), isAvailable(Z,Count), \+seasonCrop(Crop,CurrSeason), isSeason(Season,CurrSeason), mkstr(Crop,Crop2), write(Crop2), write(' tidak bisa ditanam di musim '), write(Season), nl, !;
@@ -82,8 +82,8 @@ ranching(Animal1) :- mkstr(Animal1,Animal), productYield(Animal,egg), ranchChick
                      \+mkstr(Animal1,Animal), write('Hewan yang kamu tulis tidak ada'), nl, !.
 
 ranchChicken :- totalChicken(A), A\==0, eggProduct(X), day(CurrDay), B is CurrDay-X, B>0, addItem(egg,A), 
-                write('Ayam milikmu menghasilkan '), write(C), write(' Telur.'), nl,
-                write('Kamu mendapatkan '), write(C), write(' Telur.'), nl,
+                write('Ayam milikmu menghasilkan '), write(A), write(' Telur.'), nl,
+                write('Kamu mendapatkan '), write(A), write(' Telur.'), nl,
                 addExpRanching(_,6), nl,
                 decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
                 addTime, asserta(eggProduct(CurrDay)), retract(eggProduct(X)), progQuest(egg), !;
@@ -91,8 +91,8 @@ ranchChicken :- totalChicken(A), A\==0, eggProduct(X), day(CurrDay), B is CurrDa
                 totalChicken(A), A==0, write('Kamu tidak punya Ayam').
 
 ranchSheep :- totalSheep(B), B\==0, woolProduct(X), day(CurrDay), A is CurrDay-X, A>=3, addItem(wool,B), 
-              write('Domba milikmu menghasilkan '), write(C), write(' Wol'), nl,
-              write('Kamu mendapatkan '), write(C), write(' Wol.'), nl,
+              write('Domba milikmu menghasilkan '), write(B), write(' Wol'), nl,
+              write('Kamu mendapatkan '), write(B), write(' Wol.'), nl,
               addExpRanching(_,12), nl,
               decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
               addTime, asserta(woolProduct(CurrDay)), retract(woolProduct(X)), progQuest(wool), !;
@@ -100,8 +100,8 @@ ranchSheep :- totalSheep(B), B\==0, woolProduct(X), day(CurrDay), A is CurrDay-X
               totalSheep(B), B==0, write('Kamu tidak punya Domba'),nl, !.
 
 ranchCow :- totalCow(C), C\==0, milkProduct(X), day(CurrDay), A is CurrDay-X, A>0, addItem(milk,C), 
-            write('Sapi milikmu menghasilkan '), write(B), write(' Susu.'),nl, 
-            write('Kamu mendapatkan '), write(B), write(' Susu.'), nl,
+            write('Sapi milikmu menghasilkan '), write(C), write(' Susu.'),nl, 
+            write('Kamu mendapatkan '), write(C), write(' Susu.'), nl,
             addExpRanching(_,18),nl,
             decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
             addTime, asserta(milkProduct(CurrDay)), retract(milkProduct(X)), progQuest(milk), !;

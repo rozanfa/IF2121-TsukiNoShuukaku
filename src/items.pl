@@ -181,7 +181,7 @@ setProductPricelvl3 :-
 
 setAnimal :-
                 asserta(totalCow(0)),
-                asserta(totalsheep(0)),
+                asserta(totalSheep(0)),
                 asserta(totalChicken(0)).
 
 /* Fish section */
@@ -209,6 +209,9 @@ getFishing(4,none).
 toolPurchasePrice(shovel, 300).
 toolPurchasePrice(fishing_rod,500).
 
+setTool :- asserta(shovellevel(1)),
+           asserta(fishing_rodlevel(1)).
+
 /* Initialize Items */
-initItem :- setAnimal, setProductCount, setProductPricelvl1.
+initItem :- setTool, setAnimal, setProductCount, setProductPricelvl1.
 
