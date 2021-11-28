@@ -6,8 +6,8 @@ questloc(2,5).
 ranchloc(2,12).
 houseloc(2,10).
 marketplaceloc(12,3).
-:- dynamic(alchemitsloc/4).
-alchemitsloc(9,1,2,0).
+:- dynamic(alchemistloc/4).
+alchemistloc(9,1,0,6).
 
 
 cannotbeDigged(X,Y) :-  questloc(X,Y);
@@ -16,7 +16,7 @@ cannotbeDigged(X,Y) :-  questloc(X,Y);
                         marketplaceloc(X,Y);
                         croploc(X,Y,_,_);
                         water(X,Y);
-                        alchemitsloc(X,Y,TP,_),
+                        alchemistloc(X,Y,TP,_),
                         (TP > 0 -> true; false).
 
 /* Posisi Player */
@@ -88,7 +88,7 @@ printMap(SX, SY) :- (playerloc(SX, SY) -> write('P');
                     marketplaceloc(SX, SY) -> write('M');
                     croploc(SX,SY,_,_) -> write('c');
                     digloc(SX, SY) -> write('=');
-                    alchemitsloc(SX, SY, TP, _) ->
+                    alchemistloc(SX, SY, TP, _) ->
                         (TP > 0 -> write('A');
                                    write('-'));
                     write('-')), NewX is SX + 1,
@@ -135,8 +135,8 @@ isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write
                                             questloc(NewX, NewY) -> write('Selamat datang di Quest!'), nl,addTime;
                                             houseloc(NewX, NewY) -> write('Sekarang kamu berada di rumah!'), nl,addTime;
                                             ranchloc(NewX, NewY) -> write('Sekarang kamu berada di kandang!'), nl,addTime;
-                                            alchemitsloc(NewX, NewY,TP,_) ->
-                                                (TP > 0 -> write('Sekarang kamu berada di alchemits!'), nl, !;
+                                            alchemistloc(NewX, NewY,TP,_) ->
+                                                (TP > 0 -> write('Sekarang kamu berada di alchemist!'), nl, !;
                                                            true), addTime;
                                             isBorder(NewX, NewY) -> retract(playerloc(NewX,NewY)), asserta(playerloc(PrevX, PrevY)), 
                                             write('Batas map tidak bisa dilewati!'), nl, !;

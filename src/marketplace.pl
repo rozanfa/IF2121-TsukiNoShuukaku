@@ -4,15 +4,10 @@
 :- dynamic(money/1).
 :- dynamic(exp/1).
 :- dynamic(inMarket/1).
-:- dynamic(inAlchemitsState/1).
-:- dynamic(potionEfect/2).
-:- dynamic(tempLevel/4).
 :- dynamic(tempList/1).
 :- dynamic(shovellevel/1).
 :- dynamic(fishing_rodlevel/1).
 
-potionEfect(0,0).
-tempLevel(0,0,0,0).
 
 shovellevel(1).
 fishing_rodlevel(1).
@@ -126,47 +121,3 @@ exitShop:-
     write('Terima kasih sudah datang, silakan datang kembali!'),
     retract(tempList(_)), asserta(tempList([])),
     retract(inMarket(_)), asserta(inMarket(0)).
-
-alchemits:-
-    (alchemitsloc(Xa,Ya,TP,_), playerloc(Xp,Yp),
-    ((TP > 0, Xp =:= Xa, Yp =:= Ya) ->
-        retract(inAlchemitsState(_)), asserta(inAlchemitsState(1)),
-        write('Ohh tidak kamu menemukanku!!!\nSilakan pilih potoin yang ingin dibeli\n1. (buyPotion) Beli Potion');
-        write('Tidak terjadi apa-apa....'))),!.
-
-exitAlchemist:-
-    write('Jangan bilang siapa-siapa tentang kehadiranku!'),
-    retract(tempList(_)), asserta(tempList([])),
-    retract(inAlchemitsState(_)), asserta(inAlchemitsState(0)).
-
-buyPotion:-
-    inAlchemitsState(X),
-        X =:= 1 ->
-        write('Silakan Potion yang ingin dipilih :\n'),
-            alchemitsPotion(Y), retract(tempList(_)),
-            asserta(tempList(Y)), tempList(List), showList(10,List),
-            read(Z), setPotion(Z),!;
-    true.
-
-setPotion(X) :-
-    potionEfect(P,_),
-        P =:= 0 ->
-           (X =:= 1 -> retract(potionEfect(_,_)), asserta(potionEfect(1,10)),
-                       retract(farminglevel(_,Y)), asserta(farminglevel(_,3)), asserta(tempLevel(Y,_,_,_)),
-                       write('Potion Farming sudah aktif level farming menjadi level maximal');
-            X =:= 2 -> retract(potionEfect(_,_)), asserta(potionEfect(2,10)),
-                       retract(fishinglevel(_,Y)), asserta(fishinglevel(_,3)), asserta(tempLevel(_,Y,_,_)),
-                       write('Potion Fishing sudah aktif level fishing menjadi level maximal');
-            X =:= 3 -> retract(potionEfect(_,_)), asserta(potionEfect(3,10)),
-                       retract(ranchinglevel(_,Y)), asserta(ranchinglevel(_,3)), asserta(tempLevel(_,_,Y,_)),
-                       write('Potion Ranching sudah aktif level ranching menjadi level maximal');
-            X =:= 4 -> retract(potionEfect(_,_)), asserta(potionEfect(4,10)),
-                       retract(maxStamina(_,Y)), asserta(maxStamina(_,99)), asserta(tempLevel(_,_,_,Y)),
-                       write('Potion Stamina sudah aktif stamina menjadi 99');
-            X =:= 5 -> retract(potionEfect(_,_)), asserta(potionEfect(5,10)),
-                       retract(farminglevel(_,Y)), asserta(farminglevel(_,3)),
-                       retract(fishinglevel(_,Z)), asserta(fishinglevel(_,3)),
-                       retract(ranchinglevel(_,V)), asserta(ranchinglevel(_,3)),
-                       retract(maxStamina(_,W)), asserta(maxStamina(_,99)), asserta(tempLevel(Y,Z,V,W)),
-                       write('Potion God sudah aktif (Efek sama seperti menggunakan keempat potion)')),!;
-        write('Gagal membeli hanya bisa menggunakan satu potion'),!.

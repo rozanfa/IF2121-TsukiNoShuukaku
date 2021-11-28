@@ -1,5 +1,5 @@
 /* Material and Tool */
-
+:-dynamic(potionCount/2).
 /* Tools */
 tool(shovel).
 tool(fishing_rod).
@@ -42,6 +42,13 @@ cropSeed(spinach_seed).
 cropSeed(pumpkin_seed).
 /* winter */
 /*no crop seed*/
+
+/* potion */
+potion(fishing_potion).
+potion(farming_potion).
+potion(ranching_potion).
+potion(stamina_potion).
+potion(all_potion).
 
 /* Animal product */
 /* Animal */
@@ -116,6 +123,13 @@ cropSellPrice(carrot,600).
 cropSellPrice(eggplant,480).
 cropSellPrice(spinach,720).
 cropSellPrice(pumpkin,1200).
+
+/* potion */
+potionPrice(fishing_potion,1000).
+potionPrice(farming_potion,1000).
+potionPrice(ranching_potion,1000).
+potionPrice(stamina_potion,2000).
+potionPrice(all_potion,5000).
 /*product crop*/
 /* Spring */
 productCrop(turnip_seed,turnip).
@@ -147,11 +161,23 @@ seasonCrop(eggplant,3).
 seasonCrop(spinach,3).
 seasonCrop(pumpkin,3).
 
+/* ID Potion */
+potionID(farming_potion,1).
+potionID(fishing_potion,2).
+potionID(ranching_potion,3).
+potionID(stamina_potion,4).
+potionID(all_potion,5).
+
+potionCount(farming_potion,3).
+potionCount(fishing_potion,3).
+potionCount(ranching_potion,3).
+potionCount(stamina_potion,3).
+potionCount(all_potion,3).
 
 /* Animal product section */
-:- dynamic(woolProduct/1).
-:- dynamic(eggProduct/1).
-:- dynamic(milkProduct/1).
+setProductCount :- asserta(woolProduct(0)), /*3 hari sekali */
+                   asserta(eggProduct(0)), /* tiap hari */
+                   asserta(milkProduct(0)). /* tiap hari */
 
 productYield(chicken,egg).
 productYield(cow,milk).
@@ -181,12 +207,8 @@ setProductPricelvl3 :-
 
 setAnimal :-
                 asserta(totalCow(0)),
-                asserta(totalSheep(0)),
+                asserta(totalsheep(0)),
                 asserta(totalChicken(0)).
-            
-:- dynamic(totalnewCow/1).
-:- dynamic(totalnewSheep/1).
-:- dynamic(totalnewChicken/1).
 
 /* Fish section */
 /* harga ikan */
@@ -210,10 +232,11 @@ getFishing(4,none).
 /* tool section */
 /* harga beli */
 
-toolPurchasePrice(shovel, 300).
-toolPurchasePrice(fishing_rod,500).
+toolPurchasePrice(shovel, 300). /*  bisa dibeli sampe max nyesuain max lvlfarming */
+toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfishing*/
 
+setTool :- asserta(shovellevel(1)),
+           asserta(fishing_rodlevel(1)).
 
 /* Initialize Items */
-initItem :- setAnimal, setProductPricelvl1.
-
+initItem :- setTool, setAnimal, setProductCount, setProductPricelvl1.

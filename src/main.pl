@@ -1,6 +1,6 @@
 :- include('house.pl').
 :- include('level.pl').
-:- include('marketplace.pl').
+:- include('alchemist.pl').
 :- include('inventory.pl').
 :- include('map.pl').
 :- include('player.pl').

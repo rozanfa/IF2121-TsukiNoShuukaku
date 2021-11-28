@@ -12,13 +12,18 @@ printSeed([[Name,Count]|Other]):-
             cropSeed(Name) -> write(Count), write(' '), mkstr(Name,Str), write(Str), nl, printSeed(Other);
             printSeed(Other).
 
+printPotion([]):- !.
+printPotion([[Name,Count]|Other]):-
+            potion(Name) -> write(Count), write(' '), mkstr(Name,Str), write(Str), nl, printPotion(Other);
+            printPotion(Other).
+
 cheatInventory(Item,Count):- \+ isiInventory(_) -> assertz(isiInventory([[Item,Count]])),!.
 cheatInventory(Item,Count):- retract(isiInventory(_)), assertz(isiInventory([[Item,Count]])).
 
 printInventory([]):- !.
 printInventory([[Name,Count]|Other]):-
             write(Count), write(' '), mkstr(Name,Str), write(Str),
-            (tool(Name) ->  
+            (tool(Name) ->
                 shovellevel(Level) -> write(' level '), write(Level);
              tool(Name) ->
                 fishing_rodlevel(Level) -> write(' level '), write(Level);
@@ -85,3 +90,5 @@ throwItem:-
     inventory,
     write('Masukan item yang ingin dibuang : (contoh masukan \'[nama item]\')'), nl, read(X), nl,
     write('Berapa jumlah item yang ingin dibuang'), nl, read(Y), mkstr(Z,X), dropItem(Z,Y),!.
+
+
