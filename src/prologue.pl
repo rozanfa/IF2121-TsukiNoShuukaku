@@ -34,7 +34,7 @@ writePrologue   :-  nl,
 
                     write('\n|-----------------------------------------------------------------------------------|'),nl,
                     write('|                                                                                   |'),nl,
-                    write('|                    * KRING KRING. KRING KRING. KRING KRING  *                     |'),nl,
+                    write('|                    * KRING KRING. KRING KRING. KRING KRING *                      |'),nl,
                     write('|                                (suara HP Claire)                                  |'),nl,
                     write('|-----------------------------------------------------------------------------------|'),nl,
                     write('ketik \"next.\" untuk lanjut'),  nl, read(_),
