@@ -74,23 +74,23 @@ levelUpFarming(X,ExpFarming):-
     write('Selamat!!! kamu mencapai level farming maximal').
 
 levelUpFishing(X,ExpFishing):-
-    retract(fishinglevel(X,FarmLvl)), retract(fishingexp(X,_)),
+    retract(fishinglevel(X,FishingLvl)), retract(fishingexp(X,_)),
     FishingLvl < 2, ExpFishing >= 300 -> NewFishingLvl is 2, ExpFishing is 0,
     asserta(fishinglevel(X,NewFishingLvl)), asserta(fishingexp(X,ExpFishing)),
     write('Fishing levelmu meningkat');
 
-    retract(fishinglevel(X,FarmLvl)), retract(fishingexp(X,_)),
+    retract(fishinglevel(X,FishingLvl)), retract(fishingexp(X,_)),
     FishingLvl =:= 2, ExpFishing >= 500 -> NewFishingLvl is 3,
     asserta(fishinglevel(X,NewFishingLvl)),
     write('Selamat!!! kamu mencapai level fishing maximal').
 
 levelUpRanching(X,ExpRanching):-
-    retract(ranchinglevel(X,FarmLvl)), retract(ranchingexp(X,_)),
+    retract(ranchinglevel(X,RanchingLvl)), retract(ranchingexp(X,_)),
     RanchingLvl < 2, ExpRanching >= 300 -> NewRanchingLvl is 2, ExpRanching is 0,
     asserta(ranchinglevel(X,NewRanchingLvl)), asserta(ranchingexp(X,ExpRanching)),
     write('Raching levelmu meningkat');
 
-    retract(ranchinglevel(X,FarmLvl)), retract(ranchingexp(X,_)),
+    retract(ranchinglevel(X,RanchingLvl)), retract(ranchingexp(X,_)),
     RanchingLvl =:= 2, ExpRanching >= 500 -> NewRanchingLvl is 3,
     asserta(ranchinglevel(X,NewRanchingLvl)),
     write('Selamat!!! kamu mencapai level ranching maximal').
