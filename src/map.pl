@@ -148,6 +148,10 @@ isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write
 
 /* Teleport */
 
+gachaPeriTidur :-       random(1,6,X),
+                        (X = 2 -> periTidur;
+                        \+ X = 2 -> true).
+
 teleport :-     write('    ____________'),nl,
                 write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
                 write('|                                                                                   |'),nl,
