@@ -1,5 +1,4 @@
-:- include('marketplace.pl').
-:- include('level.pl').
+
 
 /* declare dynamic predicates */
 :- dynamic(currentQuest/1).

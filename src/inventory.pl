@@ -1,17 +1,15 @@
-:- include('stringify.pl').
-:- include('items.pl').
 /* file : level.pl */
 :- dynamic(isiInventory/1).
 
 inventory:- isiInventory(Isi), countInventory(Isi,Cap),
             Cap =\= 0 ->
-                write("Your inventory "), write(Cap), write("/100 : "), nl,
+                write('Your inventory '), write(Cap), write('/100 : '), nl,
                 printInventory(Isi),!;
                 write('Inventory kosong').
 
 printSeed([]):- !.
 printSeed([[Name,Count]|Other]):-
-            cropSeed(Name) -> write(Count), write(" "), mkstr(Name,Str), write(Str), nl, printSeed(Other);
+            cropSeed(Name) -> write(Count), write(' '), mkstr(Name,Str), write(Str), nl, printSeed(Other);
             printSeed(Other).
 
 cheatInventory(Item,Count):- \+ isiInventory(_) -> assertz(isiInventory([[Item,Count]])),!.
@@ -19,7 +17,7 @@ cheatInventory(Item,Count):- retract(isiInventory(_)), assertz(isiInventory([[It
 
 printInventory([]):- !.
 printInventory([[Name,Count]|Other]):-
-            write(Count), write(" "), mkstr(Name,Str), write(Str),
+            write(Count), write(' '), mkstr(Name,Str), write(Str),
             (tool(Name) ->  
                 shovellevel(Level) -> write(' level '), write(Level);
              tool(Name) ->
@@ -56,7 +54,7 @@ addItem(Item,Count):-
         (Cap + Count =:= 100 -> write('Hati-hati inventory sudah penuh');true).
 
 dropItem(_,Count):-
-        (Count =< 0 -> write("Jumlah item yang dibuang tidak valid")),fail.
+        (Count =< 0 -> write('Jumlah item yang dibuang tidak valid')),fail.
 dropItem(Item,Count):-
     isiInventory(Isi),
     (isAvailable(Item,CurrentCount) ->
@@ -85,5 +83,5 @@ throwItem :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dim
 throwItem :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gan, mabok gan??!'), !.
 throwItem:-
     inventory,
-    write("Masukan item yang ingin dibuang : (contoh masukan '[nama item]')"), nl, read(X), nl,
+    write('Masukan item yang ingin dibuang : (contoh masukan \'[nama item]\')'), nl, read(X), nl,
     write('Berapa jumlah item yang ingin dibuang'), nl, read(Y), mkstr(Z,X), dropItem(Z,Y),!.

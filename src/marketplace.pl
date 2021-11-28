@@ -1,8 +1,5 @@
 /* Include necessary modules */
-:- include('player.pl').
-:- include('time.pl').
-:- include('inventory.pl').
-:- include('map.pl').
+
 
 /* declare dynamic predicates */
 :- dynamic(marketState/2).

@@ -1,5 +1,5 @@
 /* Include necessary modules */
-:-include('quest.pl').
+
 /* declare dynamic predicates */
 :- dynamic(houseOpCode/1).
 :- dynamic(diaries/1).
@@ -65,7 +65,7 @@ bobo:-
 
 /* ====================== SAVE - LOAD SECTION ======================*/
 
-/* TEST */
+/* TEST 
 username(claire). job(claire,farmer).
 isiInventory([[amogus,1],[pepega,2]]).
 time(6). day(8). season(2).
@@ -101,4 +101,4 @@ read_file(Stream,[]) :-
 read_file(Stream,[X|L]) :-
     \+ at_end_of_stream(Stream),
     read(Stream,X),
-    read_file(Stream,L).
+    read_file(Stream,L).*/
