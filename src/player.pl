@@ -83,7 +83,7 @@ expRequired(Username, Req) :-   level(Username, Level),
                                 Level = 1 -> Req is 200;
                                 Level = 2 -> Req is 400;
                                 Level = 3 -> Req is 800;
-                                Level = 4 -> Req is 1600;
+                                Level = 4 -> Req is 2000;
                                 Level = 5 -> Req is maximum
                                 ).
 
@@ -91,10 +91,10 @@ expRequired(Username, Req) :-   level(Username, Level),
 
 /* Cek status */
 
-checkStatus(Username) :-    write('Your status : '), nl,
+checkStatus(Username) :-    write('Status kamu : '), nl,
                             write('--------------------------------------------------'),nl,
-                            write('Name             : '), write(Username), nl,
-                            write('Job              : '), job(Username, Job), write(Job), nl,
+                            write('Nama             : '), write(Username), nl,
+                            write('Pekerjaan        : '), job(Username, Job), write(Job), nl,
                             write('Level            : '), 
                             (level(Username, 5), write('MAX LEVEL!'), nl;
                             level(Username, Level), Level < 5, write(Level), nl),
@@ -117,7 +117,7 @@ checkStatus(Username) :-    write('Your status : '), nl,
                             write('--------------------------------------------------'),nl,
                             write('Musim '), season(Season), isSeason(SeasonName, Season), write(SeasonName), nl,
                             write('Hari Ke-'), day(CurrDay), write(CurrDay), nl,
-                            write('Waktu sekarang : '), time(CurrTime), write(CurrTime), write('/24'), nl,
+                            write('Waktu saat ini : '), time(CurrTime), write(CurrTime), write('/24'), nl,
                             write('Cuaca : '), weather(CurrWeather), write(CurrWeather), nl, !.
 
 status :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn udah masukin command, orang dalam gan??!'), !.
@@ -129,17 +129,14 @@ status :- isStarted(1) -> username(Username), checkStatus(Username).
 decreaseStamina:-  ( retract(stamina(Username, CurrStamina)),
                     NewStamina is CurrStamina - 1),
                     (NewStamina > 0 -> asserta(stamina(Username, NewStamina));
-                    NewStamina =< 0 -> goToHome).
+                    NewStamina =< 0 -> (maxStamina(Username, MaxStamina), asserta(stamina(Username, MaxStamina)), goToHome)).
 
 goToHome    :- retract(playerloc(_,_)),
                 houseloc(X,Y),
                 asserta(playerloc(X,Y)),
-                maxStamina(Username, MaxStamina),
-                retract(stamina(Username, _)),
-                asserta(maxStamina(Username, MaxStamina)),
-                addDay,
-                write("Kamu tiba-tiba pingsan!"), nl,
-                write("Sekarang kamu berada di rumah."), nl,
-                write("Satu hari sudah berlalu."), nl,
-                write("Perhatikan stamina kamu. Jangan sampai terlalu lelah ya!"), nl, !.
+                addDay,addDay,
+                write('Kamu tiba-tiba pingsan!'), nl,
+                write('Sekarang kamu berada di rumah.'), nl,
+                write('Dua hari sudah berlalu.'), nl,
+                write('Perhatikan stamina kamu. Jangan sampai terlalu lelah ya!'), nl, !.
 

@@ -144,3 +144,17 @@ isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write
                                             isWater(NewX, NewY) -> retract(playerloc(NewX, NewY)), asserta(playerloc(PrevX, PrevY)),
                                             write('Kamu tidak bisa berjalan di atas air!'), nl, fail, !;
                                             (\+ isWater(NewX, NewY), \+ isBorder(NewX, NewY)) -> addTime).
+
+
+/* Teleport */
+/*
+teleport :-     write('Apakah kamu ingin pergi ke suatu tempat?'), nl,
+                write('ya/tidak'), read(Choice), nl,
+                (\+ Choice = ya -> write('Baiklah kalau begitu. Semoga harimu menyenangkan.'), nl,
+                                   write('Selamat tinggal!'), nl;
+                Choice = ya     -> write('Kamu ingin pergi ke mana?'), nl,
+                                   write('Masukkan koordinat x: '), read(XT),
+                                   write('Masukkan koordinat y: '), read(YT),
+
+% belum selesai
+*/
