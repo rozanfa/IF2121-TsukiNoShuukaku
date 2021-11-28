@@ -13,8 +13,8 @@ mkstr(pineapple, 'Nanas').
 
 mkstr(carrot, 'Wortel').
 mkstr(eggplant, 'Terong').
-mkstr(sweet_potato, 'Kentang Manis').
-mkstr(green_pepper, 'Paprika Hijau').
+mkstr(spinach, 'Bayam').
+mkstr(pumpkin, 'Labu').
 
 mkstr(turnip_seed, 'Bibit Lobak').
 mkstr(potato_seed, 'Bibit Kentang').
@@ -28,8 +28,8 @@ mkstr(pineapple_seed, 'Benih Nanas').
 
 mkstr(carrot_seed, 'Bibit Wortel').
 mkstr(eggplant_seed, 'Benih Terong').
-mkstr(sweet_potato_seed, 'Bibit Kentang Manis').
-mkstr(green_pepper_seed, 'Benih Paprika Hijau').
+mkstr(spinach_seed, 'Bibit Bayam').
+mkstr(pumpkin_seed, 'Benih Labu').
 
 mkstr(chicken, 'Ayam').
 mkstr(sheep, 'Domba').
@@ -43,3 +43,37 @@ mkstr(eel, 'Ikan Belut').
 mkstr(salmon, 'Ikan Salmon').
 mkstr(catfish, 'Ikan Lele').
 mkstr(tuna, 'Ikan Tuna').
+
+mkstr(turnip, 'Lobak').
+mkstr(potato, 'Kentang').
+mkstr(cucumber, 'Timun').
+mkstr(cabbage, 'Kubis').
+
+mkstr(tomato, 'Tomat').
+mkstr(corn, 'Jagung').
+mkstr(onion, 'Bawang').
+mkstr(pineapple, 'Nanas').
+
+mkstr(carrot, 'Wortel').
+mkstr(eggplant, 'Terong').
+mkstr(spinach, 'Bayam').
+mkstr(pumpkin, 'Labu').
+
+mkstr(ayam, chicken).
+mkstr(domba, sheep).
+mkstr(sapi, cow).
+
+mkstr(lobak, turnip).
+mkstr(kentang, potato).
+mkstr(timun, cucumber).
+mkstr(kubis, cabbage).
+
+mkstr(tomat, tomato).
+mkstr(jagung, corn).
+mkstr(bawang, onion).
+mkstr(nanan, pineapple).
+
+mkstr(wortel, carrot).
+mkstr(terong, eggplant).
+mkstr(bayam, spinach).
+mkstr(labu, pumpkin).

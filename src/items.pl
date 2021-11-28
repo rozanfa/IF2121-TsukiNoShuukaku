@@ -19,8 +19,8 @@ crop(pineapple).
 /* Fall */
 crop(carrot). 
 crop(eggplant).
-crop(sweet_potato).
-crop(green_pepper).
+crop(spinach).
+crop(pumpkin).
 /* winter */
 /*no crop */
 
@@ -38,8 +38,8 @@ cropSeed(pineapple_seed).
 /* Fall */
 cropSeed(carrot_seed). 
 cropSeed(eggplant_seed).
-cropSeed(sweet_potato_seed).
-cropSeed(green_pepper_seed).
+cropSeed(spinach_seed).
+cropSeed(pumpkin_seed).
 /* winter */
 /*no crop seed*/
 
@@ -65,17 +65,17 @@ fish(tuna).
 cropTime(turnip,3). 
 cropTime(potato,2).
 cropTime(cucumber,2).
-cropTime(cabbage,6).
+cropTime(cabbage,5).
 /* summer */
 cropTime(tomato,2). 
 cropTime(corn,3).
 cropTime(onion,2).
-cropTime(pineapple,6).
+cropTime(pineapple,5).
 /*fall*/
 cropTime(carrot,3). 
 cropTime(eggplant,2).
-cropTime(sweet_potato,3).
-cropTime(green_pepper,1).
+cropTime(spinach,3).
+cropTime(pumpkin,5).
 
 /* harga beli*/
 
@@ -94,8 +94,8 @@ cropPurchasePrice(pineapple_seed,500).
 /* fall */
 cropPurchasePrice(carrot_seed,200). 
 cropPurchasePrice(eggplant_seed,160). 
-cropPurchasePrice(sweet_potato_seed,240). 
-cropPurchasePrice(green_pepper_seed,80). 
+cropPurchasePrice(spinach_seed,240). 
+cropPurchasePrice(pumpkin_seed,400). 
 
 /*harga jual */
 
@@ -114,8 +114,8 @@ cropSellPrice(pineapple,1500).
 /* fall */
 cropSellPrice(carrot,600).
 cropSellPrice(eggplant,480).
-cropSellPrice(sweet_potato,720).
-cropSellPrice(green_pepper,240).
+cropSellPrice(spinach,720).
+cropSellPrice(pumpkin,1200).
 /*product crop*/
 /* Spring */
 productCrop(turnip_seed,turnip).
@@ -130,8 +130,8 @@ productCrop(pineapple_seed,pinapple).
 /* Fall */
 productCrop(carrot_seed,carrot).
 productCrop(eggplant_seed,eggplant).
-productCrop(sweet_potato_seed,sweet_potato).
-productCrop(green_pepper_seed,green_pepper).
+productCrop(spinach_seed,spinach).
+productCrop(pumpkin_seed,pumpkin).
 
 /* season */
 seasonCrop(turnip,1).
@@ -144,8 +144,8 @@ seasonCrop(onion,2).
 seasonCrop(pineapple,2).
 seasonCrop(carrot,3).
 seasonCrop(eggplant,3).
-seasonCrop(sweet_potato,3).
-seasonCrop(green_pepper,3).
+seasonCrop(spinach,3).
+seasonCrop(pumpkin,3).
 
 
 /* Animal product section */
