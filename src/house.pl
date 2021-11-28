@@ -1,4 +1,3 @@
-/* Include necessary modules */
 /* declare dynamic predicates */
 :- dynamic(inHouse/1).
 :- dynamic(diaries/1).
@@ -105,4 +104,4 @@ read_file(Stream,[]) :-
 read_file(Stream,[X|L]) :-
     \+ at_end_of_stream(Stream),
     read(Stream,X),
-    read_file(Stream,L).
+    read_file(Stream,L).*/
