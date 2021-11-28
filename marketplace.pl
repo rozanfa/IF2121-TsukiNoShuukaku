@@ -110,7 +110,7 @@ exitShop:-
     retract(inMarketState(_)), asserta(inMarketState(0)).
 
 alchemits:-
-    (alchemitslocc(Xa,Ya,TP,_), playerloc(Xp,Yp),
+    (alchemitsloc(Xa,Ya,TP,_), playerloc(Xp,Yp),
     ((TP > 0, Xp =:= Xa, Yp =:= Ya) ->
         retract(inAlchemitsState(_)), asserta(inAlchemitsState(1)),
         write('Ohh tidak kamu menemukanku!!!\nSilakan pilih potoin yang ingin dibeli\n1. (buyPotion) Beli Potion');
