@@ -57,10 +57,11 @@ bacaDiary:-
 
 bobo:-
     write('Kamu memilih untuk bobo, mimpi indah ^_^.\n\n'),
-    addTime,
+    addDay, retract(time(_)), asserta(time(0)),
     day(X), season(Y), isSeason(NamaMusim,Y),
     write('Day '), write(X), write(', Musim: '), write(NamaMusim),
-    retract(houseOpCode(1)),asserta(houseOpCode(0)).
+    retract(houseOpCode(1)), asserta(houseOpCode(0)),
+    username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)).
 
 /* ====================== SAVE - LOAD SECTION ======================*/
 

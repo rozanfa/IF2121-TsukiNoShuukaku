@@ -1,3 +1,5 @@
+:- include('stringify.pl').
+:- include('items.pl').
 /* file : level.pl */
 
 :- dynamic(used/1).

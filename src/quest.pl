@@ -1,5 +1,8 @@
+:- include('marketplace.pl').
+:- include('level.pl').
+
 /* declare dynamic predicates */
-:- dynamic(currentQuest/5).
+:- dynamic(currentQuest/1).
 :- dynamic(inQuest/1).
 :- dynamic(questCounter/1).
 
@@ -16,9 +19,9 @@ questItems(5,4,5,4,50).
 
 progQuest(X):- inQuest(Chk), Chk =:= 0, !.
 progQuest(X):-
-    crop(X) -> currentQuest([Z,Y,_,_,_]), Ym is Y+1, retract(currentQuest([_,Y,_,_,_])), asserta(currentQuest([_,Ym,_,_,_])), questCheck(Z);
-    fish(X) -> currentQuest([Z,_,Y,_,_]), Ym is Y+1, retract(currentQuest([_,_,Y,_,_])), asserta(currentQuest([_,_,Ym,_,_])), questCheck(Z);
-    product(X) -> currentQuest([Z,_,_,Y,_]), Ym is Y+1, retract(currentQuest([_,_,_,Y,_])), asserta(currentQuest([_,_,_,Ym,_])), questCheck(Z).
+    crop(X) -> currentQuest([Z,Y,_,_,_]), Ym is Y+1, retract(currentQuest([A,Y,B,C,D])), asserta(currentQuest([A,Ym,B,C,D])), questCheck(Z);
+    fish(X) -> currentQuest([Z,_,Y,_,_]), Ym is Y+1, retract(currentQuest([A,B,Y,C,D])), asserta(currentQuest([A,B,Ym,C,D])), questCheck(Z);
+    product(X) -> currentQuest([Z,_,_,Y,_]), Ym is Y+1, retract(currentQuest([A,B,C,Y,D])), asserta(currentQuest([A,B,C,Ym,D])), questCheck(Z).
 
 questCheck(X):-
     questItems(X,A,B,C,G),
