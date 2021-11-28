@@ -1,6 +1,3 @@
-:- include('marketplace.pl').
-:- include('level.pl').
-
 /* declare dynamic predicates */
 :- dynamic(currentQuest/1).
 :- dynamic(inQuest/1).
@@ -36,6 +33,9 @@ questCheck(X):-
     gold(Player,C), Cp is C+Gm,
     retract(gold(Player,C)), asserta(gold(Player,Cp)).
 
+quest:- playerloc(Xp,Yp), questloc(Xq,Yq), inQuest(S), (Xp =:= Xq, Yp =:= Yq, S =:= 0) -> initQuest;
+    S =:= 1 -> write('Kamu sedang menjalankan quest lain!');
+    write('Kamu sedang tidak berada di Tile Quest. \n').
 initQuest:-
     questCounter(C),
     Cp is C+1,
@@ -47,11 +47,3 @@ initQuest:-
     write('- '), write(Z), write(' hasil ternak\n'),
     retract(inQuest(0)), asserta(inQuest(1)),
     retract(currentQuest([0,_,_,_,_])), asserta(currentQuest([Cp,_,_,_,_])).
-
-quest:-
-    playerloc(Xp,Yp),
-    questloc(Xq,Yq),
-    inQuest(S),
-    (Xp =:= Xq, Yp =:= Yq, S =:= 0) -> initQuest;
-    S =:= 1 -> write('Kamu sedang menjalankan quest lain!');
-    write('Kamu sedang tidak berada di Tile Quest. \n').

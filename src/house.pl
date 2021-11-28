@@ -1,18 +1,18 @@
 /* Include necessary modules */
-:-include('quest.pl').
 /* declare dynamic predicates */
-:- dynamic(houseOpCode/1).
+:- dynamic(inHouse/1).
 :- dynamic(diaries/1).
 :- dynamic(emptyDiary/1).
 
-houseOpCode(0).
+inHouse(0).
 emptyDiary(0).
 diaries([[0,'']]).
 
-house:- houseOpCode(1), write('Kamu sudah berada di dalam rumah.\n'), !.
-house:-
-    houseOpCode(0),
-    retract(houseOpCode(0)),asserta(houseOpCode(1)),
+house:- playerloc(Xp,Yp), houseloc(Xh,Yh), (Xp =:= Xh, Yp =:= Yh -> getInHouse; write('Kamu tidak berada di tile Rumah!!\n')), !.
+getInHouse:- inHouse(1), write('Kamu sudah berada di dalam rumah.\n'), !.
+getInHouse:-
+    inHouse(X),
+    retract(inHouse(X)),asserta(inHouse(1)),
     write('Tadaima. Apa yang ingin kamu lakukan?\n'),
     write('- bobo\n- tulisDiary\n- bacaDiary\n- keluar').
 
@@ -28,7 +28,9 @@ writeD:-
     A =:= 0 -> retract(emptyDiary(0)),asserta(emptyDiary(1)).
 
 tulisDiary:-
-    currentDay(D),
+    inHouse(X),
+    X =:= 0 -> write('Kamu tidak sedang berada di dalam rumah!');
+    day(D),
     diaries([[Dc,_]|A]),
     Dc =:= D -> write('Menimpa Diary...\n'), retract(diaries([[Dc,_]|A])), asserta(diaries(A)), writeD;
     writeD.
@@ -51,32 +53,35 @@ showDiaryList([[Day,_]|Tail]):-
     showDiaryList(Tail).
 
 bacaDiary:-
+    inHouse(X),
+    X =:= 0 -> write('Kamu tidak sedang berada di dalam rumah!');
     write('Ini daftar diary-mu:\n'),
     diaries(Ds),
     showDiaryList(Ds).
 
 bobo:-
+    inHouse(X),
+    X =:= 0 -> write('Kamu tidak sedang berada di dalam rumah!');
     write('Kamu memilih untuk bobo, mimpi indah ^_^.\n\n'),
     addDay, retract(time(_)), asserta(time(0)),
     day(X), season(Y), isSeason(NamaMusim,Y),
     write('Day '), write(X), write(', Musim: '), write(NamaMusim),
-    retract(houseOpCode(1)), asserta(houseOpCode(0)),
+    retract(inHouse(1)), asserta(inHouse(0)),
     username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)).
 
 /* ====================== SAVE - LOAD SECTION ======================*/
 
-/* TEST */
+/* TEST 
 username(claire). job(claire,farmer).
 isiInventory([[amogus,1],[pepega,2]]).
 time(6). day(8). season(2).
 currentQuest([2,2,0,1,20]). inQuest(1). questCounter(1).
 exp(claire, 50). farmingexp(claire, 18). fishingexp(claire, 8). ranchingexp(claire, 12).
 level(claire, 7). farminglevel(claire, 5). fishinglevel(claire, 3). ranchinglevel(claire, 4).
-gold(claire, 5000). maxStamina(claire, 15). stamina(claire, 12). diaries([1,'Pengen meninggal.']).
+gold(claire, 5000). maxStamina(claire, 15). stamina(claire, 12). diaries([1,'Pengen meninggal.']). */
 
 writeFile(N):-
-    number_atom(N,Xa),
-    atom_concat(Xa,'.txt',FileName),
+    atom_concat(N,'.txt',FileName),
     open(FileName,write,Stream),
     username(X), job(X,Job),
     isiInventory(Inv),
@@ -88,8 +93,7 @@ writeFile(N):-
     writeq(Stream,[X,Job,Inv,[Time,Day,Season],[CurrQ,InQ,CountQ],[XP, FarmXP, FishXP, RanchXP],[Lvl, FarmLvl, FishLvl, RanchLvl],Gold,MaxSta,Sta,Diary]), close(Stream).
 
 readFile(N):-
-    number_atom(N,Xa),
-    atom_concat(Xa,'.txt',FileName),
+    atom_concat(N,'.txt',FileName),
     open(FileName,read,Stream),
     read_atom(Stream, Lines),
     close(Stream),

@@ -9,7 +9,8 @@
 :- include('prologue.pl').
 :- include('time.pl').
 %:- include('activities.pl').
-%:- include('quest.pl').
+:- include('quest.pl').
+:- include('house.pl').
 
 :- dynamic(isStarted/1).
 

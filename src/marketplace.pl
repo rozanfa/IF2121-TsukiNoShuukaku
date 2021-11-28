@@ -1,15 +1,9 @@
-/* Include necessary modules */
-:- include('player.pl').
-:- include('time.pl').
-:- include('inventory.pl').
-:- include('map.pl').
-
 /* declare dynamic predicates */
 :- dynamic(marketState/2).
 :- dynamic(marketContent/3).
 :- dynamic(money/1).
 :- dynamic(exp/1).
-:- dynamic(inMarketState/1).
+:- dynamic(inMarket/1).
 :- dynamic(inAlchemitsState/1).
 :- dynamic(potionEfect/2).
 :- dynamic(tempLevel/4).
@@ -26,7 +20,7 @@ fishing_rodlevel(1).
 upTool(X) :- X == shovel -> shovellevel(Y), Ym is Y+1, retract(shovellevel(Y)), asserta(shovellevel(Ym));
              X == fishing_rod -> fishing_rodlevel(Y), Ym is Y+1, retract(fishing_rodlevel(Y)), asserta(fishing_rodlevel(Ym));
 
-inMarketState(0).
+inMarket(0).
 inAlchemitsState(0).
 tempList([]).
 
@@ -82,6 +76,8 @@ pickItem:-
     write('Item tidak ditemukan.\n\n'), buy).
 
 buy:-
+    inMarket(X),
+    X =:= 0 -> write('Kamu tidak sedang berada di dalam market!');
     write('Barang yang ingin dibeli?\n'),
     season(X),
     write('Musim: '), isSeason(NamaMusim,X),
@@ -92,22 +88,23 @@ buy:-
     X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem.
 
 sell:-
+    inMarket(X),
+    X =:= 0 -> write('Kamu tidak sedang berada di dalam market!');
     write('Daftar item di dalam inventory'), nl,
     write('Barang yang ingin dijual?'), nl,
     read(X),
     write(X), nl.
 
-market:-
-    retract(inMarketState(0)), asserta(inMarketState(1)),
-    playerloc(Xp,Yp),
-    marketplaceloc(Xm,Ym),
-    (Xp =:= Xm, Yp =:= Ym) -> write('Apa yang ingin kamu lakukan?\n1. (buy) Beli barang\n2. (sell) Jual barang');
-    write('Kamu tidak sedang berada di Marketplace. \n').
+market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
+market:- 
+getInMarket:-
+    retract(inMarket(0)), asserta(inMarket(1)),
+    write('Apa yang ingin kamu lakukan?\n1. (buy) Beli barang\n2. (sell) Jual barang').
 
 exitShop:-
     write('Terima kasih sudah datang, silakan datang kembali!'),
     retract(tempList(_)), asserta(tempList([])),
-    retract(inMarketState(_)), asserta(inMarketState(0)).
+    retract(inMarket(_)), asserta(inMarket(0)).
 
 alchemits:-
     (alchemitsloc(Xa,Ya,TP,_), playerloc(Xp,Yp),
