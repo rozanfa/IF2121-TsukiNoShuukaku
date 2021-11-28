@@ -149,9 +149,9 @@ seasonCrop(pumpkin,3).
 
 
 /* Animal product section */
-setProductCount :- asserta(woolProduct(0)), /*3 hari sekali */
-                   asserta(eggProduct(0)), /* tiap hari */
-                   asserta(milkProduct(0)). /* tiap hari */
+setProductCount :- asserta(woolProduct(0)),
+                   asserta(eggProduct(0)), 
+                   asserta(milkProduct(0)).
 
 productYield(chicken,egg).
 productYield(cow,milk).
@@ -181,7 +181,7 @@ setProductPricelvl3 :-
 
 setAnimal :-
                 asserta(totalCow(0)),
-                asserta(totalsheep(0)),
+                asserta(totalSheep(0)),
                 asserta(totalChicken(0)).
 
 /* Fish section */
@@ -206,8 +206,8 @@ getFishing(4,none).
 /* tool section */
 /* harga beli */
 
-toolPurchasePrice(shovel, 300). /*  bisa dibeli sampe max nyesuain max lvlfarming */
-toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfishing*/
+toolPurchasePrice(shovel, 300).
+toolPurchasePrice(fishing_rod,500).
 
 setTool :- asserta(shovellevel(1)),
            asserta(fishing_rodlevel(1)).

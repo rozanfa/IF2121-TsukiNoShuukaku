@@ -1,14 +1,16 @@
 /* :- include('house.pl').
 
-:- include('level.pl').
 :- include('marketplace.pl').*/
+:- include('level.pl').
 :- include('inventory.pl').
 :- include('map.pl').
 :- include('player.pl').
 :- include('prologue.pl').
 :- include('time.pl').
-%:- include('activities.pl').
-%:- include('quest.pl').
+:- include('activities.pl').
+:- include('quest.pl').
+:- include('stringify.pl').
+:- include('items.pl').
 
 :- dynamic(isStarted/1).
 
