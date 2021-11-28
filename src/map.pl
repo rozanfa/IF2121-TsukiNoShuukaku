@@ -77,10 +77,10 @@ water(8,13).
 
 /* Batas map */
 
-isBorder(X, _) :- X == 0.
-isBorder(_, Y) :- Y == 0.
-isBorder(X, _) :- X == 15.
-isBorder(_, Y) :- Y == 15.
+isBorder(X, _) :- X < 1.
+isBorder(_, Y) :- Y < 1.
+isBorder(X, _) :- X > 14.
+isBorder(_, Y) :- Y > 14.
 
 isWater(X,Y) :- water(X,Y).
 
@@ -147,14 +147,85 @@ isMoveValid(PrevX, PrevY, NewX, NewY) :-    (marketplaceloc(NewX, NewY) -> write
 
 
 /* Teleport */
-/*
-teleport :-     write('Apakah kamu ingin pergi ke suatu tempat?'), nl,
-                write('ya/tidak'), read(Choice), nl,
-                (\+ Choice = ya -> write('Baiklah kalau begitu. Semoga harimu menyenangkan.'), nl,
-                                   write('Selamat tinggal!'), nl;
-                Choice = ya     -> write('Kamu ingin pergi ke mana?'), nl,
-                                   write('Masukkan koordinat x: '), read(XT),
-                                   write('Masukkan koordinat y: '), read(YT),
+
+teleport :-     write('    ____________'),nl,
+                write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                write('|                                                                                   |'),nl,
+                write('|  Kamu ingin pergi ke mana?                                                        |'),nl,
+                write('|                                                                                   |'),nl,
+                write('|-----------------------------------------------------------------------------------|'),nl,
+                write('Masukkan koordinat x: '), read(XT),
+                write('Masukkan koordinat y: '), read(YT),
+                (isBorder(XT, YT) ->
+                        write('    ____________'),nl,
+                        write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                        write('|                                                                                   |'),nl,
+                        write('|  Tempat itu terlalu jauh.                                                         |'),nl,
+                        write('|  Aku hanya bisa membawamu pergi ke sekitar desa ini saja.                         |'),nl,
+                        write('|-----------------------------------------------------------------------------------|'),nl, teleport;
+                isWater(XT, YT) ->
+                        write('    ____________'),nl,
+                        write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                        write('|                                                                                   |'),nl,
+                        write('|  Itu adalah tile air!                                                             |'),nl,
+                        write('|  Kamu kan tidak bisa berenang :(                                                  |'),nl,
+                        write('|-----------------------------------------------------------------------------------|'),nl, teleport;
+
+                (\+ isBorder(XT, YT), \+ isWater(XT, YT)) -> 
+                        write('    ____________'),nl,
+                        write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                        write('|                                                                                   |'),nl,
+                        write('|  Baiklah! Aku akan membawamu ke sana..                                            |'),nl,
+                        write('|                                                                                   |'),nl,
+                        write('|-----------------------------------------------------------------------------------|'),nl,
+                        write('ketik \"next.\" untuk lanjut'),  nl, read(_),
+                        retract(playerloc(_,_)), asserta(playerloc(XT,YT)),
+                        write('    ____________'),nl,
+                        write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                        write('|                                                                                   |'),nl,
+                        write('|  Sudah sampai!                                                                    |'),nl,
+                        write('|  Semoga harimu menyenangkan!                                                      |'),nl,
+                        write('|-----------------------------------------------------------------------------------|'),nl
+                ), !. 
+
+periTidur :-      nl,
+                write('-----------------------------[ Kamu bertemu Peri Tirur ]-----------------------------'), nl,
+                write('    ____________'),nl,
+                write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                write('|                                                                                   |'),nl,
+                write('|  Halo, Claire! Selamat pagi..                                                     |'),nl,
+                write('|                                                                                   |'),nl,
+                write('|-----------------------------------------------------------------------------------|'),nl,
+                write('ketik \"next.\" untuk lanjut'),  nl, read(_),
+
+                write('    ____________'),nl,
+                write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                write('|                                                                                   |'),nl,
+                write('|  Aku adalah peri tidur. Aku bisa membawamu kemanapun yang kau mau di desa ini.    |'),nl,
+                write('|                                                                                   |'),nl,
+                write('|-----------------------------------------------------------------------------------|'),nl,
+                write('ketik \"next.\" untuk lanjut'),  nl, read(_),
+
+
+                write('    ____________'),nl,
+                write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                write('|                                                                                   |'),nl,
+                write('|  Apakah kamu sedang ingin pergi ke suatu tempat?                                  |'),nl,
+                write('|                                                                                   |'),nl,
+                write('|-----------------------------------------------------------------------------------|'),nl,
+                write('ketik \"next.\" untuk lanjut'), nl,
+                write('Jawabanmu (ya/tidak): '), read(Choice), nl,
+                (Choice = ya  -> teleport;
+                Choice = y  -> teleport;
+                Choice = yes  -> teleport;
+                (\+ Choice = ya, \+ Choice = y, \+ Choice = yes)  -> 
+                        write('    ____________'),nl,
+                        write('|--[ Peri Tidur ]-------------------------------------------------------------------|'),nl,
+                        write('|                                                                                   |'),nl,
+                        write('|  Baiklah kalau begitu. Semoga harimu menyenangkan!                                |'),nl,
+                        write('|  Selamat tinggal..                                                                |'),nl,
+                        write('|-----------------------------------------------------------------------------------|'),nl), !.
+
+
 
 % belum selesai
-*/
