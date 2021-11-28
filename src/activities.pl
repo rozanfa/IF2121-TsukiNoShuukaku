@@ -3,7 +3,6 @@
 /* set dynamic */
 :- dynamic(digTime/1).
 digTime(0).
-printbibit :- isiInventory(Isi), printSeed(Isi).
 /* Farming */
 dig :- playerloc(X,Y), \+cannotbeDigged(X,Y), isAvailable(shovel,1), shovellevel(Z), digging(Z), !;
        playerloc(X,Y), \+cannotbeDigged(X,Y), \+isAvailable(shovel,1), write('Kamu tidak punya sekop untuk menggali'), nl, !;
@@ -17,7 +16,7 @@ digging(Level) :- Level==1, playerloc(X,Y), asserta(digloc(X,Y)), write('Kamu me
                   Level==3, playerloc(X,Y), asserta(digloc(X,Y)), digTime(A), A==2, write('Kamu menggali tempat ini.'), nl, asserta(digTime(0)), retract(digTime(A)), decreaseStamina, stamina(_, Z), maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl, addTime,!.
             
 plant :- playerloc(X,Y), digloc(X,Y), cropSeed(Seed), isAvailable(Seed,Count), write('Kamu mempunyai:'), nl,
-         printbibit, nl,
+         isiInventory(Isi), printSeed(Isi), nl,
          write('Apa yang ingin kamu tanam?'), nl,
          read(Crop), nl,
          planting(Crop), !; 
