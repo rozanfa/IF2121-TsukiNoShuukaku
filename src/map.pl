@@ -217,7 +217,6 @@ periTidur :-      nl,
                 write('|  Apakah kamu sedang ingin pergi ke suatu tempat?                                  |'),nl,
                 write('|                                                                                   |'),nl,
                 write('|-----------------------------------------------------------------------------------|'),nl,
-                write('ketik \"next.\" untuk lanjut'), nl,
                 write('Jawabanmu (ya/tidak): '), read(Choice), nl,
                 (Choice = ya  -> teleport;
                 Choice = y  -> teleport;
