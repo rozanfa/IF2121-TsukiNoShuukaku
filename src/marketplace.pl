@@ -39,8 +39,8 @@ showListWinter(X,[Head|Tail]):-
     X >= 4 -> shovellevel(P), fishing_rodlevel(Q), write('8. Sekop Level '), write(P), write(' (300 golds)\n9. Alat Pancing Level '), write(Q), write(' (500 golds)\n\n');
     animalPrice(Head,Pr), write(X), write('. '), mkstr(Head,Str), write(Str), write(' ('), write(Pr), write(' golds)\n'), Xn is X+1, showListWinter(Xn,Tail).
 
-pickfromTemp(_,[],Item):- Item == nan, !.
-pickfromTemp(X,_,Item):- X < 0, Item == nan, !.
+pickfromTemp(_,[],Item):- Item = nan, !.
+pickfromTemp(X,_,Item):- X < 0, Item = nan, !.
 pickfromTemp(X,[Head|_],Head):- Xm is X-1, Xm =:= 0, !.
 pickfromTemp(X,[_|Tail],Item):-
     Xm is X-1, pickfromTemp(Xm,Tail,Item).
@@ -93,8 +93,8 @@ buy:-
     X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem).
 
 inInvChk(X,Isi,[Name,Count]):-
-    member([X,_],Isi) -> member([X,Y],Isi), Name == X, Count is Y;
-    Name == nan.
+    member([X,_],Isi) -> member([X,Y],Isi), Name = X, Count is Y;
+    Name = nan.
 
 sellItem(Name,Count,Pr,Am):-
     Total is Pr * Am,
