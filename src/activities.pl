@@ -80,31 +80,31 @@ ranch :- playerloc(X,Y), ranchloc(X,Y), totalChicken(A), totalSheep(B), totalCow
                      mkstr(Animal1,Animal), productYield(Animal,milk), ranchCow, !;
                      \+mkstr(Animal1,Animal), write('Hewan yang kamu tulis tidak ada'), nl, !.
 
-ranchChicken :- totalChicken(A), A\==0, eggProduct(X), day(CurrDay), B is CurrDay-X, B>0, addItem(egg,A), 
+ranchChicken :- totalChicken(A), A\==0, eggProduct(X), day(CurrDay), CurrDay>X, addItem(egg,A), 
                 write('Ayam milikmu menghasilkan '), write(A), write(' Telur.'), nl,
                 write('Kamu mendapatkan '), write(A), write(' Telur.'), nl,
                 addExpRanching(_,6), progQuest(A), nl,
                 decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
                 addTime, asserta(eggProduct(CurrDay)), retract(eggProduct(X)), progQuest(egg), !;
-                totalChicken(A), A\==0, eggProduct(X), day(CurrDay), B is CurrDay-X, B==0, write('Ayam milikmu belum menghasilkan Telur.'), nl, !;
+                totalChicken(A), A\==0, eggProduct(X), day(CurrDay), CurrDay==X, write('Ayam milikmu belum menghasilkan Telur.'), nl, !;
                 totalChicken(A), A==0, write('Kamu tidak punya Ayam').
 
-ranchSheep :- totalSheep(B), B\==0, woolProduct(X), day(CurrDay), A is CurrDay-X, A>=3, addItem(wool,B), 
+ranchSheep :- totalSheep(B), B\==0, woolProduct(X), day(CurrDay), CurrDay>X, addItem(wool,B), 
               write('Domba milikmu menghasilkan '), write(B), write(' Wol'), nl,
               write('Kamu mendapatkan '), write(B), write(' Wol.'), nl,
               addExpRanching(_,12), progQuest(B), nl,
               decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
               addTime, asserta(woolProduct(CurrDay)), retract(woolProduct(X)), progQuest(wool), !;
-              totalSheep(B), B\==0, woolProduct(X), day(CurrDay), A is CurrDay-X, A<3, write('Domba milikmu belum menghasilkan Wol.'), nl, !;
+              totalSheep(B), B\==0, woolProduct(X), day(CurrDay), CurrDay==X, write('Domba milikmu belum menghasilkan Wol.'), nl, !;
               totalSheep(B), B==0, write('Kamu tidak punya Domba'),nl, !.
 
-ranchCow :- totalCow(C), C\==0, milkProduct(X), day(CurrDay), A is CurrDay-X, A>0, addItem(milk,C), 
+ranchCow :- totalCow(C), C\==0, milkProduct(X), day(CurrDay), CurrDay>X, addItem(milk,C), 
             write('Sapi milikmu menghasilkan '), write(C), write(' Susu.'),nl, 
             write('Kamu mendapatkan '), write(C), write(' Susu.'), nl,
             addExpRanching(_,18), progQuest(C), nl,
             decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
             addTime, asserta(milkProduct(CurrDay)), retract(milkProduct(X)), progQuest(milk), !;
-            totalCow(C), C\==0, milkProduct(X), day(CurrDay), A is CurrDay-X, A==0, write('Sapi milikmu belum menghasilkan Susu.'), nl, !;
+            totalCow(C), C\==0, milkProduct(X), day(CurrDay), CurrDay==X, write('Sapi milikmu belum menghasilkan Susu.'), nl, !;
             totalCow(C), C==0, write('Kamu tidak punya Sapi'), nl, !.
 
 checknewChicken :- totalnewChicken(X), totalChicken(Y), Y>0, Z is Y+X, asserta(totalChicken(Z)), retract(totalChicken(Y)), retract(totalnewChicken(X)) -> true;

@@ -191,19 +191,19 @@ animalPrice(cow,1500).
 setProductPricelvl1 :-
                     asserta(productPrice(egg,150)),
                     asserta(productPrice(milk,500)),  
-                    asserta(productPrice(wool,1000)). 
+                    asserta(productPrice(wool,350)). 
 
 setProductPricelvl2 :-
                     retractall(productPrice(_,_)),
                     asserta(productPrice(egg,300)),
                     asserta(productPrice(milk,1000)),  
-                    asserta(productPrice(wool,2000)). 
+                    asserta(productPrice(wool,700)). 
 
 setProductPricelvl3 :-
                     retractall(productPrice(_,_)),
                     asserta(productPrice(egg,450)), 
                     asserta(productPrice(milk,1500)),  
-                    asserta(productPrice(wool,3000)). 
+                    asserta(productPrice(wool,1050)). 
 
 setAnimal :-
                 asserta(totalCow(0)),
