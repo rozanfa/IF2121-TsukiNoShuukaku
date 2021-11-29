@@ -36,7 +36,8 @@ harvest :- playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay>=Time, 
            addExpFarming(_,2), progQuest(Crop), nl,
            decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
            addTime, retract(croploc(X,Y,Crop,Time)), progQuest(Crop), !;
-           playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay<Time, write('Tanaman belum siap panen'), nl, !;
+           playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay<Time, write('Tanaman belum siap panen'), nl,
+           Z is Time-CurrDay, write('Tanaman akan panen '), write(Z), write(' hari lagi'), !;
            playerloc(X,Y), \+croploc(X,Y,Crop,Time), write('Kamu harus berada di lokasi tempat yang sudah ditanam'), nl, !.
 
 
