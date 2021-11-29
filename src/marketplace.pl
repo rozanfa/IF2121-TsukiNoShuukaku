@@ -55,6 +55,18 @@ buyItem(Item,Pr,Am):-
     addItem(Item,Am), mkstr(Item,Str),
     write('Kamu berhasil membeli '), write(Am), write(' '), write(Str), write('.\nKamu membayar sebesar '), write(Total), write(' gold\n\n'), buy).
 
+processAnimal(Item,Pr,Am):-
+    Total is Pr * Am,
+    username(Usr), gold(Usr,X),
+    (Am < 0 -> write('Jumlah tidak valid, ulangi kembali masukan!\n'), read(Am), buyItem(Item,Pr,Am);
+    X < Total -> write('Jumlah gold kamu tidak cukup untuk membeli barang ini!\n\n'), buy;
+    GLeft is X - Total,
+    retract(gold(Usr,X)), asserta(gold(Usr,GLeft)),
+    (Item == cow -> totalnewCow(Anim), NewAnim is Anim + 1, retract(totalnewCow(_),asserta(totalnewCow(NewAnim)));
+    Item == sheep -> totalnewSheep(Anim), NewAnim is Anim + 1, retract(totalnewSheep(_),asserta(totalnewSheep(NewAnim)));
+    Item == chicken -> totalnewChicken(Anim), NewAnim is Anim + 1, retract(totalnewChicken(_),asserta(totalnewChicken(NewAnim)))),
+    mkstr(Item,Str), write('Kamu berhasil membeli '), write(Am), write(' ekor '), write(Str), write('.\nKamu membayar sebesar '), write(Total), write(' gold\n\n'), buy).
+
 processTool(Item,Pr):-
     isiInventory(Isi),
     username(Usr), gold(Usr,X),
@@ -76,7 +88,7 @@ pickItem:-
     tempList(List),
     pickfromTemp(X,List,Item), C is X,
     (C >= 1, C < 5 -> cropPurchasePrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), buyItem(Item,Pr,Am);
-    C >= 5, C < 8 -> animalPrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), buyItem(Item,Pr,Am);
+    C >= 5, C < 8 -> animalPrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), processAnimal(Item,Pr,Am);
     C >= 8 ->  toolPurchasePrice(Item,Pr), processTool(Item,Pr);
     write('Item tidak ditemukan.\n\n'), buy).
 
@@ -116,13 +128,12 @@ sell:-
     isiInventory(Isi), printInventory(Isi),
     write('Barang yang ingin dijual? Ketikkan \"exitShop\" untuk keluar\n'), nl,
     read(X),
-    X = exitShop -> exitShop;
-    \+ X = exitShop -> (
-        inInvChk(X,Isi,[Name,Count]),
-        (crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
-        product(Name) -> productPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
-        fish(Name) -> fishPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
-        write('Item ini tidak ada di dalam inventory!\n'), sell)).
+    X == exitShop -> exitShop;
+    inInvChk(X,Isi,[Name,Count]),
+    (crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    product(Name) -> productPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    fish(Name) -> fishPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    write('Item ini tidak ada di dalam inventory!\n'), sell).
 
 market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
 getInMarket:- inMarket(1), write('Kamu sudah berada di dalam market!.\n'), !.
