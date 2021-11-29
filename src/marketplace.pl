@@ -50,11 +50,26 @@ buyItem(Item,Pr,Am):-
     username(Usr), gold(Usr,X),
     (Am < 0 -> write('Jumlah tidak valid, ulangi kembali masukan!\n'), read(Am), buyItem(Item,Pr,Am);
     X < Total -> write('Jumlah gold kamu tidak cukup untuk membeli barang ini!\n\n'), buy;
-    tool(Item) -> upTool(Item), buy;
     GLeft is X - Total,
     retract(gold(Usr,X)), asserta(gold(Usr,GLeft)),
     addItem(Item,Am), mkstr(Item,Str),
     write('Kamu berhasil membeli '), write(Am), write(' '), write(Str), write('.\nKamu membayar sebesar '), write(Total), write(' gold\n\n'), buy).
+
+processTool(Item,Pr):-
+    isiInventory(Isi),
+    username(Usr), gold(Usr,X),
+    GLeft is X - Pr, 
+    retract(gold(Usr,_)), 
+    asserta(gold(Usr,GLeft)),
+    mkstr(Item,Str),
+    (member([Item,_],Isi) -> 
+        (Item == shovel -> 
+            (shovellevel(Lv), Lv =:= 3 -> write('Sekop sudah mencapai level maksimal!'), nl;
+            upTool(Item), Lvl is Lv + 1, write(Str), write(' berhasil di-upgrade ke level '), write(Lvl), nl, buy);
+        Item == fishing_rod -> 
+            (fishing_rodlevel(Lv), Lv =:= 3 -> write('Alat pancing sudah mencapai level maksimal!'), nl;
+            upTool(Item), Lvl is Lv + 1, write(Str), write(' berhasil di-upgrade ke level '), write(Lvl), nl, buy));
+    addItem(Item,1), write('Kamu membeli '), write(Str), write(' level 1!!'), nl, buy).
 
 pickItem:-
     read(X),
@@ -62,7 +77,7 @@ pickItem:-
     pickfromTemp(X,List,Item), C is X,
     (C >= 1, C < 5 -> cropPurchasePrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), buyItem(Item,Pr,Am);
     C >= 5, C < 8 -> animalPrice(Item,Pr), write('Berapa banyak yang ingin kamu beli?\n'), read(Am), buyItem(Item,Pr,Am);
-    C >= 8 ->  toolPurchasePrice(Item,Pr), buyItem(Item,Pr,1);
+    C >= 8 ->  toolPurchasePrice(Item,Pr), processTool(Item,Pr);
     write('Item tidak ditemukan.\n\n'), buy).
 
 buy:-
@@ -77,13 +92,14 @@ buy:-
     X =:= 3 -> showRanch, autumnMarketCrop(Y), tempList(List), showList(1,List), pickItem;
     X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem).
 
-inInvChk(_,[],[Name,_]):- Name is nan, !.
-inInvChk(X,[[Name,Count]|_],[Name,Count]):- X == Name, !.
-inInvChk(X,[_|Other],Item):- inInvChk(X,Other,Item).
+inInvChk(X,Isi,[Name,Count]):-
+    member([X,_],Isi) -> member([X,Y],Isi), Name is X, Count is Y;
+    Name is nan.
 
 sellItem(Name,Count,Pr,Am):-
     Total is Pr * Am,
     (Am < 0 -> write('Jumlah tidak valid, ulangi kembali masukan!\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    Am =:= 0 -> write('Kamu batal menjual item.'), nl, sell;
     Count < Am -> write('Jumlah item yang kamu miliki tidak cukup!\n'), sell;
     username(Usr), gold(Usr, X),
     AmLeft is Count - Am,

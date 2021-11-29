@@ -83,15 +83,15 @@ checkStatus(Username) :-    write('Status kamu : '), nl,
                             level(Username, Level), Level < 5, write(Level), nl),
                             write('Level farming    : '), 
                             (level(Username, 3), write('MAX LEVEL!'), nl;
-                            farminglevel(Username, Level), Level < 3, write(Level), nl, !),
+                            farminglevel(Username, LevelFarming), Level < 3, write(LevelFarming), nl, !),
                             write('Exp farming      : '), farmingexp(Username, ExpFarming), write(ExpFarming), nl,
                             write('Level fishing    : '), 
                             (level(Username, 3), write('MAX LEVEL!'), nl;
-                            fishinglevel(Username, Level), Level < 3, write(Level), nl, !),
+                            fishinglevel(Username, LevelFishing), Level < 3, write(LevelFishing), nl, !),
                             write('Exp fishing      : '), fishingexp(Username, ExpFishing), write(ExpFishing), nl,
                             write('Level ranching   : '), 
                             (level(Username, 3), write('MAX LEVEL!'), nl;
-                            ranchinglevel(Username, Level), Level < 3, write(Level), nl, !),
+                            ranchinglevel(Username, LevelRanching), Level < 3, write(LevelRanching), nl, !),
                             write('Exp ranching     : '), ranchingexp(Username, ExpRanching), write(ExpRanching), nl,
                             write('--------------------------------------------------'),nl,
                             write('Exp              : '), exp(Username, Exp), write(Exp),  write('/'), expRequired(Username, Expr), write(Expr), nl,
