@@ -213,6 +213,9 @@ setAnimal :-
 :- dynamic(totalnewCow/1).
 :- dynamic(totalnewSheep/1).
 :- dynamic(totalnewChicken/1).
+totalnewCow(0).
+totalnewSheep(0).
+totalnewChicken(0).
 
 /* Fish section */
 /* harga ikan */
