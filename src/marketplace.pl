@@ -130,7 +130,7 @@ sell:-
     read(Input),
     mkstr(Input, X),
     inInvChk(X,Isi,[Name,Count]),
-    (Name == nan -> write('Item ini tidak ada di dalam inventory!\n mengeluarkanmu dari market...\n'), exitShop.;
+    (Name == nan -> write('Item ini tidak ada di dalam inventory!\n mengeluarkanmu dari market...\n'), exitShop;
     crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
     product(Name) -> productPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
     fish(Name) -> fishPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
