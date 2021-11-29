@@ -1,13 +1,8 @@
 /* declare dynamic predicates */
-:- dynamic(marketState/2).
-:- dynamic(marketContent/3).
-:- dynamic(money/1).
-:- dynamic(exp/1).
 :- dynamic(inMarket/1).
 :- dynamic(tempList/1).
 :- dynamic(shovellevel/1).
 :- dynamic(fishing_rodlevel/1).
-
 
 shovellevel(1).
 fishing_rodlevel(1).
