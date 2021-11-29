@@ -33,7 +33,7 @@ planting(Crop1) :- mkstr(Crop1,Crop), season(CurrSeason), atom_concat(Crop,'_see
                    \+mkstr(Crop1,Crop), write('Tanaman yang kamu tulis tidak ada'), nl, !.
 
 harvest :- playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay>=Time, addItem(Crop,1), write('Kamu memanen '), mkstr(Crop,A), write(A), write('.'), nl,
-           addExpFarming(_,2), progQuest(Crop), nl,
+           addExpFarming(_,2), progQuest(Crop),
            decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
            addTime, retract(croploc(X,Y,Crop,Time)), progQuest(Crop), !;
            playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay<Time, write('Tanaman belum siap panen'), nl,

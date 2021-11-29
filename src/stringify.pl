@@ -38,7 +38,7 @@ mkstr(egg, 'Telur').
 mkstr(milk, 'Susu').
 mkstr(wool, 'Wol').
 
-mkstr(carp, 'Ikan Mas').
+mkstr(carp, 'Ikan Karper').
 mkstr(eel, 'Ikan Belut').
 mkstr(salmon, 'Ikan Salmon').
 mkstr(catfish, 'Ikan Lele').
@@ -73,11 +73,16 @@ mkstr(jagung, corn).
 mkstr(bawang, onion).
 mkstr(nanan, pineapple).
 
+mkstr(karper, carper).
+mkstr(belut, eel).
+mkstr(lele, catfish).
+mkstr(salmon, salmon).
+mkstr(tuna, tuna).
+
 mkstr(wortel, carrot).
 mkstr(terong, eggplant).
 mkstr(bayam, spinach).
 mkstr(labu, pumpkin).
-
 mkstr(fishing_potion,'Potion Fishing').
 mkstr(farming_potion,'Potion Farming').
 mkstr(ranching_potion,'Potion Ranching').
