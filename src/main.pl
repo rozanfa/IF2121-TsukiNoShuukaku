@@ -10,6 +10,8 @@
 :- include('activities.pl').
 :- include('quest.pl').
 :- include('stringify.pl').
+:- include('marketplace.pl').
+
 
 :- dynamic(isStarted/1).
 

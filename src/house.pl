@@ -59,14 +59,13 @@ bacaDiary:-
     showDiaryList(Ds).
 
 bobo:-
-    inHouse(X),
-    X =:= 0 -> write('Kamu tidak sedang berada di dalam rumah!');
+    inHouse(X) ->
+    (X =:= 0 -> write('Kamu tidak sedang berada di dalam rumah!');
     write('Kamu memilih untuk bobo, mimpi indah ^_^.\n\n'),
     addDay, retract(time(_)), asserta(time(0)),
-    day(X), season(Y), isSeason(NamaMusim,Y),
-    write('Day '), write(X), write(', Musim: '), write(NamaMusim),
     retract(inHouse(1)), asserta(inHouse(0)),
-    username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)).
+    username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)));
+    \+ inHouse(X) -> true.
 
 /* ====================== SAVE - LOAD SECTION ======================*/
 

@@ -31,7 +31,7 @@ questCheck(X):-
     addExp(Player,Cp),
     Gm is (G * 2) + (G / 2),
     gold(Player,C), Cp is C+Gm,
-    retract(gold(Player,C)), asserta(gold(Player,Cp))
+    retract(gold(Player,C)), asserta(gold(Player,Cp)),
     Pm =:= 5 -> write('Selamat! Kamu telah menyelesaikan seluruh quest!!'), nl.
 
 quest:- playerloc(Xp,Yp), questloc(Xq,Yq), inQuest(S), (Xp =:= Xq, Yp =:= Yq, S =:= 0) -> initQuest;
