@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 975dd0f4a05a46fbee1291148645591c1ebbe9a6
 /* dynamic */
 :- dynamic(inAlchemistState/1).
 :- dynamic(potionEfect/2).
