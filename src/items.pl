@@ -175,9 +175,9 @@ potionCount(stamina_potion,3).
 potionCount(all_potion,3).
 
 /* Animal product section */
-setProductCount :- asserta(woolProduct(0)), /*3 hari sekali */
-                   asserta(eggProduct(0)), /* tiap hari */
-                   asserta(milkProduct(0)). /* tiap hari */
+:- dynamic(woolProduct/1).
+:- dynamic(eggProduct/1).
+:- dynamic(milkProduct/1).
 
 productYield(chicken,egg).
 productYield(cow,milk).
@@ -207,8 +207,12 @@ setProductPricelvl3 :-
 
 setAnimal :-
                 asserta(totalCow(0)),
-                asserta(totalsheep(0)),
+                asserta(totalSheep(0)),
                 asserta(totalChicken(0)).
+
+:- dynamic(totalnewCow/1).
+:- dynamic(totalnewSheep/1).
+:- dynamic(totalnewChicken/1).
 
 /* Fish section */
 /* harga ikan */
@@ -232,11 +236,8 @@ getFishing(4,none).
 /* tool section */
 /* harga beli */
 
-toolPurchasePrice(shovel, 300). /*  bisa dibeli sampe max nyesuain max lvlfarming */
-toolPurchasePrice(fishing_rod,500). /* bisa dibeli sampe max nyesuain max lvlfishing*/
-
-setTool :- asserta(shovellevel(1)),
-           asserta(fishing_rodlevel(1)).
+toolPurchasePrice(shovel, 300).
+toolPurchasePrice(fishing_rod,500).
 
 /* Initialize Items */
-initItem :- setTool, setAnimal, setProductCount, setProductPricelvl1.
+initItem :- setAnimal, setProductPricelvl1.
