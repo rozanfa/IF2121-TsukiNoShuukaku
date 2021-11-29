@@ -229,28 +229,32 @@ commandActivities :-
         write('| 1. buy         : membeli item yang tersedia di market ngab (untuk pembelian       |'),nl,
         write('|                  equipment diupgrade dan equipment lama akan hilang)              |'),nl,
         write('| 2. sell        : menjual item di ada di inventory agan                            |'),nl,
-        write('| (3-6 cuma bisa dipake di house aja)                                               |'),nl,
+        write('| (3-5 cuma bisa dipake di house aja)                                               |'),nl,
         write('| 3. sleep       : membeli item yang tersedia di market ngab                        |'),nl,
         write('| 4. writeDiary  : menjual item di ada di inventory agan                            |'),nl,
         write('| 5. readDiary   : menjual item di ada di inventory agan                            |'),nl,
-        write('| 6. [namahewan]        : mengambil hasil dari hewan tersebut (Bisa dipake di ranch |'),nl,
+        write('| 6. buyPotion   : membeli potion (hanya bisa di alchemist)                         |'),nl,
+        write('| 7. [namahewan]        : mengambil hasil dari hewan tersebut (Bisa dipake di ranch |'),nl,
         write('|                          ranch aja)                                               |'),nl,
-        write('| 7. [namaTanaman]      : memanen tanaman yang sudah siap dipanen (Bisa dipake di   |'),nl,
+        write('| 8. [namaTanaman]      : memanen tanaman yang sudah siap dipanen (Bisa dipake di   |'),nl,
         write('|                          farm aja)                                                |'),nl,
-        write('| 8. fish        : memancing ikan (Ingatttt harus ada di tile water & gacha)        |'),nl,
-        write('| 9. dig         : menggali tanah untuk farming (Ingatttt harus ada di tile kosong) |'),nl,
-        write('| 9. plant       : menanam tanaman (Ingatttt harus ada di tile yang sudah di dig)   |'),nl,
-        write('| 9. harvest     : mengambil tanaman (Ingatttt tanaman harus udah selesai bertumbuh)|'),nl,
-        write('| 11. throwItem  : membuang item yang ada di inventory                              |'),nl,
+        write('| 9. fish        : memancing ikan (Ingatttt harus ada di tile water & gacha)        |'),nl,
+        write('| 10. dig        : menggali tanah untuk farming (Ingatttt harus ada di tile kosong) |'),nl,
+        write('| 11. plant      : menanam tanaman (Ingatttt harus ada di tile yang sudah di dig)   |'),nl,
+        write('| 12. harvest    : mengambil tanaman (Ingatttt tanaman harus udah selesai bertumbuh)|'),nl,
+        write('| 13. throwItem  : membuang item yang ada di inventory                              |'),nl,
+        write('| 614 usePotion   : menggunakan potion (hanya bisa 1 potion)                        |'),nl,
         write('-------------------------------------------------------------------------------------'),nl.
 
 commandPlace :-
         write('-------------------------------------------------------------------------------------'),nl,
-        write('| 1. house      : masuk ke house (Ingatttt harus ada di tile house)                |'),nl,
-        write('| 2. ranch      : mengurus peternakan (Ingatttt harus ada di tile ranch)           |'),nl,
+        write('| 1. house       : masuk ke house (Ingatttt harus ada di tile house)                |'),nl,
+        write('| 2. ranch       : mengurus peternakan (Ingatttt harus ada di tile ranch)           |'),nl,
         write('| 3. market      : masuk ke market (Ingatttt harus ada di tile market)              |'),nl,
+        write('| 5. exitShop    : keluar dari market                                               |'),nl,
+        write('| 4. alchemist   : masuk ke market (Ingatttt harus ada di tile alchemist)           |'),nl,
+        write('| 5. exitAlchemist   : keluar dari alchemist                                        |'),nl,
         write('-------------------------------------------------------------------------------------'),nl.
-
 
 quit :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn untuk masukin command, orang dalam gan??!'), !.
 quit :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.

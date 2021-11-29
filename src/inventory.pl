@@ -5,7 +5,7 @@ inventory:- isiInventory(Isi), countInventory(Isi,Cap),
             Cap =\= 0 ->
                 write('Your inventory '), write(Cap), write('/100 : '), nl,
                 printInventory(Isi),!;
-                write('Inventory kosong').
+                write('Inventory kosong'), nl.
 
 printSeed([]):- !.
 printSeed([[Name,Count]|Other]):-
