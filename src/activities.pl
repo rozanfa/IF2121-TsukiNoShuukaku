@@ -37,7 +37,7 @@ harvest :- playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay>=Time, 
            decreaseStamina, stamina(_, Z),maxStamina(_, MaxStamina), write('Stamina: '), write(Z), write('/'), write(MaxStamina), write('.'), nl,
            addTime, retract(croploc(X,Y,Crop,Time)), progQuest(Crop), !;
            playerloc(X,Y), croploc(X,Y,Crop,Time), day(CurrDay), CurrDay<Time, write('Tanaman belum siap panen'), nl,
-           Z is Time-CurrDay, write('Tanaman akan panen '), write(Z), write(' hari lagi'), !;
+           Z is Time-CurrDay, write('Tanaman akan panen '), write(Z), write(' hari lagi'), nl, !;
            playerloc(X,Y), \+croploc(X,Y,Crop,Time), write('Kamu harus berada di lokasi tempat yang sudah ditanam'), nl, !.
 
 
@@ -121,3 +121,5 @@ checknewCow :- totalnewCow(X), totalCow(Y), Y>0, Z is Y+X, asserta(totalCow(Z)),
               \+totalnewCow(X) -> true.
 
 checkAnimal :- checknewChicken, checknewCow, checknewSheep.
+
+delcrop :- retractall(croploc(_,_,_,_)).
