@@ -3,8 +3,7 @@
 /* menambah exp utama */
 addExp(X,Add):-
     retract(exp(X,CurrentExp)), NewExp is CurrentExp + Add,
-    asserta(exp(X,NewExp)), write('Selamat!!! kamu mendapat '),
-    write(Add), write(' Exp'), nl, levelUp(X,NewExp).
+    asserta(exp(X,NewExp)), nl, levelUp(X,NewExp).
 
 /* level utama meningkat */
 levelUp(X,NewExp):-
@@ -13,30 +12,30 @@ levelUp(X,NewExp):-
      retract(level(X,Level)), retract(exp(X,_)),
      addStat(X,NewLevel),
      asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
-     write("Congratulation!!! you just growed up to level"), write(NewLevel));
+     write('Kamu baru saja naik ke level '), write(NewLevel));
 
      level(X,Level),
      (Level < 3, NewExp >= 400 -> NewLevel is 3, ResetExp is 0,
      retract(level(X,Level)), retract(exp(X,_)),
      addStat(X,NewLevel),
      asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
-     write("Congratulation!!! you just growed up to level"), write(NewLevel));
+     write('Kamu baru saja naik ke level '), write(NewLevel));
 
      level(X,Level),
      (Level < 4, NewExp >= 800 -> NewLevel is 4, ResetExp is 0,
      retract(level(X,Level)), retract(exp(X,_)),
      addStat(X,NewLevel),
      asserta(level(X,NewLevel)), asserta(exp(X,ResetExp)),
-     write("You just hit to the max level"), write(NewLevel));
+     write('Kamu baru saja mencapai level maximal'));
 
      level(X,Level),
      (Level =:= 4, NewExp >= 2000 -> NewLevel is 5,
      retract(level(X,Level)), retract(exp(X,_)),
      addStat(X,NewLevel),
      asserta(level(X,NewLevel)),
-     write("Opss you reach this level, you will the first who became a legendary farmer"));
+     write('Oppss kamu menemukan level ini, kamu sekarang menjadi seorang farmer legendary'));
 
-     write('Don\'t stop grow up, there is a present for the diligent people').
+     true.
 
 /* menambah stat pemain */
 
@@ -102,12 +101,12 @@ levelUpRanching(X,ExpRanching):-
     RanchingLvl < 2, ExpRanching >= 300 -> NewRanchingLvl is 2, ResExpRanching is 0,
     retract(ranchinglevel(X,RanchingLvl)), retract(ranchingexp(X,_)),
     asserta(ranchinglevel(X,NewRanchingLvl)), asserta(ranchingexp(X,ResExpRanching)),
-    write('Raching levelmu meningkat');
+    write('Raching levelmu meningkat'), setProductPricelvl2;
 
     ranchinglevel(X,RanchingLvl),
     RanchingLvl =:= 2, ExpRanching >= 500 -> NewRanchingLvl is 3,
     retract(ranchinglevel(X,RanchingLvl)), retract(ranchingexp(X,_)),
     asserta(ranchinglevel(X,NewRanchingLvl)),
-    write('Selamat!!! kamu mencapai level ranching maximal');
+    write('Selamat!!! kamu mencapai level ranching maximal'), setProductPricelvl3;
 
     true.

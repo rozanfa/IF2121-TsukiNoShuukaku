@@ -83,7 +83,7 @@ pickItem:-
 buy:-
     inMarket(X),
     X =:= 0 -> write('Kamu tidak sedang berada di dalam market!');
-    write('Barang yang ingin dibeli?\n'),
+    write('Barang yang ingin dibeli? Ketikkan \"exitShop\" untuk keluar\n'),
     season(X),
     write('Musim: '), isSeason(NamaMusim,X),
     write(NamaMusim), nl,
@@ -114,19 +114,21 @@ sell:-
     X =:= 0 -> write('Kamu tidak sedang berada di dalam market!');
     write('Daftar item di dalam inventory'), nl,
     isiInventory(Isi), printInventory(Isi),
-    write('Barang yang ingin dijual?'), nl,
+    write('Barang yang ingin dijual? Ketikkan \"exitShop\" untuk keluar\n'), nl,
     read(X),
-    inInvChk(X,Isi,[Name,Count]),
-    (crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
-    product(Name) -> productPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
-    fish(Name) -> fishPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
-    write('Item ini tidak ada di dalam inventory!'), sell).
+    X = exitShop -> exitShop;
+    \+ X = exitShop -> (
+        inInvChk(X,Isi,[Name,Count]),
+        (crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+        product(Name) -> productPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+        fish(Name) -> fishPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+        write('Item ini tidak ada di dalam inventory!\n'), sell)).
 
 market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
 getInMarket:- inMarket(1), write('Kamu sudah berada di dalam market!.\n'), !.
 getInMarket:-
     retract(inMarket(_)), asserta(inMarket(1)),
-    write('Apa yang ingin kamu lakukan?\n1. (buy) Beli barang\n2. (sell) Jual barang').
+    write('Apa yang ingin kamu lakukan?\n1. (buy) Beli barang\n2. (sell) Jual barang\n3. (exitShop) Keluar dari market.\n').
 
 exitShop:-
     write('Terima kasih sudah datang, silakan datang kembali!'),
