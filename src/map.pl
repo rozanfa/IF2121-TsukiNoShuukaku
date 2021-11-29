@@ -15,7 +15,7 @@ cannotbeDigged(X,Y) :-  questloc(X,Y);
                         houseloc(X,Y);
                         marketplaceloc(X,Y);
                         croploc(X,Y,_,_);
-                        water(X,Y);
+                        digloc(X,Y);
                         alchemistloc(X,Y,TP,_),
                         (TP > 0 -> true; false).
 
