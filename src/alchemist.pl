@@ -1,4 +1,3 @@
-
 /* dynamic */
 :- dynamic(inAlchemistState/1).
 :- dynamic(potionEfect/2).

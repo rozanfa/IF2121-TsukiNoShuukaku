@@ -26,7 +26,7 @@ formList([A,B,C,D]):-
 
 showList(_,[]):- !.
 showList(X,[Head|Tail]):-
-    X >= 10 -> potionPrice(Head,Pr) ,No is X - 9, write(No), write('. '), mkstr(Head,Str), write(Str), write(' ('), write(Pr), write(' golds)\n'), Xn is X+1, showList(Xn,Tail);
+    X >= 10 -> potionPrice(Head,Pr) , No is X - 9, write(No), write('. '), mkstr(Head,Str), write(Str), write(' ('), write(Pr), write(' golds)\n'), Xn is X+1, showList(Xn,Tail);
     X >= 8, X < 10, shovellevel(P), fishing_rodlevel(Q), write('8. Sekop Level '), write(P), write(' (300 golds)\n9. Alat Pancing Level '), write(Q), write(' (500 golds)\n');
     X >= 1, X < 5, cropPurchasePrice(Head,Pr), write(X), write('. '), mkstr(Head,Str), write(Str), write(' ('), write(Pr), write(' golds)\n'), Xn is X+1, showList(Xn,Tail);
     X >= 5, X < 8, animalPrice(Head,Pr), write(X), write('. '), mkstr(Head,Str), write(Str), write(' ('), write(Pr), write(' golds)\n'), Xn is X+1, showList(Xn,Tail).
@@ -39,8 +39,8 @@ showListWinter(X,[Head|Tail]):-
     X >= 4 -> shovellevel(P), fishing_rodlevel(Q), write('8. Sekop Level '), write(P), write(' (300 golds)\n9. Alat Pancing Level '), write(Q), write(' (500 golds)\n\n');
     animalPrice(Head,Pr), write(X), write('. '), mkstr(Head,Str), write(Str), write(' ('), write(Pr), write(' golds)\n'), Xn is X+1, showListWinter(Xn,Tail).
 
-pickfromTemp(_,[],Item):- Item is nan, !.
-pickfromTemp(X,_,Item):- X < 0, Item is nan, !.
+pickfromTemp(_,[],Item):- Item = nan, !.
+pickfromTemp(X,_,Item):- X < 0, Item = nan, !.
 pickfromTemp(X,[Head|_],Head):- Xm is X-1, Xm =:= 0, !.
 pickfromTemp(X,[_|Tail],Item):-
     Xm is X-1, pickfromTemp(Xm,Tail,Item).
@@ -93,8 +93,8 @@ buy:-
     X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem).
 
 inInvChk(X,Isi,[Name,Count]):-
-    member([X,_],Isi) -> member([X,Y],Isi), Name is X, Count is Y;
-    Name is nan.
+    member([X,_],Isi) -> member([X,Y],Isi), Name = X, Count is Y;
+    Name = nan.
 
 sellItem(Name,Count,Pr,Am):-
     Total is Pr * Am,
