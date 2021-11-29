@@ -109,7 +109,7 @@ sell:-
 market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
 getInMarket:- inMarket(1), write('Kamu sudah berada di dalam market!.\n'), !.
 getInMarket:-
-    retract(inMarket(0)), asserta(inMarket(1)),
+    retract(inMarket(_)), asserta(inMarket(1)),
     write('Apa yang ingin kamu lakukan?\n1. (buy) Beli barang\n2. (sell) Jual barang').
 
 exitShop:-
