@@ -41,7 +41,6 @@ initQuest:-
     questCounter(C),
     Cp is C+1,
     (Cp =:= 6 -> write('Kamu sudah menjalankan seluruh Quest!!'), nl;
-    retract(questCounter(C)), asserta(questCounter(Cp)),
     questItems(Cp,X,Y,Z,_),
     write('Kamu mendapatkan quest baru!\n\n Kamu harus mengumpulkan: \n'),
     write('- '), write(X), write(' hasil panen\n'),
