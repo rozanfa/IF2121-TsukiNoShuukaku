@@ -54,13 +54,13 @@ weather('cerah').
 
 addTime :-  retract(time(CurrTime)),
             CurrTime < 23 -> NewTime is CurrTime + 1,  asserta(time(NewTime)), writeTime, decreasePotion;
-            CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)),writeTime, addDay, setAlchemist.
+            CurrTime = 23 -> NewTime is 1, asserta(time(NewTime)),writeTime, addDay.
 
 addDay :-   checkAnimal, (retract(day(CurrDay)), NewDay is CurrDay + 1,
             asserta(day(NewDay))), randomizeWeather,
            ( NewDay == 24 -> finishGame;
             S is mod(NewDay,6),  S == 0 -> addSeason;
-            true), writeDay, true.
+            true), writeDay, setAlchemist, true.
 
 setAlchemist :- alchemistloc(X,Y,TP,TC), retract(alchemistloc(X,Y,TP,TC)),
             (TC > 0 ->
@@ -108,10 +108,10 @@ writeDay :-    ( write('--------------------------------------------------------
 
 writeTime :- write('Waktu sekarang : '), time(CurrTime), write(CurrTime), write('/24.'), nl.
 
-finishGame :-   gold(_, currentGold),
-                currentGold >= 20000 ->
+finishGame :-   gold(_, CurrentGold),
+                CurrentGold >= 20000 ->
                 write('Kamu telah berusaha, namun sayang sekali kamu masih jauh dari kesuksesan. \nSilakan coba lagi dan tetap semangat!'), halt;
-                currentGold < 20000 ->
+                \+ CurrentGold >= 20000 ->
                 write('Selamat! Kamu akhirnya berhasil mengumpulkan 20000 gold!\n'), halt.
 
 randomizeWeather :- season(S), random(1,6,X), setWeather(S, X).

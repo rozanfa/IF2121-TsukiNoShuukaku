@@ -79,7 +79,7 @@ setPotion(X) :-
 usePotion:-
     write('Potion yang tersedia :\n'),
     isiInventory(Isi), printPotion(Isi),
-    write('Masukan item yang ingin dibuang : (contoh masukan \'[nama item]\')'), nl,
+    write('Masukan potion yang ingin digunakan: (contoh masukan \'[nama item]\')'), nl,
     read(PotionIn), mkstr(Potion,PotionIn), potionID(Potion,ID), 
     (potionEfect(P,_), 
         P =:= 0 -> dropItem(Potion,1);true), setPotion(ID).
