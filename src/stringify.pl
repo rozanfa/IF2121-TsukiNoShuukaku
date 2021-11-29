@@ -73,7 +73,7 @@ mkstr(jagung, corn).
 mkstr(bawang, onion).
 mkstr(nanan, pineapple).
 
-mkstr(karper, carper).
+mkstr(karper, carp).
 mkstr(belut, eel).
 mkstr(lele, catfish).
 mkstr(salmon, salmon).
