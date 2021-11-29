@@ -130,10 +130,11 @@ sell:-
     read(X),
     X == exitShop -> exitShop;
     inInvChk(X,Isi,[Name,Count]),
-    (crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
+    (Name == nan -> write('Item ini tidak ada di dalam inventory!\n mengeluarkanmu dari market...\n'), exitShop.;
+    crop(Name) -> cropSellPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
     product(Name) -> productPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
     fish(Name) -> fishPrice(Name, Pr), write('Berapa banyak yang ingin kamu jual?\n'), read(Am), sellItem(Name,Count,Pr,Am);
-    write('Item ini tidak ada di dalam inventory!\n'), sell).
+    write('Item ini tidak ada di dalam inventory!\n mengeluarkanmu dari market...\n'), sell).
 
 market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
 getInMarket:- inMarket(1), write('Kamu sudah berada di dalam market!.\n'), !.
