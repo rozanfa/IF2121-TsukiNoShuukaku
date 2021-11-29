@@ -10,8 +10,7 @@ diaries([[0,'']]).
 house:- playerloc(Xp,Yp), houseloc(Xh,Yh), (Xp =:= Xh, Yp =:= Yh -> getInHouse; write('Kamu tidak berada di tile Rumah!!\n')), !.
 getInHouse:- inHouse(1), write('Kamu sudah berada di dalam rumah.\n'), !.
 getInHouse:-
-    inHouse(X),
-    retract(inHouse(X)),asserta(inHouse(1)),
+    retract(inHouse(_)),asserta(inHouse(1)),
     write('Tadaima. Apa yang ingin kamu lakukan?\n'),
     write('- bobo\n- tulisDiary\n- bacaDiary\n- keluar').
 
@@ -59,14 +58,13 @@ bacaDiary:-
     showDiaryList(Ds).
 
 bobo:-
-    inHouse(X),
-    X =:= 0 -> write('Kamu tidak sedang berada di dalam rumah!');
+    inHouse(X) ->
+    (X =:= 0 -> write('Kamu tidak sedang berada di dalam rumah!');
     write('Kamu memilih untuk bobo, mimpi indah ^_^.\n\n'),
     addDay, retract(time(_)), asserta(time(0)),
-    day(X), season(Y), isSeason(NamaMusim,Y),
-    write('Day '), write(X), write(', Musim: '), write(NamaMusim),
     retract(inHouse(1)), asserta(inHouse(0)),
-    username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)).
+    username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)));
+    \+ inHouse(X) -> true.
 
 /* ====================== SAVE - LOAD SECTION ======================*/
 

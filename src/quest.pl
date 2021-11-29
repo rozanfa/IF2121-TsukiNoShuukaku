@@ -31,19 +31,20 @@ questCheck(X):-
     addExp(Player,Cp),
     Gm is (G * 2) + (G / 2),
     gold(Player,C), Cp is C+Gm,
-    retract(gold(Player,C)), asserta(gold(Player,Cp)).
+    retract(gold(Player,C)), asserta(gold(Player,Cp)),
+    Pm =:= 5 -> write('Selamat! Kamu telah menyelesaikan seluruh quest!!'), nl.
 
-quest:- playerloc(Xp,Yp), questloc(Xq,Yq), inQuest(S), (Xp =:= Xq, Yp =:= Yq, S =:= 0) -> initQuest;
+quest:- playerloc(Xp,Yp), questloc(Xq,Yq), inQuest(S), (Xp =:= Xq, Yp =:= Yq, S =:= 0 -> initQuest;
     S =:= 1 -> write('Kamu sedang menjalankan quest lain!');
-    write('Kamu sedang tidak berada di Tile Quest. \n').
+    write('Kamu sedang tidak berada di Tile Quest. \n')).
 initQuest:-
     questCounter(C),
     Cp is C+1,
-    retract(questCounter(C)), asserta(questCounter(Cp)),
+    (Cp =:= 6 -> write('Kamu sudah menjalankan seluruh Quest!!'), nl;
     questItems(Cp,X,Y,Z,_),
     write('Kamu mendapatkan quest baru!\n\n Kamu harus mengumpulkan: \n'),
     write('- '), write(X), write(' hasil panen\n'),
     write('- '), write(Y), write(' ikan\n'),
     write('- '), write(Z), write(' hasil ternak\n'),
-    retract(inQuest(0)), asserta(inQuest(1)),
-    retract(currentQuest([0,_,_,_,_])), asserta(currentQuest([Cp,_,_,_,_])).
+    retract(inQuest(_)), asserta(inQuest(1)),
+    retract(currentQuest([0,_,_,_,_])), asserta(currentQuest([Cp,_,_,_,_]))).

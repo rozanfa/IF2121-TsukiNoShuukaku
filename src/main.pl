@@ -1,6 +1,7 @@
 :- include('house.pl').
 :- include('level.pl').
 :- include('alchemist.pl').
+:- include('marketplace.pl').
 :- include('inventory.pl').
 :- include('map.pl').
 :- include('player.pl').
@@ -10,6 +11,8 @@
 :- include('activities.pl').
 :- include('quest.pl').
 :- include('stringify.pl').
+:- include('marketplace.pl').
+
 
 :- dynamic(isStarted/1).
 

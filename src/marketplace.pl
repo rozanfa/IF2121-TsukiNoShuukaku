@@ -1,19 +1,14 @@
 /* declare dynamic predicates */
-:- dynamic(marketState/2).
-:- dynamic(marketContent/3).
-:- dynamic(money/1).
-:- dynamic(exp/1).
 :- dynamic(inMarket/1).
 :- dynamic(tempList/1).
 :- dynamic(shovellevel/1).
 :- dynamic(fishing_rodlevel/1).
 
-
 shovellevel(1).
 fishing_rodlevel(1).
 
 upTool(X) :- X == shovel -> shovellevel(Y), Ym is Y+1, retract(shovellevel(Y)), asserta(shovellevel(Ym));
-             X == fishing_rod -> fishing_rodlevel(Y), Ym is Y+1, retract(fishing_rodlevel(Y)), asserta(fishing_rodlevel(Ym));
+             X == fishing_rod -> fishing_rodlevel(Y), Ym is Y+1, retract(fishing_rodlevel(Y)), asserta(fishing_rodlevel(Ym)).
 
 inMarket(0).
 inAlchemitsState(0).
@@ -114,7 +109,7 @@ sell:-
 market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
 getInMarket:- inMarket(1), write('Kamu sudah berada di dalam market!.\n'), !.
 getInMarket:-
-    retract(inMarket(0)), asserta(inMarket(1)),
+    retract(inMarket(_)), asserta(inMarket(1)),
     write('Apa yang ingin kamu lakukan?\n1. (buy) Beli barang\n2. (sell) Jual barang').
 
 exitShop:-
