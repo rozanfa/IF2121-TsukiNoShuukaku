@@ -53,17 +53,17 @@ addStat(Player,NewLevel):-
 addExpFarming(X,Add):-
     retract(farmingexp(X,CurrentExpFarming)), NewExpFarming is CurrentExpFarming + Add,
     asserta(farmingexp(X,NewExpFarming)), write('Selamat!!! kamu mendapat '),
-    write(Add), write(' ExpFarming'), nl, levelUpFarming(X,NewExpFarming).
+    write(Add), write(' ExpFarming'), nl, levelUpFarming(X,NewExpFarming), addExp(X,Add).
 
 addExpFishing(X,Add):-
     retract(fishingexp(X,CurrentExpFishing)), NewExpFishing is CurrentExpFishing + Add,
     asserta(fishingexp(X,NewExpFishing)), write('Selamat!!! kamu mendapat '),
-    write(Add), write(' ExpFishing'), nl, levelUpFishing(X,NewExpFishing).
+    write(Add), write(' ExpFishing'), nl, levelUpFishing(X,NewExpFishing), addExp(X,Add).
 
 addExpRanching(X,Add):-
     retract(ranchingexp(X,CurrentExpRanching)), NewExpRanching is CurrentExpRanching + Add,
     asserta(ranchingexp(X,NewExpRanching)), write('Selamat!!! kamu mendapat '),
-    write(Add), write(' ExpRanching'), nl, levelUpRanching(X,NewExpRanching).
+    write(Add), write(' ExpRanching'), nl, levelUpRanching(X,NewExpRanching), addExp(X,Add).
 
 /* level skill meningkat */
 levelUpFarming(X,ExpFarming):-
@@ -85,7 +85,7 @@ levelUpFishing(X,ExpFishing):-
     fishinglevel(X,FishingLvl),
     FishingLvl < 2, ExpFishing >= 300 -> NewFishingLvl is 2, ResExpFishing is 0,
     retract(fishinglevel(X,FishingLvl)), retract(fishingexp(X,_)),
-    asserta(fishinglevel(X,NewFishingLvl)), asserta(fishingexp(X,ResExpFishing),
+    asserta(fishinglevel(X,NewFishingLvl)), asserta(fishingexp(X,ResExpFishing)),
     write('Fishing levelmu meningkat');
 
     fishinglevel(X,FishingLvl),

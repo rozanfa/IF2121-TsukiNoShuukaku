@@ -63,7 +63,7 @@ bobo:-
     write('Kamu memilih untuk bobo, mimpi indah ^_^.\n\n'),
     addDay, retract(time(_)), asserta(time(0)),
     retract(inHouse(1)), asserta(inHouse(0)),
-    username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)));
+    username(Usr), maxStamina(Usr,MS), retract(stamina(Usr,_)), asserta(stamina(Usr,MS)), gachaPeriTidur);
     \+ inHouse(X) -> true.
 
 /* ====================== SAVE - LOAD SECTION ======================*/
