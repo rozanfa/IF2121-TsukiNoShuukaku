@@ -97,7 +97,7 @@ decreasePotion :- potionEfect(E,ST),
             );
         true. 
 
-addSeason :-    retract(season(CurrSeason)),
+addSeason :-    delcrop, retract(season(CurrSeason)),
                 NewSeason is CurrSeason + 1, asserta(season(NewSeason)).
 
 writeDay :-    ( write('-----------------------------------------------------------------------'), nl,
