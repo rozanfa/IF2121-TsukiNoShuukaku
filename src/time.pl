@@ -62,7 +62,7 @@ addDay :-   checkAnimal, (retract(day(CurrDay)), NewDay is CurrDay + 1,
             S is mod(NewDay,6),  S == 0 -> addSeason;
             true), writeDay, true.
 
-setAlchemist :- alchemitsloc(X,Y,TP,TC), retract(alchemitsloc(X,Y,TP,TC)),
+setAlchemist :- alchemistloc(X,Y,TP,TC), retract(alchemistloc(X,Y,TP,TC)),
             (TC > 0 ->
                 NTC is TC - 1,
                 (NTC =:= 0 ->
@@ -73,7 +73,7 @@ setAlchemist :- alchemitsloc(X,Y,TP,TC), retract(alchemitsloc(X,Y,TP,TC)),
                 (NTP =:= 0 ->
                     NTC is 6, NTP is 0;
                     NTC is TC)),
-                    asserta(alchemitsloc(X,Y,NTP,NTC)).
+                    asserta(alchemistloc(X,Y,NTP,NTC)).
 
 decreasePotion :- potionEfect(E,ST),
         E =\= 0 -> NST is ST - 1, retract(potionEfect(E,ST)),

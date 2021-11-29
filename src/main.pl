@@ -11,7 +11,7 @@
 :- include('activities.pl').
 :- include('quest.pl').
 :- include('stringify.pl').
-:- include('marketplace.pl').
+
 
 
 :- dynamic(isStarted/1).
@@ -255,7 +255,14 @@ commandPlace :-
 quit :- \+isStarted(_) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai gannn untuk masukin command, orang dalam gan??!'), !.
 quit :- isStarted(0) -> write('COMAND TIDAK VALID!!!! \nPermain belum dimulai masa sudah keluar, mabok gan??!'), !.
 quit :- write('Cepat kembali petani, hutangmu tidak bisa dibayar dengan daun dan juga kasian dengan'),nl,
-        write('ladang dan peternakanmu tidak terurus'), retract(isStarted(_)), !.
+        retractall(isStarted(_)), retractall(digTime(_)),  retractall(potionEfect(_,_)),
+        retractall(tempLevel(_,_,_,_)), retractall(inHouse(_)), retractall(diaries(_)), retractall(emptyDiary(_)), 
+        retractall(isiInventory(_)), retractall(potionCount(_,_)), retractall(woolProduct(_)), retractall(eggProduct(_)),
+        retractall(milkProduct(_)), retractall(totalnewCow(_)), retractall(totalnewSheep(_)), retractall(totalnewChciken(_)),
+        retractall(alchemistloc(_,_,_,_)), retractall(playerloc(_,_)), retractall(croploc(_,_,_,_)), retractall(digloc(_,_)), retractall(inMarket(_)), 
+        retractall(tempList(_)), retractall(shovellevel(_)), retractall(fishing_rodlevel(_)), retractall(stamina(_,_)), retractall(currentQuest(_)),
+        retractall(questCounter(_)), retractall(time(_)), retractall(day(_)), retractall(season(_)), retractall(weather(_)),
+        write('ladang dan peternakanmu tidak terurus'), !.
 
 
 /*
