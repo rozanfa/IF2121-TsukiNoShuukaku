@@ -82,7 +82,7 @@ buy:-
     X =:= 3 -> showRanch, autumnMarketCrop(Y), tempList(List), showList(1,List), pickItem;
     X =:= 4 -> formListWinter, showListWinter, write('\n(Tidak ada tanaman yang sedang dijual.)\n'), pickItem).
 
-inInvChk(_,[],[Name,_]]):- Name is nan, !.
+inInvChk(_,[],[Name,_]):- Name is nan, !.
 inInvChk(X,[[Name,Count]|_],[Name,Count]):- X == Name, !.
 inInvChk(X,[_|Other],Item):- inInvChk(X,Other,Item).
 
@@ -112,7 +112,7 @@ sell:-
     write('Item ini tidak ada di dalam inventory!'), sell).
 
 market:- playerloc(Xp,Yp), marketplaceloc(Xm,Ym), (Xp =:= Xm, Yp =:= Ym -> getInMarket; write('Kamu tidak berada di tile Market!!\n')), !.
-market:- 
+getInMarket:- inMarket(1), write('Kamu sudah berada di dalam market!.\n'), !.
 getInMarket:-
     retract(inMarket(0)), asserta(inMarket(1)),
     write('Apa yang ingin kamu lakukan?\n1. (buy) Beli barang\n2. (sell) Jual barang').

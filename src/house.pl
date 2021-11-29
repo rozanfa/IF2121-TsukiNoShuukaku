@@ -20,7 +20,7 @@ writeD:-
     diaries(C),
     write('Tulis diary untuk hari ke-'), write(D), write('\n'),
     read(X),
-    writeFile(D),
+    /* writeFile(D) */
     retract(diaries(C)), asserta(diaries([[0,X]|C])),
     retract(diaries([[0,X]|C])), asserta(diaries([[D,X]|C])),
     emptyDiary(A), 
@@ -37,7 +37,7 @@ tulisDiary:-
 showDiary(_,[[Day,_]|_]):- 
     Day =:= 0, write('Entri tidak ditemukan!'), !.
 showDiary(X,[[Day,Entry]|Tail]):-
-    X =:= Day -> write('Ini entri untuk hari ke-'), write(Day), write(':\n'), write(Entry), readFile(Day);
+    X =:= Day -> write('Ini entri untuk hari ke-'), write(Day), write(':\n'), write(Entry) /* readFile(Day) */;
     showDiary(X,Tail).
 
 showDiaryList([[_,_]|_]):- 
@@ -77,7 +77,7 @@ time(6). day(8). season(2).
 currentQuest([2,2,0,1,20]). inQuest(1). questCounter(1).
 exp(claire, 50). farmingexp(claire, 18). fishingexp(claire, 8). ranchingexp(claire, 12).
 level(claire, 7). farminglevel(claire, 5). fishinglevel(claire, 3). ranchinglevel(claire, 4).
-gold(claire, 5000). maxStamina(claire, 15). stamina(claire, 12). diaries([1,'Pengen meninggal.']). */
+gold(claire, 5000). maxStamina(claire, 15). stamina(claire, 12). diaries([1,'Pengen meninggal.']).
 
 writeFile(N):-
     atom_concat(N,'.txt',FileName),
@@ -104,4 +104,4 @@ read_file(Stream,[]) :-
 read_file(Stream,[X|L]) :-
     \+ at_end_of_stream(Stream),
     read(Stream,X),
-    read_file(Stream,L).*/
+    read_file(Stream,L). */

@@ -1,49 +1,115 @@
-Md                                       odmmdhhhhhhd:                              ./sdmmmmddh`                      dM
-Md                                      `hmmmmhhhhhddo                           `-+ydmmmmdddd:                       dM
-Md                                      :ymmmmmhhhdmdy                         `./yhdmmddhhhds                        dM
-Md                                      ::mmmmmmhdmmdh                       `.:+ydmmdhhhhhhh.                        dM
-Md                                      /.hmmmmmmmmmhh.                     .:-ohdmdhhhhhhhh/                         dM
-Md                                      :.ommmmmdddhhy+/+osso/-.`         `:--shdmmhhhhhhhho                          dM
-Md                                      ./oddhhhhhhhhhhhhhdmmdhys+-`     `/-+hhdmmmhhhhddhy`                          dM
-Md                                     -ohhhhhhhhhhhhhhhhhhdmmmdddhs-    /shhhdmmmmhhdmmdh.                           dM
-Md                                   -/yhhhhhhhhhhhhhhhhhhhhdmmdmddmh/  -mdhhhmmmmmdmmmdh.                            dM
-Md                                 `::hhhhhhhhhhhhhhhhhhhhhhhdmmmmhmmmhshmmmmmmmmmmmmmhy.                             dM
-Md                                .:-yhhhhhhhhhhhhhhhhhhhhhhhdmddmdddmmmmmmmmmmmmmmddho`                              dM
-Md                               .:-yhhhhhhhhhhhhhhhhhhhhhhhdddddmddmmmmmddmmdmmdhhy+-                                dM
-Md                              `/-yhhhhhhhhhhhhhhhhhhdddddddddddmddmdmmmdddddhdy/.`                                  dM
-Md                          .`  :-yhhhhhhhhhhhhdddddddddddddddddmmhmddmmdddddddh+.                                    dM
-Md                    `     o+/./+hhhhhhhhhhdddmmdddddddddddddddmddmddmdhdhhddddh+-                                   dM
-Md                  .yyyo//-ydysshhhhhhhhhdddddddddddddddddddddmddmmmmmhhdhhhhhhhh+-                                  dM
-Md                  `yddhhhhddhhhhhdhhhhhddddddddddddddddddddmmddmmmmmhhddhhhhhhsyy/.                                 dM
-Md                   -ddyyyyhyhhyyyhddhhdmddddddddddddddddmmmmddddmmmhhhdhhhdhssssh+/                                 dM
-Md                -/::ydhyhyyyyyyhhddhoshddmdddddddddddddddmdddmmdmmdyyhodhsddhsshyy:.                                dM
-Md                /hddhhhdhyhhyhddyso:/soohddddddddddddmddddddmdmmdhysho-hhshmdyyhhh:/                                dM
-Md                 -yhyyhhyyhddddo+sssooys+ohddddddddddddddddddmdhhyyys..ohhhddyhhhh/+                                dM
-Md                  .+hdhhyyhddssoyyhhyoyhoo+hdddddddddddddddmdhyyyyys. `:yyyhdhhhhh//`                               dM
-Md               -+ohdhhhhhyhdosyyhhhhh+hossosdddddddddddddmmdhyyyyss::.`.+yyhdhhhhh+/`                               dM
-Md             `yddddyyyhhyyhh+shhhdhhhhh/+osddddddddddddmmdhyyyysso.  `..-syddhhhhyo/`                               dM
-Md              `:+yyhyyyyyyyhyysy++ssyhsoosyyhhhhdddmmmmmhhyyysso/` ``   `-yddyhhhoy+`                               dM
-Md                 `::ohhhhyhhhd+sssshyoossdymmmmmmmmmmmdhyyysso+-..:+sss+:.-yhyhhh+m+                                dM
-Md                  `/hdhhhhyyhhhyssssyssoshdmmmmmmmmmdhyyyysso:` -shdhso+ys-:yyhhsyh/                                dM
-Md                 `yddhyyyhhhhhhhhhyhyyhdshhdmmmmmmdhhyyyyys/.` `o/sy/::`-y-yyyhhomy/                                dM
-Md                  -::/::oddyhddddmmmddmmdhhhhhdddhhhhhhhys-`    .....-`./:syyhhsdms-                                dM
-Md                        sddhyhdmmdddmmmmmmdhhhhhhhhhhhyso-`    ```````...syyyhyhmms.                                dM
-Md                        //:-.oydhdmmmmmmmmmmmmdddddhyso/.```` `````````.+yyyhdmmmdo.                                dM
-Md                            `/yhhdmmmmmmdmmmmmmdhhyso+:`````` ``````-:+osyyhddmdmhs-                                dM
-Md             .:-            :/hhdydmmmdhmmmmmdhyysso/.          ``.:/+osyhmhhdmddmy/                                dM
-Md           .+/`      .      +yhdmhyhddhdmmmdhhhyys/.    ````       `-+ddmmdhymmmdhhs-`````.`                        dM
-Md          `s+       :/     -ohdddddhhhhhhhddddddy.`     ````      `-odmmmmhydmmdmmmys+/:--.                         dM
-Md          oo/      `o:    `+hddhhhhhmmmmmmmmmmddd:-.``        ``-+ymmdmmmhydmmmmhdmh/`              `               dM
-Md          ys/.      +so+++sydhhhhhhmmmmmmmmmddhss/.--..`````.-+yhhhmmdddhhmmmmmmdhdmo/              +:              dM
-Md          +dyo.      -/oyhhhhhhhhdmdmmmdmmmds/-.--.....--.--:..:+ssyhdhhsymmdmmmddhhh+:             :+:             dM
-Md           oddh/`   `.-/syhhhhhddho+//ss+/:....:-...........:--.....--.+y.s/-:odmddhhhs+`          `/:o             dM
-Md            `/ydhsssyyhhhhhhdd/----:+s-:y/......:-..........-..:---..-`.o-::....+mddhhhhh+`       ./+h/             dM
-Md               :ydddhddddddhh/.......-s..s:......--.........---:-.``.-. //`/.....:dhhdhhhhhs++/+syhdds`             dM
-Md                 ./shddddddd+.........-o`.o.      .:-----..--:..---:-...:+ /.....`:h+shddhhhhhhhhhhy/`              dM
-Md                    ``./mmmm.........---o`-o.      `-.````..-``.--:`````-o`/-......:s:`-/osyyyyys+-`                dM
-Md                      `+hdmy.........:/-/+ :+`       .-.....`.....:::.```+`//.......:y`    `````                    dM
-Md                      /yhmm/.........://:+:`+:        `:-`-`````....---``.`//........:o                             dM
-Md  `-`                /shdmh...........-://o`.o.        `--.. `````.``.--``.+:......-::y/                            dM
-Md`:/`                /ydmdhs`--...........:// /+      ````-/:  ``````.---`.::......-:-..y:              .-           dM
-Md/s`               `+dmmdhho-:-.............:..o.    ``````-/.  `````:--``-/:::-........-h/             -y/.         dM
-Mm+h               `smmmdhhhh+:...............--++````..--:::+/` `````-:.``+/:--.....----./d+`           `yy/:        dM
+
+
+write('                                      .smmdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdNhhhhhhdmNhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdmmmy-                                                    '), nl,
+write('                                    .smmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmmhhhhhddMdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdmmmm+`                                                  '), nl,
+write('                                   /mmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhNhhhhhddNNhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdmddy.                                                 '), nl,
+write('                                  oNdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmdhhhhddmMhhhhhhhhhhhhhhhhhhhhdhhhhhhhhhhhhhhhhyysohyyd+                                                '), nl,
+write('                                `yNdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmmhhhhddmMhhhhhhhhhhhhhhhhhhhhhhdhhhhhhhhhhhhhhooy++yhyd+                                               '), nl,
+write('                                sNdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdmmhhhddddMhhhhhmhhhhhhhhhhhhhhhhhddhhhhhhhhysso++oyo+sdyds                                              '), nl,
+write('                               +NdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddmmhhhddddMhhhyymdyyyyyyyyyyyyyssosydsoooyosy+++++osysshmmms                                             '), nl,
+write('                              -NdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddmmhhdddddMhyyyymsdyyyyoysoo+sy/+///oho++sy+syooosssyhhhhmmms                                            '), nl,
+write('                              hNhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddNdhhdddddNssysym:sdso+/o+///+yo///++ods+ohsoyysyhhhhhhhhhmmm+                                           '), nl,
+write('                             -NdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddNhhdddddmm//y+/m::sy///+o////ss+++++osmysyhyyhhhhhhhhhhhhhNmN:                                          '), nl,
+write('                             sNhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddmNhhdddddmh//ss+m:::+h+/+s///++yossssyyhNdyhhhhhhhhhhhhhhhhhNmy                                          '), nl,
+write('                             dmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddNdhddddddNo//ossh::--:yyos+oososyyyyyhyyhNhyyhhhhhhhhhhhhhhhdNN-                                         '), nl,
+write('                    .`      `MdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddNhhddddddNoooosdo::.`--+hyssssssssyyyyhhyhNhyyyhhhhhhhhhhhhhhmNd                                         '), nl,
+write('                   `s       .Mdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddmmhddddddmdsssssm/:-```.-:shysssssssssyyhhydmyyyyhhhhhhhhhhhhhhNm.                                        '), nl,
+write('                   o:       .MdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddmNhhddddddNysssssm:/+++/::--:shysssssssssyhhymhyyyyyhhhhhhhhhhhhdNy                                        '), nl,
+write('                   d`       `MdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddNdhddddddNhsssssdmdhysssyhdddddNmyssssssssyhhyNyyyyyyhhhhhhhhhhhhNN.                                       '), nl,
+write('               :- -h        `NdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddmmhddddddmNssssssN::.`````````.-/osdNmdhssssydhddyyyyyyhhhhhhhhhhhdNo                                       '), nl,
+write('               d` :+         hdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddmmhdddddddNysssoohy:-````````````````:ymdmmhysymhNyyyyyyyyhhhhhhhhhhNh                                       '), nl,
+write('              `N  :+         +NhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddddmNhdddddddmdsssooom/-```````````````````-ohhyhdhhmmdyyyyyyyyhhhhhhhhhmm`          .                           '), nl,
+write('              .N  :+         `Ndhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddddmmddddddddmmsssooohs:.`````````````````````.+yhyyhdmNsyyyyyyyyhhhhhhhhdm.          +.                          '), nl,
+write('              `N` /o          omhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddddddmmddddddddmNyssooosd:-````````````````````````.:shysdNyssyyyyyyhhhhhhhhhm.          -+                          '), nl,
+write('             ..y: .y          `mdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddddddddmmdddddddddNhssooood+-````````````````````````````-ohymdsssyyyyyyhhhhhhhhm.          `s                          '), nl,
+write('             hh:y//+ -.`       :NhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddddddddddmddddddddddNhsssooohy-.``````````````````````````````-odNssssyyyyyhhhhhhhhm.           s  `                       '), nl,
+write('             ./++:s``yhhyo/-`   omhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddddddddddddmmddddddddddNhsssooosd:.`````.--:/:/:-```````````````````/Nysssyyyyyyhhhhhhhd-           s  :                       '), nl,
+write('               `sdh/-sssssyyys/.`ymhhhhhhhhhhhhhhhhhhhhddddddddddddddddddddddddmmdddddddddmNhsssooosd/.````:///////+++ooo+/:-.````````````sdsssyyyyyyhhhhhhhd+           o  +                       '), nl,
+write('                `smhysssssssssyyyodNdhhhhddhhhhhhhhddddddddmmddddddddddddddddmmddddddddddmNhssssoosdo.````.:+ydmNMMMMMMMMMMMNmhs/-.```````:dsssyyyyyhhhhhhhhdo           o  o                       '), nl,
+write('                  :hdysssssssssssyhNNdddddo++++ooooooooshddNmdddddddddddddmmmdddddddddddmmyssssooyds.`````/dMNNMMMMMMMNmmNNMNmNNNNhs:`````.dsssyyyyyyhhhhhhhdo           o `o                       '), nl,
+write('                   `+hhyssssssssssssydmhsh++++++++++++++shhmmhyhddddddddmmmdddddddddddmNdssssssshmy.`````/mds+///sNMMNdddddmNs+oydmNNh/..:`hsssyyyyyhhhhhhhhm/           + -/                       '), nl,
+write('                     `+hdhysssssssssshhsshoooo++++++++++syhddy++ymdddmmmmmdddddddddddmmhsssssshdms.``````//::`    oNNNNmdddmNN+:::+smNNh/.`hsssyyyyyhhhhhhhhm.          `/ /`                       '), nl,
+write('              `-/+ssssssmNmdhssssssyyso++yyyyhysyyhyyyyssyhdddhoommmmmmddddddddddddmmhyssssyddhmo.```````.::--   `.mNysmNNNmmNh```.-:yNm-..ysssyyyyyhhhhhhhhN`          :-                          '), nl,
+write('           `+hmmdhhyyssssyyyysssssyh++++yo++++shhyo+++osyhhhmhhdhmmdddddddddddddmNmhysssydmdhhd+.`````````` `Nyssysmm++dmhddmmm      `my++odyssyyyyyhhhhhhhdN`          -                           '), nl,
+write('       `:oyddhhhhhssssssssssssssssho+++oh+++oysyhhyo+++++yhsddhhhdmmmdddddddmmNNmhyyhddddhhhmy-```````````  `Nyo+++smhhmh++++oh      /y.``-dsssyyyyhhhhhhhhmM`                                      '), nl,
+write('       dmhhhhhhhhyssssssssssssssssd++++ys++sssssoshs+++++hyssmhhhhhhhddmmmmmNNmdddmddhhhhhdh/.````````````   ho++s++oyyo/o++/:o     -/````-dsssyyyyhhhhhhhhNM`                                      '), nl,
+write('       .shdddhhhhsssssssssssssssssh+++oy++oy+sshohyso++oydysoomdhhhhhhhyyyyyyyyyhhdhhhhhdh+-```````````````  :y++/-......-:/+y/    ```````/yssyyyyyhhhhhhhmmN-                                      '), nl,
+write('          .-+hmdhhsssssssssssssssys++oh+++yyyooy+ohyssyhyyds++hdmdhhhhhyyyyyyyhdddhhhhdy+-.``````````````````.ss/-......-::/sh.  ````````.hsssyyyyhhhhhhhhNmN+                   `+                 '), nl,
+write('             `-oyddddhhhhyyysssssdo++ys++yyyyooh++shyhysyhyo+ohydmmdhhhyyyyyhddddhddms/-.````````````````````.....`.........---..........+hssyyyyyhhhhhhhNNmNo                 .+s.                    ::::::::::::::::::\'########::\'######::\'##::::\'##:\'##:::\'##:\'####:::::::::::::::::::::'), nl,
+write('                 `.-odNNmddhsssssd+++ssoysyoosshsshhhysyhys+ohyshdddmNddddddmmdmmmmmy.````````-```````````````````......................-dsssyyyyhhhhhhhmNmNNm:.           `./sdy-                     ::::::::::::::::::... ##..::\'##... ##: ##:::: ##: ##::\'##::. ##::::::::::::::::::::::'), nl,
+write('                 ./ydhhysssssssssyyssoosy+osssssssshyyhhss+ohyssddddmdhhhhhhhhdddddm-`````````.``````````````````..-..-.-..-.-.-.--....-yyssyyyyyhhhhhhdNmmmmmmdhyssoooosyhhddh/`                      ::::::::::::::::::::: ##:::: ##:::..:: ##:::: ##: ##:\'##:::: ##::::::::::::::::::::::'), nl,
+write('               .oddhhsssssssssssssyyyysyy++++++++ohhyhyoo+ohysshdddmmhyyyyyyyhhdddm/````````````````````````````...-..-.-..-.-.-..-...-yhssyyyyyhhhhhhdNmmmmdhhhhddddddddddho-`                        ::::::::::::::::::::: ##::::. ######:: ##:::: ##: #####::::: ##::::::::::::::::::::::'), nl,
+write('             `+ddhhhysssssssssssssshy+++yoooosssyhyyysoooshyssyddddmhhhyyyyyyhdddm+`````````````````````````````......-.-..-.-.-..-..:yyssyyyyyhhhhhhmNmmmddhhhhhdddddhhs+-`                           ::::::::::::::::::::: ##:::::..... ##: ##:::: ##: ##. ##:::: ##::::::::::::::::::::::'), nl,
+write('            `hmhhhhhysssssssssssssshs++++ossssssydyhyyyyyyysyhddddmhhhhyyyyyhdddm+````````````````````````````````......-..........-+hysyyyyyyhhhhhhmNmmmmmmmmdhyso+:-.`                               ::::::::::::::::::::: ##::::\'##::: ##: ##:::: ##: ##:. ##::: ##::::::::::::::::::::::'), nl,
+write('           -hmhhhhhhhhysssyhdmdsssshs++++++++++oohyysssssyyyhddddmdhhhhhyyyhdddd/```````````````````````````````````........-...-:oyyyyhyyyyyhhhhhdmmmmmmmmmmmd`                                       ::::::::::::::::::::: ##::::. ######::. #######:: ##::. ##:\'####:::::::::::::::::::::'), nl,
+write('          /mdhddhhhhhhhhhyyNmyssssssyssossoooosyhhyyyhhhhdddhhdmNdhhhhhhhhdddmh-```````````````````````````````````````````.oosyyhhydhyyyyyhhhhhhmNmmmmmmmmmmmm`                                       :::::::::::::::::::::..::::::......::::.......:::..::::..::....::::::::::::::::::::::'), nl,
+write('    `     `---:+oooo+/:-`.ddsssssssssysssssyddddddddhhhhhhhhhdmNdhhhhhhhddddms.```````..`````````````````````````````````````-///++yhyyyyhhhhhhdNmNmmmmmmmmmmmN+                                       ::::::::::::::::::::::::::::::\'##::: ##::\'#######:::::::::::::::::::::::::::::::::::: '), nl,
+write('   :+                   .mdysssssssssddssshmdhhhhdmhhhhhhhhhhmNdhhhhhdddhhdd/.````````-+:.```````````-+-``````````````````/:```.-+hhyyyyhhhhdmmmmdNmmmmmmmmmmmmd`                                      :::::::::::::::::::::::::::::: ###:: ##:\'##.... ##:::::::::::::::::::::::::::::::::::'), nl,
+write('   o+                   yNhhssssssssshmmdmdhhhhhhmdhhhhhhhhhdNdhhhdddhhhdms-````````````.:::-.```-:::-````````````````````yhsosyhhyyyyhhhdmmmmmmddNmmmmmmmmmmmmNs          `/`                         :::::::::::::::::::::::::::::: ####: ##: ##:::: ##:::::::::::::::::::::::::::::::::::'), nl,
+write('   :m-                 `Ndhhysssssssssmdmmmdhhhdmdhhhhhhhhhmmddmdddhhhhdd/.```````````````````````````````````````````````.:osyhhhhhhddmNmmmmmmdhmNmmmmmmmmmmmmmN/          dh`                        :::::::::::::::::::::::::::::: ## ## ##: ##:::: ##:::::::::::::::::::::::::::::::::::'), nl,
+write('    yNo`                mdhhhhyyssyhdddmhhdmmmmNmdddddddmmNmmddhhhhhhddo-```````````````````````````````````````````````````````.....:+NNmmmmddhhNmmmmmmmmmmmmmmmN/         +My            ++:`        :::::::::::::::::::::::::::::: ##. ####: ##:::: ##:::::::::::::::::::::::::::::::::::'), nl,
+write('    `yNmy+.            `mdhhhhhhdmmdhhhdmdhhhhhdddddddmdymmdhhhhhhhddo-.````````````````````````````````````````````````````````````-/mmNmmddhhhdNmmmmmmmmmmmmmmmmmo        yNNo            :dNho.     :::::::::::::::::::::::::::::: ##:. ###: ##:::: ##:::::::::::::::::::::::::::::::::::'), nl,
+write('      :dmdddhyso+++osydmmhhhhdmmNdhhhhhhdmdhhhhhhhhhhmy```-+yddhhdy+:.````````````````````````````````````````````````````````````.:sNNmNddhhhhhNNmmmdhhhdNmmmmmmmmNd-     +NmmN`             hNmm/    :::::::::::::::::::::::::::::: ##::. ##:. #######::::::::::::::::::::::::::::::::::::'), nl,
+write('       `/hmmdhhhddhhhhhmmdmmmmmmmhhhhhhhhddmmddhhhhhhmd``````.ymy/:-`````````````````````````````````````````````````````````````-oysoddNhhhhhhdNhs/------:ohmmmmmmmmmo::+hNmmmN`             `mNNN:   :\'######::\'##::::\'##:\'##::::\'##:\'##::::\'##:\'##:::\'##::::\'###::::\'##:::\'##:\'##::::\'##:'), nl,
+write('          ./ydmmddhhhhhdddmmmmmNdhhhhhdmhso/++oyhdddddmo``````-os-.```````````````````````````````````````````````````````````.:oy+::+yoNhhhdddNo------------/ymmmmmmmmNNmmmmmmN`              /MNNy   \'##... ##: ##:::: ##: ##:::: ##: ##:::: ##: ##::\'##::::\'## ##::: ##::\'##:: ##:::: ##:'), nl,
+write(' ..          `./oshdmdmmmmmmmmNdhhhhdms/--------:/+oshdd-`````.:y+-````````````````````````````````````````````````````````.-+oo/::::+ysNdddddmd---------------/dmmmmmmmNNNmmmmN               `MMNy    ##:::..:: ##:::: ##: ##:::: ##: ##:::: ##: ##:\'##::::\'##:. ##:: ##:\'##::: ##:::: ##:'), nl,
+write('.m:               ``..------/mdhhddmy:--------------:+dN/`````-:ohhs+:.``````````........`````````````````````````.-/:-::/+ohs/::::::+yhmdddddN/----------------:yNmmmmmmmmNNmN/               :MNNy   . ######:: #########: ##:::: ##: ##:::: ##: #####::::\'##:::. ##: #####:::: ##:::: ##:'), nl,
+write('sN+                        -ddddmmm+-----------------:oM/``````...:+yhhy+:..-:////////++ooo+/:.`````````````.-/////:-..````.-:os+::::+ymdddddNh-------------------hNmmmmmmmmmNNs/-`          -omNmN/   :..... ##: ##.... ##: ##:::: ##: ##:::: ##: ##. ##::: #########: ##. ##::: ##:::: ##:'), nl,
+write('ymm:                     `ommmmddm/--------------------ys````````````.:+ohy/-..```````````.-:/+o+/-.``...-:oo+/-.``````````````-oy/::odNddddmds-------------------:Nmmmmmmmmmmmmmmdyo/::::/shmmmmNh    \'##::: ##: ##:::: ##: ##:::: ##: ##:::: ##: ##:. ##:: ##.... ##: ##:. ##:: ##:::: ##:'), nl,
+write(':Nddy:`                .odNmddddm/---------------------:m:``````````````--.`````````````````````.-/++syo++/-..```````````````````-y+:sNddddmmyo--------------------sNmmmmmmmmmmmmmmmmmmmmmmmmmmmNh.    . ######:: ##:::: ##:. #######::. #######:: ##::. ##: ##:::: ##: ##::. ##:. #######:: '), nl,
+write(' sNdddho:.``     `.-:oydmddddddNo-----------------------om/``````````````````````````````````````````-:---.```````````````````````.h/yNhddmmsy+--------------------:NmmmmmmmmmmmmmmmmmmmmmmmmmmNy`     :......:::..:::::..:::.......::::.......:::..::::..::..:::::..::..::::..:::.......::: '), nl,
+write(' `yNdhhdddhhyyyyyhddddddddddddmd------------------------/hds-``````````````````````````````````````````````````````````````````````+ymdhdmdsoy+---------------------dmmmmmmmmmmmmmmmmmmmmmmmmmh:                                     Tsuki no Shukaku e Yokoso                              '), nl,
+write('   /dmdhhhhhdddddddddddddddddmN+------------------------/yd/ss/.```````````````````````````````````````````````````````````````````/NmddNhsoos+---------------------oMNNmmmmmmmmmmmmmmmmmmmdo-         -------------------------------------------------------------------------------------'), nl,
+write('    `+hddddhhhhdddddddddddmmmNh--------------------------hd+:ssho-````````````````````````````````````````````````````````````````-ymdmddsoooso---------------------+mmNmNNNNmmmmmmmmmdho/-`           |                                    Main Menu                                      |'), nl,
+write('       -ohdddddddddddddmmmmNNN:--------------------------hyy:o+/smh/..``````````````````````````````````````````````````````````.-sNdd+hyooooss---------------------:hydNmmmNs::::::.`                 | 1. start  : Mulailah menjadi petani dan bayar hutangmu                            |'), nl,
+write('        -/oyNNmmdddmmNNNNmmmNs---------------------------hsm:oo::/smh+:-.````````````````````````````````````````````````````.--:yNyso:moooooos---------------------:+s+yNmmmNh/`                      | 2. help   : Kalo bingung mending ketik command ini ngab daripada bingung          |'), nl,
+write('        ./+oooohMNmmmmmmmmmNs----------------------------yom-:s::::/ohmho/:--...`````````````````````````````````````````..--::/mm+:oo/mooooooy---------------------/++++omNmmmmmo-                    -------------------------------------------------------------------------------------'), nl.
+
+
+write('                           .ymdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdmhhhhdNdhhhhhhhhhhhhhhhhhhhhhhhhhhhdmmd/                                      '), nl,
+write('                          omdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhmdhhhdmNhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdmdy`                                    '), nl,
+write('                        `hmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdmhhhddMhhhhhhhhhhhhhhhhhhhhhhhhhhhhsyohyh:                                   '), nl,
+write('                       `ddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdNhhhddNhhhhhhhhhhhhhhhhhdhhhhhhhyys+os+yhh/                                  '), nl,
+write('                       hmhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddNhhdddNhyyhmhyyyyyyyyyssshhsoysso+++osysdmm/                                 '), nl,
+write('                      omhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddmmhhdddNhyyhyhhys+s+++y+//+ss+oyoysosyyhhhdmm/                                '), nl,
+write('                     `NdhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddmdhddddN+osss/ho//s///so/+++shsyyyhyhhhhhhhdmm-                               '), nl,
+write('                     /NhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddNhhddddd/+soo::so/s//++sosssyhmyhhhhhhhhhhhhdmh                               '), nl,
+write('                     ydhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddmhddddmy++sh/:--+ssossssyyyyhyddyyhhhhhhhhhhhmN:                              '), nl,
+write('              :.     ddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddmddddddNssssd:-``.:sysssssssyyhyddyyhhhhhhhhhhhmh                              '), nl,
+write('              s      dhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddmmhddddmdssssd++///:/+yysssssssyhymyyyyhhhhhhhhhdN:                             '), nl,
+write('           . -/      ddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddmddddddmssssdyo+//++ooshdhhyysssyhhdyyyyhhhhhhhhhmy                             '), nl,
+write('          `o +.      ydhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddmddddddmhssssh:.`````````.-+dmdhyyydmhyyyyyhhhhhhhdN`                            '), nl,
+write('          :+ +`      :mhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddmddddddmdssooh+-``````````````:shhhhhmdyyyyyyhhhhhhhN-       ``                   '), nl,
+write('          /+ o`       dhhhhhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddmdddddddmssoosy-`````````````````-+yyydNysyyyyyhhhhhhd/       `/                   '), nl,
+write('         `-y /-       /mhhhhhhhhhhhhhhhhhhhhhhhhhdddddddddddddmdddddddmysoooh/.```````````````````./yymhssyyyyhhhhhhd/        o                     ::::::::::::::::::\'########::\'######::\'##::::\'##:\'##:::\'##:\'####:::::::::::::::::::::'), nl,
+write('         +so:/-:-.`    ydhhhhhhhhhhhhhhhhhhhhhdddddddddddddddmdddddddmyssooyo-````````.``````````````/hmsssyyyyhhhhhh/        + `                   ::::::::::::::::::... ##..::\'##... ##: ##:::: ##: ##::\'##::. ##::::::::::::::::::::::'), nl,
+write('          -/os`ohyso/-``ddhhhhhhhhhhhhhhhhdddddddddddddddddmmdddddddmyssoosy-```.-///:::....``````````-dsssyyyyhhhhhho        + :                   ::::::::::::::::::::: ##:::: ##:::..:: ##:::: ##: ##:\'##:::: ##::::::::::::::::::::::'), nl,
+write('           `sdyssssssyyo+mdhhhhhhhhhhhddddddmddddddddddddmmdddddddmmyssoosh:```./oshdmNNNNNmdyo/.``````oyssyyyyhhhhhhs        + /                   ::::::::::::::::::::: ##::::. ######:: ##:::: ##: #####::::: ##::::::::::::::::::::::'), nl,
+write('             /hyssssssssyhmmdddo+++ooooooyddNddddddddddmmddddddddmmyssssyd:````oNNmNNMMNmmmNMmmNNho-```:yssyyyyhhhhhhs        + +                   ::::::::::::::::::::: ##:::::..... ##: ##:::: ##: ##. ##:::: ##::::::::::::::::::::::'), nl,
+write('              `/hyssssssssshdsy++++++++++oyhmhsyddddmmmmdddddddmmdssssyhd:````/yo-.`-dNNmdddNd//ohmms//-yssyyyyhhhhhd+        / +                   ::::::::::::::::::::: ##::::\'##::: ##: ##:::: ##: ##:. ##::: ##::::::::::::::::::::::'), nl,
+write('          `-:++++hNmhsssssyysosyyysssyssssyhmdy+dmmmmdddddddddmdyssshddd:`````.::-   /NdhNmmNNo..-:yNo`-yssyyyyhhhhhm:        / `                   ::::::::::::::::::::: ##::::. ######::. #######:: ##::. ##:\'####:::::::::::::::::::::'), nl,
+write('       `/yddhhyssssyyssssho++os+++shyo++oshydhdhmmdddddddddmmdyyyhddhdy-```````` hhosymsomyyhmy    `m//shssyyyhhhhhhN:       ``                     :::::::::::::::::::::..::::::......::::.......:::..::::..::....::::::::::::::::::::::'), nl,
+write('    `sdddhhhyssssssssssssh+++y++oyysyho+++sysdhhhddmmmmmmNNmdhdddhhhh+`````````  yo+o+sddy+++:+   `+:``/ysyyyyhhhhhhM:                              ::::::::::::::::::::::::::::::\'##::: ##::\'#######::::::::::::::::::::::::::::::::::::'), nl,
+write('     ohddhhhyssssssssssssy++ss+soossyys++shysomhhhhhhhhhhyyyhdhhhdho.``````````` :s+/:-----:/s:   `````+ssyyyyhhhhhmN+                              :::::::::::::::::::::::::::::: ###:: ##:\'##.... ##:::::::::::::::::::::::::::::::::::'), nl,
+write('       `-oddhyssssssssssys+oy+ohsoso+hysyyyho+hddhhhyyyyyyhddhhdy+-``````````````.o/-.....::/s- ``..``.hssyyyhhhhhdNms              -:              :::::::::::::::::::::::::::::: ###:: ##:\'##.... ##:::::::::::::::::::::::::::::::::::'), nl,
+write('          `./oshmmddhsssh++sooyssssyohhhyyhs+syymmmddhhhhdddddm/.````````````````````.................ossyyyyhhhhhNNNd`          `:yo               :::::::::::::::::::::::::::::: ## ## ##: ##:::: ##:::::::::::::::::::::::::::::::::::'), nl,
+write('            `/ydhyssssssyysosy+ssssssyyyhys+sysydddmhhhdhddddds```````.`````````````....-.-..-.--..../hssyyyhhhhhmmmmmdys+++++osydy:                :::::::::::::::::::::::::::::: ##. ####: ##:::: ##:::::::::::::::::::::::::::::::::::'), nl,
+write('          `+hhhssssssssssysysy++++++shyyso+shsydddmhyyyyyhdddh.`````````````````````....-.--.-.-.-../hssyyyhhhhhmmmmdhhddddddddy+.                  :::::::::::::::::::::::::::::: ##:. ###: ##:::: ##:::::::::::::::::::::::::::::::::::'), nl,
+write('         /dhhhhsssssssssssh++osssyyyhyyssyyysydddmhhhyyyydddy.``````````````````````......--...-..-oysyyyyhhhhhmmmmmddddhyyo+-``                    :::::::::::::::::::::::::::::: ##::. ##:. #######::::::::::::::::::::::::::::::::::::'), nl,
+write('       `+dhhhhhhyssyhdhsssh+++++++oohyyyyyyyhdddmdhhhyyyddds.````````````````````````.`.....-...:oyyyyyyyhhhhdmmmmmmmms```                          :\'######::\'##::::\'##:\'##::::\'##:\'##::::\'##:\'##:::\'##::::\'###::::\'##:::\'##:\'##::::\'##:'), nl,
+write('       /yyyhhhhyys+hmyssssyysssssyyhhhhhhhhhhhdmdhhhhhhddd+.````````````````````````````````-+syyyhhyyyhhhhdmNmmmmmmmmd                             \'##... ##: ##:::: ##: ##:::: ##: ##:::: ##: ##::\'##::::\'## ##::: ##::\'##:: ##:::: ##:'), nl,
+write('  /     ```....`` odysssssshyssyddhhhdhhhhhhhdmdhhhhddhdh:``````-:.````````.:``````````````:``../shyyyhhhdmmmNmmmmmmmmm:                             ##:::..:: ##:::: ##: ##:::: ##: ##:::: ##: ##:\'##::::\'##:. ##:: ##:\'##::: ##:::: ##:'), nl,
+write('  h              :Nhyssssssymhddhhhhmdhhhhhhdmdhddddhhdo.````````.-:-.``.---.``````````````ssooyyyyyhhddmmmddNmmmmmmmmmd`       -.                  . ######:: #########: ##:::: ##: ##:::: ##: #####::::\'##:::. ##: #####:::: ##:::: ##:'), nl,
+write('  ss`            +mhhysssssymddmdddddhhhhddmmddddhhhdy:````````````````````````````````````.-/oosssshNmmmmddmmmmmmmmmmmmy`      -m.         .`      :..... ##: ##.... ##: ##:::: ##: ##:::: ##: ##. ##::: #########: ##. ##::: ##:::: ##:'), nl,
+write('  `ydo-`        `+mhhhhhhddddmdhdddmdmdmmddmddhhhhhy+.````````````````````````````````````````````.:dNmmddhhNmmmmmmmmmmmmy.     -Nd`        :ss/.   \'##::: ##: ##:::: ##: ##:::: ##: ##:::: ##: ##:. ##:: ##.... ##: ##:. ##:: ##:::: ##:'), nl,
+write('   `+ddhyso+++osymhhhdmmmdhhhddddhhhhhhms.-:ohddhs/-`````````````````````````````````````````````.+dmNddhhhdNmdhyyhdmmmmmmd/   .hmm+         `hmd:  . ######:: ##:::: ##:. #######::. #######:: ##::. ##: ##:::: ##: ##::. ##:. #######::'), nl,
+write('     `/yhdddddhhhmmmmmmNdhhhddhhhhhhddddh````.oh/-.````````````````````````````````````````````./o+oymdhhhdms+:----:+ymmmmmmysydmmmo          .mNm  :......:::..:::::..:::.......::::.......:::..::::..::..:::::..::..::::..:::.......:::'), nl,
+write('``      .:+yhhdhddmmmmNdhhddy+/---:/osyhd+````.o+.``````````````````````````````````````````.-+o+::/sdddddms----------/hmmmmmNNmmmmo           sMN  '), nl,
+write('h-           `--::::/ddddmh/----------:/dh````-/yso/-.````.....-....````````````````.-::--:/ss+::::/ymddddd-------------smmmmmmmNmm.          `hNN                                   Art By: @Takiki2828'), nl,
+write('No                 -hdddms--------------od```````-/osso/:::----:::///+:-.``````.:/+/:-.``````./o+::+hmdddms--------------ymmmmmmmmmyo:.`````-+hmmd  '), nl,
+write('Nds-`            -smmddms----------------y:``````````./:``````````````.:://+++//:.``````````````/s:omdddmh+--------------:mmmmmmmmmmmmmdhhhdmmmmm-                                Tsuki no Shukaku e Yokoso                              '), nl,
+write('+mddy+:.````.-/oyddddddd-----------------:d/```````````````````````````````-:-..`````````````````:ssmhdmys/---------------ymmmmmmmmmmmmmmmmmmmmh.   -------------------------------------------------------------------------------------'), nl,
+write(' /mdhdddddddddddddddddN/------------------yho:.```````````````````````````````````````````````````ymddmyos/---------------/Nmmmmmmmmmmmmmmmmmy/     |                                    Main Menu                                      |'), nl,
+write('  .sddddhhhdddddddddmmy-------------------sh:sso-````````````````````````````````````````````````-mddmyoos+---------------:mmNmNNmmmmmmmdho/.       | 1. start  : Mulailah menjadi petani dan bayar hutangmu                            |'), nl,
+write('     :shdddddddddmmmmN:-------------------sh++++hy/.```````````````````````````````````````````.:hmh+doooso----------------sydmmNh/::--`            | 2. help   : Kalo bingung mending ketik command ini ngab daripada bingung          |'), nl,
+write('     `oydmdmmmmmmmmmN+--------------------sss/o::+yho:-..```````````````````````````````````.--/dy/sohooooo---------------:+++hNmmms-               -------------------------------------------------------------------------------------'), nl.
